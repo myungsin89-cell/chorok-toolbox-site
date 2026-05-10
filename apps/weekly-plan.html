@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>주간학습 프로그램 | 초록덕후의 교실 도구함</title>
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+  @font-face { font-family:'NanumSquareRound'; font-weight:800; font-style:normal; font-display:swap; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareRoundEB.woff2') format('woff2'); }
+  :root { --green:#15803d; --deep:#14532d; --mist:#f0fdf4; --line:#e3e8e1; --ink:#17201a; --muted:#66736a; --body:#27352b; --font-body:'Pretendard','Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',system-ui,sans-serif; --font-display:'NanumSquareRound','Pretendard',sans-serif; }
+  *{box-sizing:border-box} body{margin:0;font-family:var(--font-body);color:var(--body);line-height:1.75;word-break:keep-all;background:linear-gradient(180deg,#fff,var(--mist),#fff)}
+  .wrap{width:min(920px,calc(100% - 40px));margin:0 auto} header{border-bottom:1px solid var(--line);background:rgba(255,255,255,.82);backdrop-filter:blur(16px);position:sticky;top:0} .nav{height:64px;display:flex;align-items:center;justify-content:space-between} a{color:inherit;text-decoration:none}.brand{font-family:var(--font-display);font-weight:800;color:var(--deep)} .back{font-weight:700;color:var(--green);font-size:14px}
+  main{padding:72px 0}  .badge{display:inline-flex;padding:7px 12px;border-radius:999px;background:var(--mist);border:1px solid #bbf7d0;color:var(--deep);font-size:13px;font-weight:800;margin-right:6px;margin-bottom:6px}h1{font-family:var(--font-display);font-size:clamp(38px,6vw,60px);line-height:1.12;letter-spacing:-.05em;color:var(--ink);margin:22px 0 16px} .lead{font-size:20px;color:#3a463d;margin:0 0 34px;max-width:720px}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:28px;padding:30px;margin:18px 0;box-shadow:0 18px 45px rgba(16,36,24,.07)} h2{font-family:var(--font-display);color:var(--ink);margin:0 0 14px;font-size:26px}
+  .list{padding:0;list-style:none;display:grid;gap:10px}.list li{display:flex;gap:10px}.list li:before{content:'✓';color:var(--green);font-weight:900}
+  .ss-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:14px}
+  .ss-card{border-radius:20px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:0 12px 30px rgba(16,36,24,.06);cursor:pointer;transition:transform .2s,box-shadow .2s}
+  .ss-card:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(16,36,24,.14)}
+  .ss-card a{display:block;text-decoration:none;color:inherit}
+  .ss-card img{width:100%;display:block;aspect-ratio:16/10;object-fit:cover;background:var(--mist)}
+  .ss-card .cap{padding:12px 16px;font-size:14px;color:var(--muted);font-weight:600;line-height:1.5}
+  /* Lightbox */
+  .lb{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.82);justify-content:center;align-items:center;padding:30px}
+  .lb.show{display:flex}
+  .lb img{max-width:96%;max-height:92vh;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+  .lb-close{position:fixed;top:18px;right:26px;color:#fff;font-size:42px;font-weight:300;line-height:1;text-decoration:none;width:50px;height:50px;display:grid;place-items:center;border-radius:50%;background:rgba(0,0,0,.35);transition:background .18s}.lb-close:hover{background:rgba(255,255,255,.25)}
+  .btn-guide{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:999px;background:var(--green);color:#fff;font-weight:800;font-size:15px;transition:transform .18s ease,box-shadow .18s ease;margin-top:14px}.btn-guide:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(21,128,61,.3)}
+  .warn{background:#fef2f2;border:1px solid #fecaca;border-radius:20px;padding:20px;margin-top:14px}.warn strong{display:block;color:#991b1b;margin-bottom:6px}.warn p{color:#7f1d1d;margin:0;font-size:15px}
+  .tip{background:#f0f9ff;border:1px solid #bae6fd;border-radius:20px;padding:20px;margin-top:14px}.tip strong{display:block;color:#075985;margin-bottom:6px}.tip p{color:#0c4a6e;margin:0;font-size:15px}
+  .step-list{display:grid;gap:16px;margin-top:14px}.step-item{padding:20px;border-radius:18px;background:var(--mist);border:1px solid #bbf7d0}.step-item h3{font-family:var(--font-display);color:var(--deep);margin:0 0 8px;font-size:17px}.step-item p{margin:0;color:var(--body);font-size:15px}.step-item .sub{color:var(--muted);font-size:14px;margin-top:6px}
+  footer{padding:40px 0;color:var(--muted)}
+  @media(max-width:640px){.grid-2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav"><a class="brand" href="../index.html">🌿 초록덕후의 교실 도구함</a><a class="back" href="../index.html#apps">← 도구함으로</a></div></header>
+<main><div class="wrap">
+
+  <div style="margin-bottom:16px;">
+<span class="badge">🗓️ 시간표자동입력</span>
+<span class="badge">🔑 전담중복확인</span>
+<span class="badge">🌐 서버형</span>
+<span class="badge">💻 내 컴퓨터(로컬)</span>
+</div>
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+    <h1 style="margin:0;">주간학습 프로그램</h1>
+    <a href="https://ju-gan-local-9onp2texi-songmyungsins-projects.vercel.app" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:999px;background:var(--green);color:#fff;font-size:15px;font-weight:800;text-decoration:none;letter-spacing:0.04em;transition:transform .18s,box-shadow .18s;">🚀 주간학습 프로그램 사용하기</a>
+  </div>
+<p class="lead" style="margin-top:20px;">영어·체육 등 전담 선생님 시간표, 우리 반 시간표, 수업 시수를 한 화면에서 정리합니다. 서버에 연결하면 동학년 선생님들과 함께 수정·공유할 수 있습니다.</p>
+
+<!-- ===== 무엇을 하나요 ===== -->
+<div class="panel">
+  <h2>무엇을 하나요?</h2>
+  <p style="margin:0 0 18px;color:var(--muted);font-size:17px;font-weight:700;">이 프로그램은 네 가지 일을 합니다.</p>
+  <ul class="list">
+    <li><strong>전담 시간표 관리</strong> — 전담 선생님을 반·시간대별로 배정하고, 중복을 자동으로 확인합니다.</li>
+    <li><strong>주간학습안내 즉시 출력</strong> — 입력한 시간표를 가정통신문 형태로 바로 미리보기·인쇄·PDF 저장할 수 있습니다.</li>
+    <li><strong>차시 관리</strong> — 과목별 목표 차시를 설정하고 달성 여부를 자동 검증합니다. 부족한 차시는 빨간색으로 표시됩니다.</li>
+    <li><strong>동학년 공동 작업</strong> — Firebase를 연결하면 같은 학년 선생님들과 데이터를 공유하며 함께 수정할 수 있습니다.</li>
+  </ul>
+</div>
+
+<!-- ===== 화면 미리보기 ===== -->
+<div class="panel">
+  <h2>화면 미리보기</h2>
+  <p style="color:var(--muted);font-size:15px;margin:0 0 14px;">💡 이미지를 클릭하면 크게 볼 수 있습니다.</p>
+  <div class="ss-grid">
+    <div class="ss-card">
+      <a href="javascript:void(0)" onclick="document.getElementById('lb-1').classList.add('show')">
+        <img src="images/ss-step1-mode.png" alt="모드 선택 화면" loading="lazy">
+        <div class="cap">▲ 처음 실행 시 혼자 사용(로컬) 또는 동료와 함께(서버)를 선택합니다.</div>
+      </a>
+    </div>
+    <div class="ss-card">
+      <a href="javascript:void(0)" onclick="document.getElementById('lb-2').classList.add('show')">
+        <img src="images/ss-specialist.png" alt="전담 배정 화면" loading="lazy">
+        <div class="cap">▲ <strong>전담 선생님 배정</strong> — 과목·반·시간대별로 배정하고 중복을 자동 확인합니다.</div>
+      </a>
+    </div>
+    <div class="ss-card">
+      <a href="javascript:void(0)" onclick="document.getElementById('lb-3').classList.add('show')">
+        <img src="images/ss-validation-check.png" alt="시수 확인 화면" loading="lazy">
+        <div class="cap">▲ <strong>시수 확인</strong> — 목표 차시 대비 부족·초과를 자동 확인합니다. 부족 차시는 빨간색 표시.</div>
+      </a>
+    </div>
+    <div class="ss-card">
+      <a href="javascript:void(0)" onclick="document.getElementById('lb-4').classList.add('show')">
+        <img src="images/ss-timetable-edit.png" alt="시간표 편집 화면" loading="lazy">
+        <div class="cap">▲ <strong>시간표 편집</strong> — 과목별 색상(전담=영어/체육)으로 구분하여 입력합니다.</div>
+      </a>
+    </div>
+    <div class="ss-card">
+      <a href="javascript:void(0)" onclick="document.getElementById('lb-5').classList.add('show')">
+        <img src="images/ss-timetable-view.png" alt="주간학습 인쇄 및 저장 화면" loading="lazy">
+        <div class="cap">▲ <strong>주간학습 인쇄 및 저장</strong> — 시간표와 <strong>전담시간표</strong>를 함께 확인하고 바로 인쇄·PDF 저장합니다.</div>
+      </a>
+    </div>
+    <div class="ss-card">
+      <a href="javascript:void(0)" onclick="document.getElementById('lb-6').classList.add('show')">
+        <img src="images/ss-specialist-ref.png" alt="전담시간표 참고 화면" loading="lazy">
+        <div class="cap">▲ <strong>전담시간표</strong> — 반 입력칸에 <strong>'전담'</strong>으로 로그인하면 나의 전담시간표를 따로 확인할 수 있습니다.</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Lightboxes -->
+<div id="lb-1" class="lb"><a href="javascript:void(0)" class="lb-close" onclick="this.parentElement.classList.remove('show')">✕</a><img src="images/ss-step1-mode.png" alt="모드 선택 화면"></div>
+<div id="lb-2" class="lb"><a href="javascript:void(0)" class="lb-close" onclick="this.parentElement.classList.remove('show')">✕</a><img src="images/ss-specialist.png" alt="전담 배정 화면"></div>
+<div id="lb-3" class="lb"><a href="javascript:void(0)" class="lb-close" onclick="this.parentElement.classList.remove('show')">✕</a><img src="images/ss-validation-check.png" alt="시수 확인 화면"></div>
+<div id="lb-4" class="lb"><a href="javascript:void(0)" class="lb-close" onclick="this.parentElement.classList.remove('show')">✕</a><img src="images/ss-timetable-edit.png" alt="시간표 편집 화면"></div>
+<div id="lb-5" class="lb"><a href="javascript:void(0)" class="lb-close" onclick="this.parentElement.classList.remove('show')">✕</a><img src="images/ss-timetable-view.png" alt="주간학습 인쇄 및 저장 화면"></div>
+<div id="lb-6" class="lb"><a href="javascript:void(0)" class="lb-close" onclick="this.parentElement.classList.remove('show')">✕</a><img src="images/ss-specialist-ref.png" alt="전담시간표 참고 화면"></div>
+<!-- ===== 사용 안내 ===== -->
+<div class="panel">
+  <h2>사용 안내</h2>
+
+  <div class="tip">
+    <strong>📌 시작하기 전에</strong>
+    <p>크롬·엣지 등 최신 브라우저에서 실행하세요.</p>
+    <p style="margin-top:8px;"><strong>💻 바탕화면에 설치하는 방법</strong><br>
+    주소에 접속한 후 브라우저 <strong style="display:inline;">주소창 오른쪽 끝</strong>에 있는 <strong style="display:inline;">⬇ 다운로드 아이콘</strong>(또는 설치 아이콘)을 클릭하면 바탕화면에 앱이 설치됩니다. 설치하면 브라우저 주소창 없이 일반 앱처럼 실행할 수 있습니다.</p>
+  </div>
+
+  <div class="step-list">
+
+    <div class="step-item">
+      <h3>1단계 — 사용 방식 선택</h3>
+      <p>처음 실행하면 사용 방식을 선택합니다.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;">
+        <div style="background:#fff;border:1px solid #bbf7d0;border-radius:14px;padding:14px;"><strong>💻 혼자 사용하기</strong><br><span style="color:var(--muted);font-size:14px;">내 컴퓨터에만 저장, 인터넷 없이도 사용 가능</span></div>
+        <div style="background:#fff;border:1px solid #bae6fd;border-radius:14px;padding:14px;"><strong>🌐 동료와 함께</strong><br><span style="color:var(--muted);font-size:14px;">Firebase 연결 후 동학년 선생님과 실시간 공유</span></div>
+      </div>
+      <div class="sub">선택은 설정 화면에서 언제든 변경할 수 있습니다.</div>
+    </div>
+
+    <div class="step-item">
+      <h3>2단계 — 학교 기본 정보 및 선호 시간대 설정 (최초 1회)</h3>
+      <p><strong>한 번만 하면 끝!</strong> 내 학교·학급에 맞는 기본 정보(학년·반 수·교시 수·과목)와 연간 목표 시수를 입력합니다.</p>
+      <p>같은 화면에서 <strong>과목별 선호 시간대</strong>를 설정할 수 있습니다. 예를 들어 국어는 <strong>1~2교시</strong>, 수학은 <strong>3~4교시</strong>, 체육은 <strong>5~6교시</strong>로 지정해두면, 나중에 <strong style="color:#dc2626;">전체 랜덤 배정</strong> 버튼 한 번으로 이 시간대를 최대한 반영한 시간표가 자동으로 채워집니다. 연차시(2차시 연속 수업) 설정도 가능합니다.</p>
+      <p style="margin-top:10px;color:var(--deep);font-size:15px;"><strong>🌈 서버 모드일 때는?</strong> 각 반 선생님이 자신의 반 과목 설정을 따로 할 수 있어, 반별로 선호 시간대를 다르게 운영할 수 있습니다.</p>
+      <p>이 단계는 <strong>한 번만 하면</strong> 이후에는 자동으로 유지됩니다.</p>
+    </div>
+
+    <div class="step-item" style="border-color:#86efac;background:#f0fdf4;">
+      <h3>🔑 3단계 — 전담 과목 추가 및 배정</h3>
+      <p>전담 시간표를 먼저 정리해야 반별 시간표가 정확해집니다.</p>
+      <p>1. <strong>전담 과목</strong>을 추가하고 설명과 색상을 정합니다. (주간학습 색상 반영)<br>
+      2. 전담 과목이 어느 반·어느 시간에 수업하는지 배정합니다.<br>
+      3. 중복 확인 — 같은 시간에 여러 반이 배정되면 경고가 표시됩니다.<br>
+      4. <strong style="color:#dc2626;">저장 버튼을 눌러야 데이터가 반영됩니다.</strong></p>
+    </div>
+
+    <div class="step-item" style="border-color:#d9f99d;background:#f7fee7;">
+      <h3>⚡ 4단계 — 매주 이렇게 사용하세요 (루틴)</h3>
+      <p>매주 반복되는 실제 작업 순서입니다.</p>
+      <p style="margin-top:10px;">
+        <strong>📌 준비</strong><br>
+        <strong>① 새 주차 생성</strong> — 전체 시간표 화면에서 새 주차를 만듭니다.<br>
+        <strong>② 목표 차시 입력</strong> — 이번 주 과목별 목표 차시를 입력합니다.
+      </p>
+      <p style="margin-top:12px;">
+        <strong>📌 전담 반영</strong><br>
+        <strong>③ 전담 입력</strong> — 전담 시간표에 전담 과목을 입력·확인합니다.<br>
+        <strong>④ 전담 전체 가져오기</strong> — 전체 시간표에서 <strong>전담 전체 가져오기</strong>를 실행하여 전담 시간표를 반영합니다.
+      </p>
+      <p style="margin-top:12px;">
+        <strong>📌 배정 및 확인</strong><br>
+        <strong>⑤ 🎲 전체 랜덤 배정</strong> — 2단계에서 설정한 <strong>과목별 선호 시간대</strong>에 따라 <strong style="color:#dc2626;">전체 랜덤 배정</strong> 버튼을 누르면 자동으로 시간표가 채워집니다!<br>
+        <strong>⑥ 확인 및 수동 조정</strong> — 색상으로 구분된 시간표를 보며 필요한 부분을 수동으로 수정합니다.
+      </p>
+      <p style="margin-top:12px;">
+        <strong>📌 마무리</strong><br>
+        <strong>⑦ 인쇄 및 저장</strong> — 주간학습안내 미리보기로 확인 후 인쇄하거나 PDF로 저장합니다.
+      </p>
+    </div>
+
+    <div style="margin-top:20px;border-radius:20px;border:1px solid #bae6fd;background:#f0f9ff;padding:24px;">
+      <h3 style="font-family:var(--font-display);color:#075985;margin:0 0 12px;font-size:19px;">🌐 서버연결이란?</h3>
+      <p><strong>서버(Server)</strong>는 쉽게 말해 <strong style="display:inline;">'여럿이 함께 쓰는 공용 저장 공간'</strong>이에요. 내 컴퓨터가 아니라 인터넷 위에 데이터를 두고, 같은 학년 선생님들이 각자 접속해서 함께 사용할 수 있습니다. 서버를 연결하면 같은 학년 선생님 모두가 같은 시간표 데이터를 보고 수정할 수 있어요.</p>
+      <div style="background:#fff;border:1px solid #bbf7d0;border-radius:16px;padding:16px;margin-top:14px;">
+        <strong style="color:#15803d;">👥 이렇게 사용해요</strong>
+        <p style="font-size:14px;margin:8px 0 0;line-height:1.7;">
+          • 전담 선생님은 <strong style="display:inline;">전담 시간표</strong>만 입력합니다.<br>
+          • 전담이 들어가지 않는 그 외 시간은 <strong style="display:inline;">각 반 선생님들께서 차시 시간표를 보며 직접 입력</strong>합니다.<br>
+          • 한 번 수정한 전담 배정은 모든 반에 자동 반영되므로, 전담 시간표가 바뀌어도 각 반 선생님들이 따로 고칠 필요가 없어요.
+        </p>
+      </div>
+      <p style="margin-top:14px;font-size:15px;color:#0c4a6e;">Firebase를 연결하면 이 기능을 사용할 수 있습니다. 아래 버튼을 눌러 연결 방법을 확인하세요.</p>
+      <a class="btn-guide" href="../guides/firebase-setup.html">🔗 Firebase 연결 방법 알아보기 →</a>
+      <div style="background:#fff;border:1px solid #bae6fd;border-radius:16px;padding:16px;margin-top:14px;">
+        <strong style="color:#0369a1;">👩‍🏫 로그인 방법</strong>
+        <p style="color:#0c4a6e;font-size:14px;margin:6px 0 0;">선생님들은 반 입력칸에 <strong>반 번호</strong>를, 이름 입력칸에 <strong>이름</strong>을 입력하여 로그인합니다. 로그인 정보는 브라우저에 저장되어 다음에 방문할 때는 자동으로 로그인됩니다. 우측 상단 🔒 아이콘을 누르면 <strong>관리자 모드</strong>(초기 비밀번호: <strong>0000</strong>)로 전환할 수 있으며, 관리자는 모든 기능을 자유롭게 사용할 수 있습니다.</p>
+      </div>
+      <div class="tip" style="background:#e0f2fe;border-color:#bae6fd;margin-top:12px;">
+        <strong style="color:#0369a1;">💡 전담 선생님 전용 화면</strong>
+        <p style="color:#0369a1;font-size:14px;">서버 연결 상태에서 반 입력칸에 <strong style="display:inline;">'전담'</strong>이라고 입력하고 로그인하면 <strong style="display:inline;">전담 선생님 전용 화면</strong>이 나타나 나의 전담 시간표만 따로 확인·관리할 수 있습니다.</p>
+      </div>
+      <div class="warn">
+        <strong>⚠️ 저장을 해야 공유됩니다</strong>
+        <p>아무리 수정해도 저장 버튼을 누르지 않으면 내 컴퓨터(로컬)에만 남고 서버에 올라가지 않습니다. 동학년 선생님들이 변경 내용을 보려면 반드시 저장 버튼을 눌러야 해요.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- ===== 꼭 알아두세요 ===== -->
+<div class="panel" style="background:#fefce8;border-color:#fde68a;">
+  <h2 style="color:#854d0e;">📌 꼭 알아두세요</h2>
+  <ul class="list">
+    <li>내 컴퓨터(로컬) 모드 데이터는 브라우저 저장소에 의존합니다. 브라우저 데이터를 삭제하면 함께 사라지니 필요시 따로 백업하세요.</li>
+    <li>서버 모드는 Firebase를 사용합니다. Firebase 사용량에 따라 비용이 발생할 수 있습니다.</li>
+    <li>학생 개인정보(실명, 전화번호 등)는 입력하지 않는 것을 권장합니다.</li>
+  </ul>
+</div>
+
+</div></main>
+<footer><div class="wrap">선생님들의 편안한 학교생활을 응원합니다 🌱</div></footer>
+
+
+<script>
+document.querySelectorAll('.lb').forEach(el => {
+  el.addEventListener('click', function(e) {
+    if (e.target === this) this.classList.remove('show');
+  });
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.lb.show').forEach(el => el.classList.remove('show'));
+  }
+});
+</script>
+</body>
+</html>

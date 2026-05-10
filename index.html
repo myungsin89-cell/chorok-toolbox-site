@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>초록덕후의 교실 도구함</title>
+  <meta name="description" content="초등교사가 실제 업무에 쓰려고 만든 학교 업무 도구 모음. by 초록덕후" />
+  <style>
+    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+    @font-face {
+      font-family: 'NanumSquareRound';
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareRoundR.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'NanumSquareRound';
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareRoundB.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'NanumSquareRound';
+      font-weight: 800;
+      font-style: normal;
+      font-display: swap;
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareRoundEB.woff2') format('woff2');
+    }
+
+    :root {
+      --green: #15803d;
+      --green-deep: #14532d;
+      --green-bright: #16a34a;
+      --green-soft: #dcfce7;
+      --green-mist: #f0fdf4;
+      --ink: #17201a;
+      --body: #27352b;
+      --muted: #66736a;
+      --line: #e3e8e1;
+      --line-green: #bbf7d0;
+      --canvas: #ffffff;
+      --warm: #fafaf7;
+      --surface: #f6f8f5;
+      --dark: #102418;
+      --shadow: 0 22px 50px rgba(16, 36, 24, 0.08);
+      --radius-lg: 22px;
+      --radius-xl: 30px;
+      --font-body: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', system-ui, sans-serif;
+      --font-display: 'NanumSquareRound', 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', system-ui, sans-serif;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      color: var(--body);
+      background:
+        radial-gradient(circle at 15% 0%, rgba(187, 247, 208, 0.55), transparent 30%),
+        linear-gradient(180deg, #ffffff 0%, var(--warm) 55%, #ffffff 100%);
+      line-height: 1.7;
+      word-break: keep-all;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(227, 232, 225, 0.75);
+    }
+    .nav {
+      height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-weight: 800;
+      color: var(--green-deep);
+      letter-spacing: -0.03em;
+    }
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: linear-gradient(135deg, var(--green), var(--green-bright));
+      box-shadow: 0 12px 28px rgba(21, 128, 61, 0.22);
+    }
+    .nav-links { display: flex; align-items: center; gap: 18px; font-size: 14px; color: var(--muted); }
+    .nav-links a:hover { color: var(--green); }
+
+    .hero {
+      padding: 88px 0 64px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      align-items: center;
+      max-width: 760px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: var(--green-mist);
+      color: var(--green-deep);
+      border: 1px solid var(--line-green);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      margin: 22px 0 18px;
+      color: var(--ink);
+      font-size: clamp(40px, 6vw, 68px);
+      line-height: 1.06;
+      letter-spacing: -0.065em;
+    }
+    .hero h1 span { color: var(--green); }
+    .hero p {
+      margin: 0;
+      max-width: 620px;
+      font-size: 20px;
+      color: #3a463d;
+      line-height: 1.65;
+    }
+
+    .hero-actions { margin-top: 32px; display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 14px;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--green); color: white; box-shadow: 0 14px 30px rgba(21, 128, 61, 0.24); }
+    .btn-secondary { background: white; color: var(--green-deep); border: 1px solid var(--line); }
+
+    .mockup {
+      position: relative;
+      padding: 18px;
+      border-radius: 34px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+    .mockup-inner {
+      overflow: hidden;
+      border-radius: 24px;
+      background: var(--canvas);
+      border: 1px solid var(--line);
+    }
+    .mockup-top {
+      height: 42px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 16px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: #b8c3ba; }
+    .mockup-body { padding: 24px; }
+    .mini-title { font-size: 13px; font-weight: 800; color: var(--green); margin-bottom: 12px; }
+    .schedule {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+    }
+    .day {
+      min-height: 156px;
+      padding: 10px;
+      border-radius: 16px;
+      background: var(--green-mist);
+      border: 1px solid var(--line-green);
+    }
+    .day b { display: block; color: var(--green-deep); font-size: 13px; margin-bottom: 8px; }
+    .chip { height: 20px; margin: 6px 0; border-radius: 8px; background: white; border: 1px solid #d9efdd; }
+    .chip:nth-child(3) { background: #dcfce7; }
+    .chip:nth-child(4) { background: #fef9c3; }
+
+    section { padding: 72px 0; }
+    .section-head { display: flex; justify-content: space-between; gap: 20px; align-items: end; margin-bottom: 26px; }
+    .section-kicker { margin: 0 0 8px; color: var(--green); font-weight: 900; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; }
+    h2 { font-family: var(--font-display); margin: 0; color: var(--ink); font-size: clamp(30px, 4vw, 44px); line-height: 1.16; letter-spacing: -0.045em; }
+    .section-desc { max-width: 430px; color: var(--muted); margin: 0; font-size: 15px; }
+
+    .apps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .card {
+      min-height: 280px;
+      padding: 24px;
+      border-radius: var(--radius-lg);
+      background: white;
+      border: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--line-green); }
+    .card.featured { background: linear-gradient(180deg, var(--green-mist), white 70%); border-color: var(--line-green); }
+    .card.coming-soon { opacity: .55; position: relative; cursor: default; pointer-events: none; }
+    .card.coming-soon:hover { transform: none; box-shadow: 0 22px 50px rgba(16,36,24,.07); border-color: var(--line); }
+    .coming-label { display: inline-block; margin-top: 10px; padding: 4px 10px; border-radius: 999px; background: #e5e7eb; color: #6b7280; font-size: 11px; font-weight: 800; letter-spacing: .03em; }
+    .icon {
+      width: 48px; height: 48px;
+      border-radius: 16px;
+      display: grid; place-items: center;
+      background: var(--green-soft);
+      color: var(--green-deep);
+      font-size: 24px;
+    }
+    .card h3 { font-family: var(--font-display); margin: 0; color: var(--ink); font-size: 20px; line-height: 1.35; letter-spacing: -0.02em; }
+    .card p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .meta { margin-top: auto; display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: var(--surface);
+      color: #59645c;
+      border: 1px solid var(--line);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .server-guide {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 30px;
+      border-radius: var(--radius-xl);
+      background: white;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+    .server-guide:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 42px rgba(21, 128, 61, 0.14);
+      border-color: var(--line-green);
+    }
+    .server-copy h3 {
+      font-family: var(--font-display);
+      margin: 0 0 8px;
+      color: var(--ink);
+      font-size: 22px;
+    }
+    .server-copy p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.65;
+      max-width: 620px;
+    }
+
+    .story {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+    .story-panel {
+      position: relative;
+      padding: 40px;
+      border-radius: var(--radius-xl);
+      background: var(--dark);
+      color: white;
+      min-height: 410px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    .story-panel:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 60px rgba(16, 36, 24, 0.24);
+      background: #0b2f1c;
+    }
+    .story-panel h2 { color: white; margin-top: 12px; }
+    .story-panel p { color: rgba(255,255,255,.78); margin: 20px 0 0; }
+    .send-cue {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      margin-top: 28px;
+      padding: 11px 15px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.12);
+      color: white;
+      font-size: 14px;
+      font-weight: 800;
+      transition: background .18s ease, transform .18s ease;
+    }
+    .story-panel:hover .send-cue { background: rgba(255,255,255,.2); transform: translateX(3px); }
+    .steps { display: grid; gap: 12px; }
+    .step {
+      padding: 22px;
+      border-radius: 20px;
+      background: white;
+      border: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .num {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      display: grid; place-items: center;
+      background: var(--green-mist);
+      color: var(--green-deep);
+      font-weight: 900;
+    }
+    .step h3 { font-family: var(--font-display); margin: 0 0 6px; color: var(--ink); font-size: 18px; }
+    .step p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    .detail {
+      border-radius: 34px;
+      background: white;
+      border: 1px solid var(--line);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .detail-copy { padding: 38px; }
+    .detail-copy h2 { font-size: clamp(28px, 4vw, 40px); }
+    .detail-copy p { color: var(--muted); }
+    .check-list { padding: 0; list-style: none; display: grid; gap: 10px; margin: 24px 0; }
+    .check-list li { display: flex; gap: 10px; align-items: flex-start; color: #334238; }
+    .check-list li::before { content: "✓"; color: var(--green); font-weight: 900; }
+    .screen-placeholder {
+      min-height: 420px;
+      padding: 30px;
+      background: linear-gradient(135deg, var(--green-mist), #ffffff);
+      border-left: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .screen-card {
+      width: 100%;
+      max-width: 440px;
+      border-radius: 24px;
+      background: white;
+      border: 1px solid var(--line-green);
+      padding: 18px;
+      box-shadow: 0 24px 60px rgba(20, 83, 45, 0.13);
+    }
+    .fake-row { height: 18px; border-radius: 7px; background: var(--green-mist); margin: 10px 0; }
+    .fake-row.short { width: 58%; }
+    .fake-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 18px; }
+    .fake-cell { height: 74px; border-radius: 14px; background: #f7faf7; border: 1px solid var(--line); }
+
+    .notice {
+      display: block;
+      padding: 30px;
+      border-radius: var(--radius-lg);
+      background: var(--green-mist);
+      border: 1px solid var(--line-green);
+      color: var(--green-deep);
+      cursor: pointer;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+    }
+    .notice:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 42px rgba(21, 128, 61, 0.14);
+      border-color: var(--green-bright);
+      background: #e8fbe9;
+    }
+    .notice strong { display: block; margin-bottom: 10px; }
+    .notice-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 18px;
+      font-weight: 900;
+      color: var(--green);
+    }
+
+    footer {
+      padding: 54px 0;
+      background: var(--dark);
+      color: rgba(255,255,255,.78);
+    }
+    footer .wrap { display: flex; justify-content: space-between; gap: 24px; align-items: center; flex-wrap: wrap; }
+    footer b { color: white; }
+
+    /* 모달 */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(16, 36, 24, 0.45);
+      backdrop-filter: blur(6px);
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-overlay.show { display: flex; }
+    .modal-box {
+      background: white;
+      border-radius: var(--radius-xl);
+      padding: 44px 40px 36px;
+      max-width: 480px;
+      width: calc(100% - 32px);
+      box-shadow: 0 40px 80px rgba(16, 36, 24, 0.3);
+      position: relative;
+      animation: modalIn .25s ease;
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: translateY(20px) scale(.96); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      font-size: 22px;
+      cursor: pointer;
+      color: var(--muted);
+      background: none;
+      border: none;
+      padding: 4px 8px;
+      border-radius: 8px;
+      transition: background .15s;
+    }
+    .modal-close:hover { background: var(--surface); }
+    .modal-icon { font-size: 36px; margin-bottom: 14px; }
+    .modal-box p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.75;
+      color: #334238;
+    }
+    .modal-box .intro-divider {
+      margin: 20px 0 0;
+      width: 56px;
+      height: 3px;
+      border-radius: 3px;
+      background: var(--line-green);
+    }
+    .modal-box .intro-by {
+      margin-top: 16px;
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid, .story, .detail-grid { grid-template-columns: 1fr; }
+      .apps { grid-template-columns: repeat(2, 1fr); }
+      .server-guide { align-items: flex-start; flex-direction: column; }
+      .screen-placeholder { border-left: 0; border-top: 1px solid var(--line); }
+      .section-head { align-items: start; flex-direction: column; }
+      #feedback .wrap { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .wrap { width: min(100% - 28px, var(--max)); }
+      .nav-links { display: none; }
+      .hero { padding-top: 58px; }
+      .hero p { font-size: 17px; }
+      .apps { grid-template-columns: 1fr; }
+      .schedule { grid-template-columns: 1fr; }
+      .day { min-height: 88px; }
+      .story-panel, .detail-copy { padding: 26px; }
+      section { padding: 54px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a href="#top" class="brand" aria-label="초록덕후의 교실 도구함 홈">
+        <span class="brand-mark">🌿</span>
+        <span>초록덕후의 교실 도구함</span>
+      </a>
+      <nav class="nav-links" aria-label="주요 메뉴">
+        <a href="javascript:void(0)" onclick="document.getElementById('about-modal').classList.add('show')">소개</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <h1>학교 업무를 덜어주는<br /><span>교실 도구함</span></h1>
+          <p>초등교사가 실제 업무에 쓰려고 만든 수업·학급·학교업무 앱을 모았습니다. 현장에서 쓰며 계속 다듬고 있습니다.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#apps">도구 둘러보기</a>
+            <a class="btn btn-secondary" href="#feedback">필요한 도구 의견</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="apps">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Toolbox</p>
+            <h2>학교 업무 도구 모음</h2>
+          </div>
+          <p class="section-desc">앱 사용 방법은 상세 페이지에 설명되어 있습니다.</p>
+        </div>
+        <div class="apps">
+          <a class="card featured" href="apps/class-log.html">
+            <div class="icon">📋</div>
+            <h3>학급일지</h3>
+            <p>다이어리·출석·성적·예산·제출까지 학급 기록을 한곳에.</p>
+            <div class="meta"><span class="tag">⬇️다운로드</span><span class="tag">기록관리</span><span class="tag">로컬저장</span><span class="tag">구글백업</span></div>
+          </a>
+          <a class="card" href="apps/weekly-plan.html">
+            <div class="icon">🗓️</div>
+            <h3>주간학습 프로그램</h3>
+            <p>전담·시수·주차 관리를 한 화면에서 정리합니다.</p>
+            <div class="meta"><span class="tag">시간표자동입력</span><span class="tag">전담중복확인</span><span class="tag">서버형</span><span class="tag">로컬형</span></div>
+          </a>
+          <a class="card coming-soon" href="#">
+            <div class="icon">🧰</div>
+            <h3>교실도구함</h3>
+            <p>교실에서 자주 쓰는 도구를 한곳에 모은 앱입니다. 지금은 공개 준비 중입니다.</p>
+            <div class="meta"><span class="tag">학생명단</span><span class="tag">자리배치</span><span class="tag">랜덤도구</span><span class="coming-label">🔧 공개 예정</span></div>
+          </a>
+          <a class="card coming-soon" href="#">
+            <div class="icon">📚</div>
+            <h3>교과서 바로가기</h3>
+            <p>과목 카드만 눌러 검정 교과서 사이트로 바로 이동합니다.</p>
+            <div class="meta"><span class="tag">교과서</span><span class="tag">바로가기</span><span class="coming-label">🔧 공개 예정</span></div>
+          </a>
+          <a class="card coming-soon" href="#">
+            <div class="icon">🧑‍🏫</div>
+            <h3>동학년 게시판</h3>
+            <p>동학년 자료와 공지를 한곳에 모읍니다.</p>
+            <div class="meta"><span class="tag">동학년</span><span class="tag">공유</span><span class="coming-label">🔧 공개 예정</span></div>
+          </a>
+          <a class="card coming-soon" href="#">
+            <div class="icon">📺</div>
+            <h3>학급 방송앱</h3>
+            <p>학급 안내와 화면 방송을 쉽게 준비합니다.</p>
+            <div class="meta"><span class="tag">학급 운영</span><span class="tag">방송</span><span class="coming-label">🔧 공개 예정</span></div>
+          </a>
+          <a class="card coming-soon" href="#">
+            <div class="icon">✅</div>
+            <h3>진단평가 자동채점</h3>
+            <p>진단평가 채점과 결과 확인 시간을 줄입니다.</p>
+            <div class="meta"><span class="tag">평가</span><span class="tag">자동채점</span><span class="coming-label">🔧 공개 예정</span></div>
+          </a>
+          <a class="card coming-soon" href="#">
+            <div class="icon">🏫</div>
+            <h3>반배정 프로그램</h3>
+            <p>조건을 보며 반배정 기준을 정리합니다.</p>
+            <div class="meta"><span class="tag">학교 업무</span><span class="tag">민감정보 주의</span><span class="coming-label">🔧 공개 예정</span></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="server">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Setup</p>
+            <h2>서버 연결은 Firebase가 가장 쉽습니다</h2>
+          </div>
+          <p class="section-desc">혼자 쓰는 도구는 로컬 저장으로 충분합니다. 여러 기기에서 쓰거나 자료를 공유하려면 Firebase 연결을 권장합니다.</p>
+        </div>
+        <a class="server-guide" href="guides/firebase-setup.html">
+          <div class="server-copy">
+            <h3>보고 따라 하는 Firebase 연결</h3>
+            <p>프로젝트 생성부터 설정값 입력, 저장 확인까지 한 페이지에 정리합니다.</p>
+          </div>
+          <span class="notice-action">연결 방법 보기 →</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="feedback">
+      <div class="wrap" style="display:grid;grid-template-columns:1fr;gap:16px;">
+        <a class="notice" href="https://docs.google.com/forms/d/e/1FAIpQLSfADIwZyWNs--u_uEpxru0NwXIQ2x2qciBi8qjy87WuIGR-gw/viewform?usp=header" target="_blank" rel="noopener">
+          <strong>📣 제보 및 의견 보내기</strong>
+          앱 사용 중 발견한 오류, 개선이 필요한 점, 새로 있었으면 하는 도구를 한 번에 보내주세요. 확인 후 정리해 반영하겠습니다.
+          <span class="notice-action">구글폼으로 보내기 →</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- 소개 모달 -->
+  <div class="modal-overlay" id="about-modal" onclick="if(event.target===this)this.classList.remove('show')">
+    <div class="modal-box">
+      <button class="modal-close" onclick="document.getElementById('about-modal').classList.remove('show')">✕</button>
+      <div class="modal-icon">🌱</div>
+      <p>
+        인천에서 초등학교 교사로 재직중입니다.<br />
+        업무 효율화와 학급 운영을 위한 앱을 만들고<br />
+        현장에서 나누는 일을 기쁘게 생각합니다.
+      </p>
+      <p style="margin-top:20px;font-size:14px;color:var(--muted);">
+        AI로 학교 업무와 학급 운영을 효율화하는 책을 준비중입니다.
+      </p>
+      <div class="intro-divider"></div>
+      <div class="intro-by">— 초록덕후</div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="wrap">
+      <div>선생님들의 편안한 학교생활을 응원합니다</div>
+    </div>
+  </footer>
+  <script>
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-overlay.show').forEach(function(el) {
+          el.classList.remove('show');
+        });
+      }
+    });
+  </script>
+</body>
+</html>

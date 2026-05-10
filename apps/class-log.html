@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>학급일지 | 초록덕후의 교실 도구함</title>
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+  @font-face { font-family:'NanumSquareRound'; font-weight:800; font-style:normal; font-display:swap; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareRoundEB.woff2') format('woff2'); }
+  :root { --green:#15803d; --deep:#14532d; --mist:#f0fdf4; --line:#e3e8e1; --ink:#17201a; --muted:#66736a; --body:#27352b; --font-body:'Pretendard','Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',system-ui,sans-serif; --font-display:'NanumSquareRound','Pretendard',sans-serif; }
+  *{box-sizing:border-box} body{margin:0;font-family:var(--font-body);color:var(--body);line-height:1.75;word-break:break-word;overflow-wrap:break-word;background:linear-gradient(180deg,#fff,var(--mist),#fff)}
+  .wrap{width:min(920px,calc(100% - 40px));margin:0 auto} header{border-bottom:1px solid var(--line);background:rgba(255,255,255,.82);backdrop-filter:blur(16px);position:sticky;top:0} .nav{height:64px;display:flex;align-items:center;justify-content:space-between} a{color:inherit;text-decoration:none}.brand{font-family:var(--font-display);font-weight:800;color:var(--deep)} .back{font-weight:700;color:var(--green);font-size:14px}
+  main{padding:72px 0} .badge{display:inline-flex;padding:7px 12px;border-radius:999px;background:var(--mist);border:1px solid #bbf7d0;color:var(--deep);font-size:13px;font-weight:800;margin-right:6px;margin-bottom:6px} h1{font-family:var(--font-display);font-size:clamp(38px,6vw,60px);line-height:1.12;letter-spacing:-.05em;color:var(--ink);margin:22px 0 16px} .lead{font-size:20px;color:#3a463d;margin:0 0 34px;max-width:720px}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:28px;padding:30px;margin:18px 0;box-shadow:0 18px 45px rgba(16,36,24,.07)} h2{font-family:var(--font-display);color:var(--ink);margin:0 0 14px;font-size:26px}
+  .list{padding:0;list-style:none}.list li{padding:2px 0 2px 26px;position:relative;line-height:1.8}.list li:before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:900}
+  .ss-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:14px}
+  .ss-card{border-radius:20px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:0 12px 30px rgba(16,36,24,.06);cursor:pointer;transition:transform .2s,box-shadow .2s}
+  .ss-card:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(16,36,24,.14)}
+  .ss-card a{display:block;text-decoration:none;color:inherit}
+  .ss-card img{width:100%;display:block;aspect-ratio:16/10;object-fit:cover;background:var(--mist)}
+  .ss-card .cap{padding:12px 16px;font-size:14px;color:var(--muted);font-weight:600;line-height:1.5}
+  .lb{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.82);justify-content:center;align-items:center;padding:30px}.lb.show{display:flex}.lb img{max-width:96%;max-height:92vh;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.5)}.lb-close{position:fixed;top:18px;right:26px;color:#fff;font-size:42px;font-weight:300;line-height:1;text-decoration:none;width:50px;height:50px;display:grid;place-items:center;border-radius:50%;background:rgba(0,0,0,.35);transition:background .18s}.lb-close:hover{background:rgba(255,255,255,.25)}
+  .btn-guide{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:999px;background:var(--green);color:#fff;font-weight:800;font-size:15px;transition:transform .18s ease,box-shadow .18s ease;margin-top:14px}.btn-guide:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(21,128,61,.3)}
+  .warn{background:#fef2f2;border:1px solid #fecaca;border-radius:20px;padding:20px;margin-top:14px}.warn strong{display:block;color:#991b1b;margin-bottom:6px}.warn p{color:#7f1d1d;margin:0;font-size:15px}
+  .tip{background:#f0f9ff;border:1px solid #bae6fd;border-radius:20px;padding:20px;margin-top:14px}.tip strong{display:block;color:#075985;margin-bottom:6px}.tip p{color:#0c4a6e;margin:0;font-size:15px}
+  .step-list{display:grid;gap:16px;margin-top:14px}.step-item{padding:20px;border-radius:18px;background:var(--mist);border:1px solid #bbf7d0}.step-item h3{font-family:var(--font-display);color:var(--deep);margin:0 0 8px;font-size:17px}.step-item p{margin:0;color:var(--body);font-size:15px}.step-item .sub{color:var(--muted);font-size:14px;margin-top:6px}
+  footer{padding:40px 0;color:var(--muted)}
+</style>
+</head>
+<body>
+<header><div class="wrap nav"><a class="brand" href="../index.html">🌿 초록덕후의 교실 도구함</a><a class="back" href="../index.html#apps">← 도구함으로</a></div></header>
+<main><div class="wrap">
+
+  <div style="margin-bottom:16px;">
+<span class="badge">⬇️ 다운로드</span>
+<span class="badge">📋 기록관리</span>
+<span class="badge">💾 내 컴퓨터(로컬) 저장</span>
+<span class="badge">☁️ 구글백업</span>
+</div>
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+    <h1 style="margin:0;">학급일지</h1>
+    <a href="https://rocal-daily-record-0f-class-iga2gppvl-songmyungsins-projects.vercel.app" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:999px;background:var(--green);color:#fff;font-size:15px;font-weight:800;text-decoration:none;letter-spacing:0.04em;transition:transform .18s,box-shadow .18s;">🚀 학급일지 사용하기</a>
+  </div>
+<p class="lead" style="margin-top:20px;">출석·성적·할 일을 한 앱에. 학급 운영에 필요한 기록을 모았습니다.</p>
+
+<!-- ===== 무엇을 하나요 ===== -->
+<div class="panel">
+  <h2>무엇을 하나요?</h2>
+  <p style="margin:0 0 18px;color:var(--muted);font-size:17px;font-weight:700;">매일 하는 기록 업무를 줄이기 위해 만든 앱입니다. 바탕화면에 다운받아서 사용할 수 있습니다.</p>
+  <ul class="list">
+    <li><strong>📋 필수 기록</strong> — 다이어리·출석 체크·학생 누가 기록</li>
+    <li><strong>📊 학급 관리</strong> — 성적 입력·예산 관리·제출 체크</li>
+    <li><strong>🎯 활동 도구</strong> — 자리 배치·랜덤 순서·일인일역·메모장</li>
+  </ul>
+  <p style="color:var(--muted);font-size:15px;margin-top:10px;">하나만 쓰고 싶다면? 설정에서 필요한 기능만 골라서 사용하고 순서도 바꿀 수 있습니다.</p>
+</div>
+
+<!-- ===== 화면 미리보기 ===== -->
+<div class="panel">
+  <h2>화면 미리보기</h2>
+  <p style="color:var(--muted);font-size:15px;margin:0 0 14px;">💡 이미지를 클릭하면 크게 볼 수 있습니다.</p>
+  <div class="ss-grid">
+    <div class="ss-card">
+      <a href="javascript:void(0)" onclick="document.getElementById('lb-1').classList.add('show')">
+        <img src="images/ss-classlog-login.png" alt="로그인 화면" loading="lazy">
+        <div class="cap">▲ 📚 학급일지 첫 화면 — 이름만 입력하면 로그인됩니다.</div>
+      </a>
+    </div>
+    <div class="ss-card">
+      <a href="javascript:void(0)" onclick="document.getElementById('lb-2').classList.add('show')">
+        <img src="images/ss-classlog-diary.png" alt="다이어리 화면" loading="lazy">
+        <div class="cap">▲ <strong>다이어리</strong> — 할 일을 적고 완료 체크까지 한번에</div>
+      </a>
+    </div>
+    <div class="ss-card">
+      <a href="javascript:void(0)" onclick="document.getElementById('lb-3').classList.add('show')">
+        <img src="images/ss-classlog-student.png" alt="학생 기록 화면" loading="lazy">
+        <div class="cap">▲ <strong>학생 누가 기록</strong> — 학생별 개인 기록 관리</div>
+      </a>
+    </div>
+    <div class="ss-card">
+      <a href="javascript:void(0)" onclick="document.getElementById('lb-4').classList.add('show')">
+        <img src="images/ss-classlog-attendance.png" alt="출석 체크 화면" loading="lazy">
+        <div class="cap">▲ <strong>출석 체크</strong> — 출결 기록, 월별 통계, 체험학습·결석계, 엑셀 출력</div>
+      </a>
+    </div>
+    <div class="ss-card">
+      <a href="javascript:void(0)" onclick="document.getElementById('lb-5').classList.add('show')">
+        <img src="images/ss-classlog-budget.png" alt="예산 관리 화면" loading="lazy">
+        <div class="cap">▲ <strong>예산 관리</strong> — 항목별 퍼센트 차트로 사용 현황 확인</div>
+      </a>
+    </div>
+    <div class="ss-card">
+      <a href="javascript:void(0)" onclick="document.getElementById('lb-6').classList.add('show')">
+        <img src="images/ss-classlog-submit.png" alt="제출 체크 화면" loading="lazy">
+        <div class="cap">▲ <strong>제출 체크</strong> — 과제·제출물 체크리스트</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Lightboxes -->
+<div id="lb-1" class="lb"><a href="javascript:void(0)" class="lb-close" onclick="this.parentElement.classList.remove('show')">✕</a><img src="images/ss-classlog-login.png" alt="로그인 화면"></div>
+<div id="lb-2" class="lb"><a href="javascript:void(0)" class="lb-close" onclick="this.parentElement.classList.remove('show')">✕</a><img src="images/ss-classlog-diary.png" alt="다이어리 화면"></div>
+<div id="lb-3" class="lb"><a href="javascript:void(0)" class="lb-close" onclick="this.parentElement.classList.remove('show')">✕</a><img src="images/ss-classlog-student.png" alt="학생 기록 화면"></div>
+<div id="lb-4" class="lb"><a href="javascript:void(0)" class="lb-close" onclick="this.parentElement.classList.remove('show')">✕</a><img src="images/ss-classlog-attendance.png" alt="출석 체크 화면"></div>
+<div id="lb-5" class="lb"><a href="javascript:void(0)" class="lb-close" onclick="this.parentElement.classList.remove('show')">✕</a><img src="images/ss-classlog-budget.png" alt="예산 관리 화면"></div>
+<div id="lb-6" class="lb"><a href="javascript:void(0)" class="lb-close" onclick="this.parentElement.classList.remove('show')">✕</a><img src="images/ss-classlog-submit.png" alt="제출 체크 화면"></div>
+
+<!-- ===== 사용 안내 ===== -->
+<div class="panel">
+  <h2>사용 안내</h2>
+
+  <div class="tip">
+    <strong>📌 시작하기 전에</strong>
+    <p>크롬·엣지 등 최신 브라우저에서 실행하세요.</p>
+    <p style="margin-top:8px;"><strong>💻 바탕화면에 설치하는 방법</strong><br>
+    학급일지 주소에 접속한 후 브라우저 <strong style="display:inline;">주소창 오른쪽 끝</strong>에 있는 <strong style="display:inline;">⬇ 다운로드 아이콘</strong>(또는 설치 아이콘)을 클릭하면 바탕화면에 앱이 설치됩니다. 설치하면 브라우저 주소창 없이 일반 앱처럼 실행할 수 있습니다.</p>
+  </div>
+
+  <div class="step-list">
+
+    <div class="step-item">
+      <h3>1단계 — 로그인 및 학급 생성</h3>
+      <p><a href="https://rocal-daily-record-0f-class-iga2gppvl-songmyungsins-projects.vercel.app" target="_blank" style="color:var(--green);font-weight:700;">👉 학급일지 바로가기</a></p>
+      <p>접속하여 이름을 입력하면 로그인됩니다. 처음 사용하면 새 학급을 만듭니다.</p>
+    </div>
+
+    <div class="step-item">
+      <h3>2단계 — 학생 입력</h3>
+      <p><strong>학생 관리</strong>에서 우리반 학생을 한 번에 입력합니다. 이름을 하나씩 붙여넣거나, 엑셀 양식을 다운받아 작성 후 업로드하는 방식으로 한 번에 올릴 수 있습니다. (엑셀 양식은 학생 관리 페이지에서 다운받을 수 있습니다.)</p>
+    </div>
+
+    <div class="step-item">
+      <h3>3단계 — 설정에서 필요한 메뉴만 켜기</h3>
+      <p>설정 화면에서 각 메뉴를 켜고 끌 수 있습니다. 내 학급에 필요한 기능만 골라서 사용하고, 드래그로 메뉴 순서도 원하는 대로 바꿀 수 있습니다.</p>
+    </div>
+
+    <div class="step-item" style="border-color:#d9f99d;background:#f7fee7;">
+      <h3>⚡ 4단계 — 매일 이렇게 사용하세요 (루틴)</h3>
+      <p>① <strong>다이어리</strong> — 오늘 할 일을 적고 완료 체크<br>
+      ② <strong>출석 체크</strong> — 학생 출결 기록 (월별 통계·나이스 입력·체험학습·결석계·엑셀 출력)<br>
+      ③ <strong>학생 기록</strong> — 필요한 학생의 누가 기록 작성·확인<br>
+      ④ <strong>성적/예산/제출</strong> — 필요한 메뉴에서 기록하고 확인<br>
+      ⑤ <strong>부가 기능</strong> — 자리 배치·랜덤 순서·일인일역·메모장 등 학급 활동에 활용</p>
+    </div>
+
+    <div class="step-item" style="border-color:#bae6fd;background:#f0f9ff;">
+      <h3>☁️ 백업 방법</h3>
+      <p>구글 로그인 후 구글 드라이브에 데이터를 백업할 수 있습니다. 브라우저 데이터를 삭제하면 기록이 사라질 수 있으니 정기적인 백업을 권장합니다.</p>
+    </div>
+
+    <div class="step-item" style="border-color:#d9f99d;background:#f7fee7;">
+      <h3>🔄 업데이트 방법</h3>
+      <p>새 기능이 추가되면 업데이트 알람이 표시됩니다. 설정에서 가장 하단의 <strong>최신버전 업데이트하기</strong>를 클릭하면 적용됩니다.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 꼭 알아두세요 ===== -->
+<div class="panel" style="background:#fefce8;border-color:#fde68a;">
+  <h2 style="color:#854d0e;">📌 꼭 알아두세요</h2>
+  <ul class="list">
+    <li><strong style="display:inline;">학생 개인정보 안전</strong> — 모든 데이터는 브라우저(IndexedDB)에 저장되어 <strong style="display:inline;">학교 컴퓨터(로컬)에만 남습니다</strong>. 서버로 전송되지 않아 안전합니다.</li>
+    <li><strong style="display:inline;">데이터 백업 필수</strong> — 브라우저 데이터를 삭제하면 기록이 사라집니다. 구글 로그인 후 구글 드라이브에 정기 백업을 권장합니다.</li>
+    <li><strong style="display:inline;">직접 학교에서 사용하려고 만든 앱</strong>입니다. 필요에 따라 계속 업데이트되고 있습니다.</li>
+    <li>AI 기능(Gemini)은 현재 구현 준비 중입니다.</li>
+  </ul>
+</div>
+
+</div></main>
+<footer><div class="wrap">선생님들의 편안한 학교생활을 응원합니다 🌱</div></footer>
+
+
+<script>
+document.querySelectorAll('.lb').forEach(el => {
+  el.addEventListener('click', function(e) {
+    if (e.target === this) this.classList.remove('show');
+  });
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.lb.show').forEach(el => el.classList.remove('show'));
+  }
+});
+</script>
+</body>
+</html>

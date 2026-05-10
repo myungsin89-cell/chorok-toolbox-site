@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>교실도구함 | 초록덕후의 교실 도구함</title>
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+  @font-face { font-family:'NanumSquareRound'; font-weight:800; font-style:normal; font-display:swap; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareRoundEB.woff2') format('woff2'); }
+  :root { --green:#15803d; --deep:#14532d; --mist:#f0fdf4; --line:#e3e8e1; --ink:#17201a; --muted:#66736a; --body:#27352b; --font-body:'Pretendard','Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',system-ui,sans-serif; --font-display:'NanumSquareRound','Pretendard',sans-serif; }
+  *{box-sizing:border-box} body{margin:0;font-family:var(--font-body);color:var(--body);line-height:1.75;word-break:break-word;overflow-wrap:break-word;background:linear-gradient(180deg,#fff,var(--mist),#fff)}
+  .wrap{width:min(920px,calc(100% - 40px));margin:0 auto} header{border-bottom:1px solid var(--line);background:rgba(255,255,255,.82);backdrop-filter:blur(16px);position:sticky;top:0;z-index:10}.nav{height:64px;display:flex;align-items:center;justify-content:space-between} a{color:inherit;text-decoration:none}.brand{font-family:var(--font-display);font-weight:800;color:var(--deep)} .back{font-weight:700;color:var(--green);font-size:14px}
+  main{padding:72px 0} .badge{display:inline-flex;padding:7px 12px;border-radius:999px;background:var(--mist);border:1px solid #bbf7d0;color:var(--deep);font-size:13px;font-weight:800;margin-right:6px;margin-bottom:6px} h1{font-family:var(--font-display);font-size:clamp(38px,6vw,60px);line-height:1.12;letter-spacing:-.05em;color:var(--ink);margin:22px 0 16px} .lead{font-size:20px;color:#3a463d;margin:0 0 34px;max-width:720px}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:28px;padding:30px;margin:18px 0;box-shadow:0 18px 45px rgba(16,36,24,.07)} h2{font-family:var(--font-display);color:var(--ink);margin:0 0 14px;font-size:26px}
+  .list{padding:0;list-style:none}.list li{padding:2px 0 2px 26px;position:relative;line-height:1.8}.list li:before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:900}
+  .ss-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:14px}
+  .ss-card{border-radius:20px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:0 12px 30px rgba(16,36,24,.06);cursor:pointer;transition:transform .2s,box-shadow .2s}
+  .ss-card:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(16,36,24,.14)}
+  .ss-card a{display:block;text-decoration:none;color:inherit}
+  .ss-card img{width:100%;display:block;aspect-ratio:16/10;object-fit:cover;background:var(--mist)}
+  .ss-card .cap{padding:12px 16px;font-size:14px;color:var(--muted);font-weight:600;line-height:1.5}.ss-card .cap strong{display:inline}
+  .lb{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.82);justify-content:center;align-items:center;padding:30px}.lb.show{display:flex}.lb img{max-width:96%;max-height:92vh;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.5);background:#fff}.lb-close{position:fixed;top:18px;right:26px;color:#fff;font-size:42px;font-weight:300;line-height:1;text-decoration:none;width:50px;height:50px;display:grid;place-items:center;border-radius:50%;background:rgba(0,0,0,.35);transition:background .18s}.lb-close:hover{background:rgba(255,255,255,.25)}
+  .btn-guide{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:999px;background:var(--green);color:#fff;font-weight:800;font-size:15px;transition:transform .18s ease,box-shadow .18s ease;margin-top:14px}.btn-guide:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(21,128,61,.3)}
+  .warn{background:#fef2f2;border:1px solid #fecaca;border-radius:20px;padding:20px;margin-top:14px}.warn strong{display:block;color:#991b1b;margin-bottom:6px}.warn p{color:#7f1d1d;margin:0;font-size:15px}
+  .tip{background:#f0f9ff;border:1px solid #bae6fd;border-radius:20px;padding:20px;margin-top:14px}.tip strong{display:block;color:#075985;margin-bottom:6px}.tip p{color:#0c4a6e;margin:0;font-size:15px}
+  .step-list{display:grid;gap:16px;margin-top:14px}.step-item{padding:20px;border-radius:18px;background:var(--mist);border:1px solid #bbf7d0}.step-item h3{font-family:var(--font-display);color:var(--deep);margin:0 0 8px;font-size:17px}.step-item p{margin:0;color:var(--body);font-size:15px}.step-item .sub{color:var(--muted);font-size:14px;margin-top:6px}
+  footer{padding:40px 0;color:var(--muted)}
+  @media(max-width:640px){.ss-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav"><a class="brand" href="../index.html">🌿 초록덕후의 교실 도구함</a><a class="back" href="../index.html#apps">← 도구함으로</a></div></header>
+<main><div class="wrap">
+
+  <div style="margin-bottom:16px;">
+    <span class="badge">⬇️ 다운로드</span>
+    <span class="badge">👥 학생명단</span>
+    <span class="badge">🪑 자리배치</span>
+    <span class="badge">🎲 랜덤도구</span>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+    <h1 style="margin:0;">교실도구함</h1>
+    <span style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:999px;background:#d1fae5;color:#166534;font-size:15px;font-weight:800;letter-spacing:0.04em;">🔧 공개 예정</span>
+  </div>
+  <p class="lead" style="margin-top:20px;">자리배치·랜덤뽑기·랜덤순서·타이머를 한곳에 모은 교실 도구함입니다. 지금은 공개를 준비하고 있습니다.</p>
+
+<!-- ===== 무엇을 하나요 ===== -->
+<div class="panel">
+  <h2>무엇을 하나요?</h2>
+  <p style="margin:0 0 18px;color:var(--muted);font-size:17px;font-weight:700;">수업 중 자주 쓰는 교실 활동 도구를 한곳에 모았습니다.</p>
+  <ul class="list">
+    <li><strong style="display:inline;">학생명단 관리</strong> — 번호·이름·성별을 저장해 자리배치와 랜덤 도구에서 함께 사용합니다.</li>
+    <li><strong style="display:inline;">자리배치</strong> — 자리를 바꿔야 할 때 학생 명단을 바탕으로 배치도를 만듭니다.</li>
+    <li><strong style="display:inline;">랜덤뽑기·랜덤순서</strong> — 발표자, 도우미, 활동 순서를 공정하게 정합니다.</li>
+    <li><strong style="display:inline;">타이머</strong> — 활동 시간을 정해두고 수업 흐름을 깔끔하게 맞춥니다.</li>
+  </ul>
+  <p style="color:var(--muted);font-size:15px;margin-top:10px;">모든 기능을 차례대로 쓸 필요는 없습니다. 그때 필요한 도구만 골라 열면 됩니다.</p>
+</div>
+
+<!-- ===== 화면 미리보기 ===== -->
+<div class="panel">
+  <h2>화면 미리보기</h2>
+  <p style="color:var(--muted);font-size:15px;margin:0 0 14px;">💡 이미지를 클릭하면 크게 볼 수 있습니다.</p>
+  <div class="ss-grid">
+    <div class="ss-card">
+      <a href="javascript:void(0)" onclick="document.getElementById('lb-1').classList.add('show')">
+        <img src="images/ss-classroom-main.png" alt="교실도구함 메인 화면" loading="lazy">
+        <div class="cap">▲ <strong>메인 화면</strong> — 필요한 도구를 바로 골라 들어갑니다.</div>
+      </a>
+    </div>
+    <div class="ss-card">
+      <a href="javascript:void(0)" onclick="document.getElementById('lb-2').classList.add('show')">
+        <img src="images/ss-classroom-seating.png" alt="자리배치 화면" loading="lazy">
+        <div class="cap">▲ <strong>자리배치</strong> — 학생 명단을 바탕으로 자리를 배치합니다.</div>
+      </a>
+    </div>
+    <div class="ss-card">
+      <a href="javascript:void(0)" onclick="document.getElementById('lb-3').classList.add('show')">
+        <img src="images/ss-classroom-random-order.png" alt="랜덤순서 화면" loading="lazy">
+        <div class="cap">▲ <strong>랜덤순서</strong> — 발표나 활동 순서를 바로 정합니다.</div>
+      </a>
+    </div>
+    <div class="ss-card">
+      <a href="javascript:void(0)" onclick="document.getElementById('lb-4').classList.add('show')">
+        <img src="images/ss-classroom-random-pick.png" alt="랜덤뽑기 화면" loading="lazy">
+        <div class="cap">▲ <strong>랜덤뽑기</strong> — 발표자나 도우미를 한 명씩 뽑습니다.</div>
+      </a>
+    </div>
+    <div class="ss-card">
+      <a href="javascript:void(0)" onclick="document.getElementById('lb-5').classList.add('show')">
+        <img src="images/ss-classroom-timer.png" alt="타이머 화면" loading="lazy">
+        <div class="cap">▲ <strong>타이머</strong> — 활동 시간을 정하고 바로 시작합니다.</div>
+      </a>
+    </div>
+    <div class="ss-card">
+      <a href="javascript:void(0)" onclick="document.getElementById('lb-6').classList.add('show')">
+        <img src="images/ss-classroom-students.png" alt="학생명단 화면" loading="lazy">
+        <div class="cap">▲ <strong>학생명단</strong> — 번호·이름·성별을 등록해 여러 도구에서 함께 씁니다.</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Lightboxes -->
+<div id="lb-1" class="lb"><a href="javascript:void(0)" class="lb-close" onclick="this.parentElement.classList.remove('show')">✕</a><img src="images/ss-classroom-main.png" alt="교실도구함 메인 화면"></div>
+<div id="lb-2" class="lb"><a href="javascript:void(0)" class="lb-close" onclick="this.parentElement.classList.remove('show')">✕</a><img src="images/ss-classroom-seating.png" alt="자리배치 화면"></div>
+<div id="lb-3" class="lb"><a href="javascript:void(0)" class="lb-close" onclick="this.parentElement.classList.remove('show')">✕</a><img src="images/ss-classroom-random-order.png" alt="랜덤순서 화면"></div>
+<div id="lb-4" class="lb"><a href="javascript:void(0)" class="lb-close" onclick="this.parentElement.classList.remove('show')">✕</a><img src="images/ss-classroom-random-pick.png" alt="랜덤뽑기 화면"></div>
+<div id="lb-5" class="lb"><a href="javascript:void(0)" class="lb-close" onclick="this.parentElement.classList.remove('show')">✕</a><img src="images/ss-classroom-timer.png" alt="타이머 화면"></div>
+<div id="lb-6" class="lb"><a href="javascript:void(0)" class="lb-close" onclick="this.parentElement.classList.remove('show')">✕</a><img src="images/ss-classroom-students.png" alt="학생명단 화면"></div>
+
+<!-- ===== 사용 안내 ===== -->
+<div class="panel">
+  <h2>사용 안내</h2>
+
+  <div class="tip">
+    <strong>📌 시작하기 전에</strong>
+    <p>크롬·엣지 등 최신 브라우저에서 실행하세요.</p>
+    <p style="margin-top:8px;"><strong>💻 공개 준비 중</strong><br>
+    현재는 공개 예정 상태라 바로 사용하지 않습니다. 공개가 끝나면 바탕화면에 설치할 수 있게 안내를 붙이겠습니다.</p>
+  </div>
+
+  <div class="step-list">
+    <div class="step-item">
+      <h3>1단계 — 공개되면 설치</h3>
+      <p><span style="color:var(--green);font-weight:700;">👉 교실도구함 공개 예정</span></p>
+      <p>아직 공개 전이라 설치 링크는 잠시 숨겨두었습니다. 공개 후 바로바로 쓸 수 있게 정리해둘 예정입니다.</p>
+    </div>
+
+    <div class="step-item">
+      <h3>2단계 — 학생명단 등록</h3>
+      <p><strong style="display:inline;">학생 명단</strong> 화면에서 번호·이름·성별을 입력합니다. 한 명씩 추가하거나, <strong style="display:inline;">학생명단일괄등록</strong>으로 여러 명을 한 번에 넣을 수 있습니다.</p>
+      <div class="sub">등록한 명단은 자리배치, 랜덤뽑기, 랜덤순서에서 함께 사용됩니다.</div>
+    </div>
+
+    <div class="step-item" style="border-color:#d9f99d;background:#f7fee7;">
+      <h3>⚡ 3단계 — 수업 중 필요한 도구만 열기</h3>
+      <p>자리를 바꿀 때는 <strong style="display:inline;">자리배치</strong>, 발표자를 정할 때는 <strong style="display:inline;">랜덤뽑기</strong>, 활동 순서를 정할 때는 <strong style="display:inline;">랜덤순서</strong>를 엽니다. 수업 활동 시간은 <strong style="display:inline;">타이머</strong>로 맞춥니다.</p>
+      <div class="sub">정해진 차례가 있는 앱이 아니라, 필요한 순간에 하나씩 꺼내 쓰는 도구함입니다.</div>
+    </div>
+
+    <div class="step-item" style="border-color:#bae6fd;background:#f0f9ff;">
+      <h3>💾 저장 방식 확인</h3>
+      <p>공개 전이라 저장 방식과 실제 사용 흐름은 최종 점검 중입니다. 공개되면 사용 안내를 다시 정리하겠습니다.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 꼭 알아두세요 ===== -->
+<div class="panel" style="background:#fefce8;border-color:#fde68a;">
+  <h2 style="color:#854d0e;">📌 꼭 알아두세요</h2>
+  <ul class="list">
+    <li><strong style="display:inline;">학생 정보는 이 브라우저에만 저장됩니다</strong> — 서버로 전송하지 않고, 현재 브라우저 안에 저장됩니다.</li>
+    <li><strong style="display:inline;">브라우저 데이터를 지우면 기록도 함께 사라집니다</strong> — 학교 컴퓨터 정리나 브라우저 초기화 전에는 필요한 자료를 먼저 확인하세요.</li>
+    <li><strong style="display:inline;">지금은 공개 예정입니다</strong> — 공개가 끝나면 사용하기와 설치 안내를 다시 열어두겠습니다.</li>
+  </ul>
+</div>
+
+</div></main>
+<footer><div class="wrap">선생님들의 편안한 학교생활을 응원합니다 🌱</div></footer>
+
+<script>
+document.querySelectorAll('.lb').forEach(el => {
+  el.addEventListener('click', function(e) {
+    if (e.target === this) this.classList.remove('show');
+  });
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.lb.show').forEach(el => el.classList.remove('show'));
+  }
+});
+</script>
+</body>
+</html>
