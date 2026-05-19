@@ -39,14 +39,14 @@
   <div style="margin-bottom:16px;">
 <span class="badge">🗓️ 시간표자동입력</span>
 <span class="badge">🔑 전담중복확인</span>
-<span class="badge">🌐 서버형</span>
+<span class="badge">🌐 온라인 저장</span>
 <span class="badge">💻 내 컴퓨터(로컬)</span>
 </div>
   <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
     <h1 style="margin:0;">주간학습 프로그램</h1>
     <a href="https://ju-gan-local-xrj1.vercel.app" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:999px;background:var(--green);color:#fff;font-size:15px;font-weight:800;text-decoration:none;letter-spacing:0.04em;transition:transform .18s,box-shadow .18s;">🚀 주간학습 프로그램 사용하기</a>
   </div>
-<p class="lead" style="margin-top:20px;">영어·체육 등 전담 선생님 시간표, 우리 반 시간표, 수업 시수를 한 화면에서 정리합니다. 서버에 연결하면 동학년 선생님들과 함께 수정·공유할 수 있습니다.</p>
+<p class="lead" style="margin-top:20px;">영어·체육 등 전담 선생님 시간표, 우리 반 시간표, 수업 시수를 한 화면에서 정리합니다. 온라인 저장공간을 연결하면 전담 시간표와 반별 시간표를 여러 선생님이 함께 관리할 수 있습니다.</p>
 
 <!-- ===== 무엇을 하나요 ===== -->
 <div class="panel">
@@ -56,7 +56,7 @@
     <li><strong>전담 시간표 관리</strong> — 전담 선생님을 반·시간대별로 배정하고, 중복을 자동으로 확인합니다.</li>
     <li><strong>주간학습안내 즉시 출력</strong> — 입력한 시간표를 가정통신문 형태로 바로 미리보기·인쇄·PDF 저장할 수 있습니다.</li>
     <li><strong>차시 관리</strong> — 과목별 목표 차시를 설정하고 달성 여부를 자동 검증합니다. 부족한 차시는 빨간색으로 표시됩니다.</li>
-    <li><strong>동학년 공동 작업</strong> — Firebase를 연결하면 같은 학년 선생님들과 데이터를 공유하며 함께 수정할 수 있습니다.</li>
+    <li><strong>온라인 저장공간 연결</strong> — 전담 시간표와 반별 시간표를 온라인에 저장해 여러 선생님이 같은 자료를 함께 확인·수정할 수 있습니다.</li>
   </ul>
 </div>
 
@@ -68,7 +68,7 @@
     <div class="ss-card">
       <a href="javascript:void(0)" onclick="document.getElementById('lb-1').classList.add('show')">
         <img src="images/ss-step1-mode.png" alt="모드 선택 화면" loading="lazy">
-        <div class="cap">▲ 처음 실행 시 혼자 사용(로컬) 또는 동료와 함께(서버)를 선택합니다.</div>
+        <div class="cap">▲ 처음 실행 시 혼자 사용(로컬) 또는 온라인 저장 사용을 선택합니다.</div>
       </a>
     </div>
     <div class="ss-card">
@@ -129,7 +129,7 @@
       <p>처음 실행하면 사용 방식을 선택합니다.</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;">
         <div style="background:#fff;border:1px solid #bbf7d0;border-radius:14px;padding:14px;"><strong>💻 혼자 사용하기</strong><br><span style="color:var(--muted);font-size:14px;">내 컴퓨터에만 저장, 인터넷 없이도 사용 가능</span></div>
-        <div style="background:#fff;border:1px solid #bae6fd;border-radius:14px;padding:14px;"><strong>🌐 동료와 함께</strong><br><span style="color:var(--muted);font-size:14px;">Firebase 연결 후 동학년 선생님과 실시간 공유</span></div>
+        <div style="background:#fff;border:1px solid #bae6fd;border-radius:14px;padding:14px;"><strong>🌐 온라인 저장 사용</strong><br><span style="color:var(--muted);font-size:14px;">전담·반별 시간표를 온라인에 저장해 함께 관리</span></div>
       </div>
       <div class="sub">선택은 설정 화면에서 언제든 변경할 수 있습니다.</div>
     </div>
@@ -138,7 +138,7 @@
       <h3>2단계 — 학교 기본 정보 및 선호 시간대 설정 (최초 1회)</h3>
       <p><strong>한 번만 하면 끝!</strong> 내 학교·학급에 맞는 기본 정보(학년·반 수·교시 수·과목)와 연간 목표 시수를 입력합니다.</p>
       <p>같은 화면에서 <strong>과목별 선호 시간대</strong>를 설정할 수 있습니다. 예를 들어 국어는 <strong>1~2교시</strong>, 수학은 <strong>3~4교시</strong>, 체육은 <strong>5~6교시</strong>로 지정해두면, 나중에 <strong style="color:#dc2626;">전체 랜덤 배정</strong> 버튼 한 번으로 이 시간대를 최대한 반영한 시간표가 자동으로 채워집니다. 연차시(2차시 연속 수업) 설정도 가능합니다.</p>
-      <p style="margin-top:10px;color:var(--deep);font-size:15px;"><strong>🌈 서버 모드일 때는?</strong> 각 반 선생님이 자신의 반 과목 설정을 따로 할 수 있어, 반별로 선호 시간대를 다르게 운영할 수 있습니다.</p>
+      <p style="margin-top:10px;color:var(--deep);font-size:15px;"><strong>🌈 온라인 저장 사용 시</strong> 각 반 선생님이 자신의 반 과목 설정을 따로 할 수 있어, 반별로 선호 시간대를 다르게 운영할 수 있습니다.</p>
       <p>이 단계는 <strong>한 번만 하면</strong> 이후에는 자동으로 유지됩니다.</p>
     </div>
 
@@ -176,29 +176,30 @@
     </div>
 
     <div style="margin-top:20px;border-radius:20px;border:1px solid #bae6fd;background:#f0f9ff;padding:24px;">
-      <h3 style="font-family:var(--font-display);color:#075985;margin:0 0 12px;font-size:19px;">🌐 서버연결이란?</h3>
-      <p><strong>서버(Server)</strong>는 쉽게 말해 <strong style="display:inline;">'여럿이 함께 쓰는 공용 저장 공간'</strong>이에요. 내 컴퓨터가 아니라 인터넷 위에 데이터를 두고, 같은 학년 선생님들이 각자 접속해서 함께 사용할 수 있습니다. 서버를 연결하면 같은 학년 선생님 모두가 같은 시간표 데이터를 보고 수정할 수 있어요.</p>
+      <h3 style="font-family:var(--font-display);color:#075985;margin:0 0 12px;font-size:19px;">🌐 온라인 저장공간 연결이란?</h3>
+      <p>온라인 저장공간 연결은 시간표 데이터를 내 컴퓨터에만 두지 않고, 인터넷 저장공간에 저장해 불러오는 방식입니다. 이 기능을 사용하면 전담 시간표와 반별 시간표를 여러 선생님이 같은 자료로 확인하고 수정할 수 있습니다.</p>
       <div style="background:#fff;border:1px solid #bbf7d0;border-radius:16px;padding:16px;margin-top:14px;">
         <strong style="color:#15803d;">👥 이렇게 사용해요</strong>
         <p style="font-size:14px;margin:8px 0 0;line-height:1.7;">
-          • 전담 선생님은 <strong style="display:inline;">전담 시간표</strong>만 입력합니다.<br>
-          • 전담이 들어가지 않는 그 외 시간은 <strong style="display:inline;">각 반 선생님들께서 차시 시간표를 보며 직접 입력</strong>합니다.<br>
-          • 한 번 수정한 전담 배정은 모든 반에 자동 반영되므로, 전담 시간표가 바뀌어도 각 반 선생님들이 따로 고칠 필요가 없어요.
+          • 전담 시간표를 먼저 입력합니다.<br>
+          • 각 반 선생님은 자신의 반 시간표를 확인하고 조정합니다.<br>
+          • 저장하면 변경 내용이 온라인 저장공간에 반영됩니다.<br>
+          • 다른 선생님은 새로고침 후 변경된 내용을 확인할 수 있습니다.
         </p>
       </div>
-      <p style="margin-top:14px;font-size:15px;color:#0c4a6e;">Firebase를 연결하면 이 기능을 사용할 수 있습니다. 아래 버튼을 눌러 연결 방법을 확인하세요.</p>
-      <a class="btn-guide" href="../guides/firebase-setup.html">🔗 Firebase 연결 방법 알아보기 →</a>
+      <p style="margin-top:14px;font-size:15px;color:#0c4a6e;">온라인 저장공간 연결이 필요하다면 아래 안내를 보고 따라 하면 됩니다. 일반적인 학년 단위 시간표 관리는 Firebase 무료 사용량으로 충분합니다.</p>
+      <a class="btn-guide" href="../guides/firebase-setup.html">🔗 온라인 저장공간 연결 방법 보기 →</a>
       <div style="background:#fff;border:1px solid #bae6fd;border-radius:16px;padding:16px;margin-top:14px;">
         <strong style="color:#0369a1;">👩‍🏫 로그인 방법</strong>
-        <p style="color:#0c4a6e;font-size:14px;margin:6px 0 0;">선생님들은 반 입력칸에 <strong>반 번호</strong>를, 이름 입력칸에 <strong>이름</strong>을 입력하여 로그인합니다. 로그인 정보는 브라우저에 저장되어 다음에 방문할 때는 자동으로 로그인됩니다. 우측 상단 🔒 아이콘을 누르면 <strong>관리자 모드</strong>(초기 비밀번호: <strong>0000</strong>)로 전환할 수 있으며, 관리자는 모든 기능을 자유롭게 사용할 수 있습니다.</p>
+        <p style="color:#0c4a6e;font-size:14px;margin:6px 0 0;">반 선생님은 반 번호와 이름을 입력해 로그인합니다. 우측 상단 🔒 아이콘을 누르면 <strong style="display:inline;">관리자 모드</strong>(초기 비밀번호: <strong style="display:inline;">0000</strong>)로 전환할 수 있습니다. 관리자는 전체 설정과 시간표를 관리할 수 있습니다.</p>
       </div>
       <div class="tip" style="background:#e0f2fe;border-color:#bae6fd;margin-top:12px;">
         <strong style="color:#0369a1;">💡 전담 선생님 전용 화면</strong>
-        <p style="color:#0369a1;font-size:14px;">서버 연결 상태에서 반 입력칸에 <strong style="display:inline;">'전담'</strong>이라고 입력하고 로그인하면 <strong style="display:inline;">전담 선생님 전용 화면</strong>이 나타나 나의 전담 시간표만 따로 확인·관리할 수 있습니다.</p>
+        <p style="color:#0369a1;font-size:14px;">온라인 저장공간 연결 상태에서 반 입력칸에 <strong style="display:inline;">'전담'</strong>이라고 입력하면 <strong style="display:inline;">전담 선생님 전용 화면</strong>으로 들어갈 수 있습니다. 전담 선생님은 자신의 전담 시간표를 따로 확인·관리할 수 있습니다.</p>
       </div>
       <div class="warn">
-        <strong>⚠️ 저장을 해야 공유됩니다</strong>
-        <p>아무리 수정해도 저장 버튼을 누르지 않으면 내 컴퓨터(로컬)에만 남고 서버에 올라가지 않습니다. 동학년 선생님들이 변경 내용을 보려면 반드시 저장 버튼을 눌러야 해요.</p>
+        <strong>⚠️ 저장을 해야 반영됩니다</strong>
+        <p>저장 버튼을 누르지 않으면 변경 내용이 온라인 저장공간에 반영되지 않습니다. 다른 선생님이 변경 내용을 보려면 반드시 저장 버튼을 눌러야 합니다.</p>
       </div>
     </div>
 
@@ -209,7 +210,7 @@
   <h2 style="color:#854d0e;">📌 꼭 알아두세요</h2>
   <ul class="list">
     <li>내 컴퓨터(로컬) 모드 데이터는 브라우저 저장소에 의존합니다. 브라우저 데이터를 삭제하면 함께 사라지니 필요시 따로 백업하세요.</li>
-    <li>서버 모드는 Firebase를 사용합니다. Firebase 사용량에 따라 비용이 발생할 수 있습니다.</li>
+    <li>온라인 저장공간 연결은 Firebase를 사용합니다. 일반적인 학년 단위 시간표 관리에는 무료 사용량으로 충분하지만, 사용량에 따라 비용이 발생할 수 있습니다.</li>
     <li>학생 개인정보(실명, 전화번호 등)는 입력하지 않는 것을 권장합니다.</li>
   </ul>
 </div>
