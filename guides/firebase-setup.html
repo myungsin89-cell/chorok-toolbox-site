@@ -3,32 +3,32 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Firebase 서버 연결 방법 | 초록덕후의 교실 도구함</title>
+<title>온라인 저장공간 연결 방법 | 초록덕후의 교실 도구함</title>
 <style>
   @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
   @font-face { font-family:'NanumSquareRound'; font-weight:800; font-style:normal; font-display:swap; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareRoundEB.woff2') format('woff2'); }
   :root{--green:#15803d;--deep:#14532d;--mist:#f0fdf4;--line:#e3e8e1;--ink:#17201a;--muted:#66736a;--body:#27352b;--font-body:'Pretendard','Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',system-ui,sans-serif;--font-display:'NanumSquareRound','Pretendard',sans-serif}
-  *{box-sizing:border-box} body{margin:0;font-family:var(--font-body);color:var(--body);line-height:1.75;word-break:keep-all;background:linear-gradient(180deg,#fff,var(--mist),#fff)}
+  *{box-sizing:border-box} body{margin:0;font-family:var(--font-body);color:var(--body);line-height:1.75;word-break:break-word;background:linear-gradient(180deg,#fff,var(--mist),#fff)}
   a{color:inherit;text-decoration:none}.wrap{width:min(940px,calc(100% - 40px));margin:0 auto} header{border-bottom:1px solid var(--line);background:rgba(255,255,255,.84);backdrop-filter:blur(16px);position:sticky;top:0}.nav{height:64px;display:flex;align-items:center;justify-content:space-between}.brand{font-family:var(--font-display);font-weight:800;color:var(--deep)}.back{font-weight:800;color:var(--green);font-size:14px}
   main{padding:72px 0}.badge{display:inline-flex;padding:7px 12px;border-radius:999px;background:var(--mist);border:1px solid #bbf7d0;color:var(--deep);font-size:13px;font-weight:800}h1{font-family:var(--font-display);font-size:clamp(38px,6vw,60px);line-height:1.12;letter-spacing:-.05em;color:var(--ink);margin:22px 0 16px}.lead{font-size:20px;color:#3a463d;margin:0 0 34px;max-width:760px}.panel{background:white;border:1px solid var(--line);border-radius:28px;padding:30px;margin:18px 0;box-shadow:0 18px 45px rgba(16,36,24,.07)}h2{font-family:var(--font-display);color:var(--ink);margin:0 0 14px;font-size:26px}.steps{display:grid;gap:14px}.step{padding:22px;border-radius:20px;background:white;border:1px solid var(--line);display:grid;grid-template-columns:44px 1fr;gap:16px}.num{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--mist);color:var(--deep);font-weight:900}.step h3{font-family:var(--font-display);margin:0 0 6px;color:var(--ink);font-size:19px}.step p{margin:0;color:var(--muted)}.note{padding:22px;border-radius:20px;background:#102418;color:rgba(255,255,255,.82);margin-top:18px}.note b{color:white}footer{padding:40px 0;color:var(--muted)}
   @media(max-width:640px){.step{grid-template-columns:1fr}.wrap{width:min(100% - 28px,940px)}}
 </style>
 </head>
 <body>
-<header><div class="wrap nav"><a class="brand" href="../index.html">🌿 초록덕후의 교실 도구함</a><a class="back" href="../index.html#server">← 서버 연결로</a></div></header>
+<header><div class="wrap nav"><a class="brand" href="../index.html">🌿 초록덕후의 교실 도구함</a><a class="back" href="../index.html#server">← 연결 안내로</a></div></header>
 <main><div class="wrap">
-<span class="badge">Firebase 연결 안내</span>
-<h1>보고 따라 하는<br />서버 연결 방법</h1>
-<p class="lead">Firebase는 Google 계정으로 만들 수 있는 무료 시작형 서버입니다. 앱 자료를 여러 기기에서 불러오거나 동학년과 공유할 때 사용합니다.</p>
+<span class="badge">온라인 저장공간 연결 안내</span>
+<h1>보고 따라 하는<br />온라인 저장공간 연결 방법</h1>
+<p class="lead">일부 초록덕후 앱은 자료를 저장하거나 다시 불러오기 위해 온라인 저장공간 연결이 필요할 수 있습니다. 이 안내에서는 Google에서 제공하는 Firebase라는 도구를 사용합니다.</p>
 <div class="steps">
-  <div class="step"><div class="num">1</div><div><h3>Firebase 접속</h3><p>Firebase 콘솔에 접속해 Google 계정으로 로그인합니다.</p></div></div>
+  <div class="step"><div class="num">1</div><div><h3>연결 도구 접속</h3><p>Firebase 콘솔에 접속해 Google 계정으로 로그인합니다.</p></div></div>
   <div class="step"><div class="num">2</div><div><h3>프로젝트 만들기</h3><p>새 프로젝트를 만들고, 앱 이름을 알아보기 쉽게 정합니다.</p></div></div>
   <div class="step"><div class="num">3</div><div><h3>Firestore 켜기</h3><p>데이터베이스 메뉴에서 Firestore Database를 만들고 테스트 모드로 시작합니다.</p></div></div>
-  <div class="step"><div class="num">4</div><div><h3>웹 앱 추가</h3><p>웹 앱을 추가한 뒤 Firebase 설정값을 복사합니다.</p></div></div>
-  <div class="step"><div class="num">5</div><div><h3>도구에 설정값 붙여넣기</h3><p>각 도구의 서버 설정 칸에 복사한 값을 넣습니다.</p></div></div>
+  <div class="step"><div class="num">4</div><div><h3>웹 앱 추가</h3><p>웹 앱을 추가한 뒤 앱에 붙여 넣을 설정값을 복사합니다.</p></div></div>
+  <div class="step"><div class="num">5</div><div><h3>앱에 설정값 붙여넣기</h3><p>해당 앱의 연결 설정 칸에 복사한 값을 넣습니다.</p></div></div>
   <div class="step"><div class="num">6</div><div><h3>저장 확인</h3><p>테스트 자료를 저장하고 새로고침 후 다시 불러오는지 확인합니다.</p></div></div>
 </div>
-<div class="note"><b>주의</b><br />학생 개인정보가 들어가는 도구는 로컬 저장을 우선 권장합니다. Firebase를 쓸 때는 권한 설정과 공유 범위를 꼭 확인해야 합니다.</div>
+<div class="note"><b>주의</b><br />모든 앱에 필요한 설정은 아닙니다. 해당 앱에서 온라인 저장공간 연결 안내가 있을 때만 진행하세요. 학생 개인정보가 들어가는 앱은 저장 위치와 공유 범위를 꼭 확인해야 합니다.</div>
 <div class="panel"><h2>이 페이지에 추가할 내용</h2><p>실제 Firebase 화면 캡처, 복사해야 할 설정값 위치, 보안 규칙 예시는 다음 단계에서 채울 예정입니다.</p></div>
 </div></main>
 <footer><div class="wrap">선생님들의 편안한 학교생활을 응원합니다</div></footer>
