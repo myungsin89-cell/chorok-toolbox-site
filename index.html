@@ -419,6 +419,16 @@
     }
     footer .wrap { display: flex; justify-content: space-between; gap: 24px; align-items: center; flex-wrap: wrap; }
     footer b { color: white; }
+    .visitor-record {
+      display: inline-flex;
+      align-items: center;
+      margin-left: auto;
+      opacity: .78;
+      filter: saturate(.9);
+      transition: opacity .18s ease, filter .18s ease;
+    }
+    .visitor-record:hover { opacity: .92; filter: saturate(1); }
+    .visitor-record img { display: block; height: 20px; }
 
     /* 모달 */
     .modal-overlay {
@@ -655,6 +665,14 @@
   <footer>
     <div class="wrap">
       <div>선생님들의 편안한 학교생활을 응원합니다</div>
+      <span class="visitor-record" aria-label="방문자 기록">
+        <img
+          src="https://visitor-badge.laobi.icu/badge?page_id=chorok-toolbox-site.vercel.app&left_text=%EB%B0%A9%EB%AC%B8+%EA%B8%B0%EB%A1%9D&left_color=%230f2a1a&right_color=%2315803d"
+          alt="초록덕후 홈페이지 방문자 기록"
+          loading="lazy"
+          referrerpolicy="no-referrer"
+        />
+      </span>
     </div>
   </footer>
   <script>
