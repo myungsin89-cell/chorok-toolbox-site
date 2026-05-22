@@ -1,8 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>교과서 바로가기 | 초록덕후의 교실 도구함</title>
 <style>
   @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
@@ -31,7 +31,8 @@
   .list li:before{content:'✓';position:absolute;left:0;top:0;color:var(--green);font-weight:900}
   .note{background:#f0f9ff;border:1px solid #bae6fd;border-radius:20px;padding:20px;margin-top:14px;color:#0c4a6e}
   .note p{margin:8px 0 0;font-size:15px}
-  .ss-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;margin-top:14px;max-width:760px}
+  .hint{color:var(--muted);font-size:15px;margin:0 0 14px}
+  .ss-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:14px}
   .ss-card{border-radius:20px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:0 12px 30px rgba(16,36,24,.06);cursor:pointer;transition:transform .2s,box-shadow .2s}
   .ss-card:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(16,36,24,.14)}
   .ss-card a{display:block}
@@ -43,7 +44,7 @@
   .lb-close{position:fixed;top:18px;right:26px;color:#fff;font-size:42px;font-weight:300;line-height:1;width:50px;height:50px;display:grid;place-items:center;border-radius:50%;background:rgba(0,0,0,.35);transition:background .18s}
   .lb-close:hover{background:rgba(255,255,255,.25)}
   footer{padding:40px 0;color:var(--muted)}
-  @media(max-width:640px){main{padding:52px 0}.panel{padding:24px}.use-btn{width:100%;justify-content:center}}
+  @media(max-width:640px){main{padding:52px 0}.panel{padding:24px}.use-btn{width:100%;justify-content:center}.ss-grid{grid-template-columns:minmax(0,1fr)}}
 </style>
 </head>
 <body>
@@ -60,37 +61,64 @@
     <h1>교과서 바로가기</h1>
     <a class="use-btn" href="https://edulink-pwa-ten.vercel.app" target="_blank" rel="noopener">🚀 사용하기</a>
   </div>
-  <p class="lead">과목별 출판사 교과서 사이트를 한 번 설정해두고, 이후에는 과목 카드만 눌러 빠르게 여는 간단한 바로가기 앱입니다.</p>
+  <p class="lead">교과서 사이트뿐 아니라 학교에서 자주 여는 사이트도 과목 카드처럼 모아두는 바로가기 앱입니다. 한 번 연결해두면 수업 중에는 카드만 눌러 빠르게 열 수 있어요.</p>
 
   <div class="panel">
     <h2>무엇을 하나요?</h2>
     <ul class="list">
       <li><strong>과목별 링크 저장</strong> — 국어, 수학, 사회, 과학 등 과목 카드에 자주 쓰는 교과서 사이트를 연결합니다.</li>
       <li><strong>수업 중 빠른 이동</strong> — 매번 주소를 찾지 않고 필요한 과목 카드만 눌러 교과서 사이트를 바로 엽니다.</li>
+      <li><strong>학교 사이트까지 정리</strong> — 교과서뿐 아니라 학교 홈페이지, 학급 자료실, 업무·수업 사이트도 카드로 함께 모아둘 수 있습니다.</li>
       <li><strong>설치해서 사용</strong> — PWA로 설치하면 홈 화면이나 바탕화면에서 일반 앱처럼 실행할 수 있습니다.</li>
     </ul>
   </div>
 
   <div class="panel">
+    <h2>이렇게 사용해요</h2>
+    <ul class="list">
+      <li><strong>1. 카드 클릭 또는 설정 열기</strong> — 메인 화면에서 과목 카드를 누르면 연결된 사이트가 열립니다. 아직 연결하지 않은 과목은 설정 화면에서 주소를 등록합니다.</li>
+      <li><strong>2. 과목 추가</strong> — 필요한 과목이나 사이트 이름을 카드로 추가합니다. 수학, 사회, 과학 같은 과목뿐 아니라 인디스쿨처럼 자주 가는 사이트도 추가할 수 있습니다.</li>
+      <li><strong>3. 출판사 선택 또는 URL 붙여넣기</strong> — 과목별 출판사를 선택해 연결하거나, 직접 준비한 사이트 주소를 URL 입력칸에 붙여넣습니다.</li>
+      <li><strong>4. 표시·숨김과 순서 조정</strong> — 지금 쓰는 카드만 표시하고, 자주 쓰는 과목은 위/아래 버튼으로 보기 좋은 위치에 배치합니다.</li>
+      <li><strong>5. 저장 후 카드로 열기</strong> — 설정을 저장한 뒤 메인 화면으로 돌아가면 등록한 카드가 보이고, 카드를 눌러 바로 접속할 수 있습니다.</li>
+    </ul>
+  </div>
+
+  <div class="panel">
+    <h2>학교 사이트도 함께 모아둘 수 있어요</h2>
+    <div class="note">
+      <strong>💡 과목 카드처럼 자주 여는 사이트를 등록해보세요</strong>
+      <p>인디스쿨, 학교 홈페이지, 학급 자료실, 수업 자료실, 자주 쓰는 업무 사이트처럼 매일 찾는 주소를 함께 연결해두면 수업 준비와 이동이 더 빨라집니다.</p>
+    </div>
+  </div>
+
+  <div class="panel">
     <h2>화면 미리보기</h2>
-    <p style="color:var(--muted);font-size:15px;margin:0 0 14px;">💡 이미지를 클릭하면 크게 볼 수 있습니다.</p>
+    <p class="hint">💡 이미지를 클릭하면 크게 볼 수 있습니다.</p>
     <div class="ss-grid">
       <div class="ss-card">
         <a href="javascript:void(0)" onclick="document.getElementById('lb-edulink-main').classList.add('show')">
           <img src="images/ss-edulink-main.png" alt="교과서 바로가기 메인 화면" loading="lazy">
-          <div class="cap">▲ 과목별 교과서 사이트를 카드로 정리해 빠르게 열 수 있습니다.</div>
+          <div class="cap">▲ 메인 화면: 수학, 사회, 과학, 음악, 미술, 인디스쿨처럼 자주 여는 항목을 카드로 모아두고 바로 엽니다.</div>
+        </a>
+      </div>
+      <div class="ss-card">
+        <a href="javascript:void(0)" onclick="document.getElementById('lb-edulink-settings').classList.add('show')">
+          <img src="images/ss-edulink-settings.png" alt="교과서 바로가기 과목 설정 화면" loading="lazy">
+          <div class="cap">▲ 설정 화면: 과목별 출판사 연결, 직접 URL 입력, 열기 확인, 표시/숨김, 삭제, 위아래 순서 조정을 한곳에서 관리합니다.</div>
         </a>
       </div>
     </div>
   </div>
 
   <div id="lb-edulink-main" class="lb"><a href="javascript:void(0)" class="lb-close" onclick="this.parentElement.classList.remove('show')">✕</a><img src="images/ss-edulink-main.png" alt="교과서 바로가기 메인 화면"></div>
+  <div id="lb-edulink-settings" class="lb"><a href="javascript:void(0)" class="lb-close" onclick="this.parentElement.classList.remove('show')">✕</a><img src="images/ss-edulink-settings.png" alt="교과서 바로가기 과목 설정 화면"></div>
 
   <div class="panel">
     <h2>설치와 브라우저 안내</h2>
     <div class="note">
       <strong>📌 PWA 설치하기</strong>
-      <p>크롬에서 주소창에 앱 주소를 직접 넣어 접속하면 주소창 오른쪽에 설치 버튼이 보일 수 있습니다. 설치하면 홈 화면/바탕화면 앱처럼 사용할 수 있습니다.</p>
+      <p>설치 버튼이 바로 보이지 않으면 크롬을 열고 앱 주소를 주소창에 붙여넣어 접속해보세요. 그다음 주소창 오른쪽이나 브라우저 메뉴에서 설치 버튼이 나타나는지 확인하면 됩니다. 설치하면 홈 화면/바탕화면 앱처럼 사용할 수 있습니다.</p>
     </div>
     <div class="note">
       <strong>🌐 원하는 브라우저로 열기</strong>
