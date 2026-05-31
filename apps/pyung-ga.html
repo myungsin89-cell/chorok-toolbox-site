@@ -33,54 +33,55 @@
 
   <div style="margin-bottom:16px;">
     <span class="badge">🗳️ 실시간 평가</span>
-    <span class="badge">💬 질문 커스텀</span>
-    <span class="badge">📊 채점 역추적</span>
-    <span class="badge">☁️ 실시간 DB (Firebase)</span>
+    <span class="badge">📊 엑셀 다운로드</span>
+    <span class="badge">🟢 자동 로그인</span>
+    <span class="badge">💾 최근 목록 저장</span>
   </div>
   <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
     <h1 style="margin:0;">모둠 평가 앱</h1>
     <a href="https://pyung-ga.vercel.app" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:999px;background:var(--green);color:#fff;font-size:15px;font-weight:800;text-decoration:none;letter-spacing:0.04em;transition:transform .18s,box-shadow .18s;">🚀 모둠 평가 앱 사용하기</a>
   </div>
-  <p class="lead" style="margin-top:20px;">발표, 역할극, 모둠 토론 평가를 실시간으로. 학생들의 의견 취합부터 채점 내역 확인까지 한 번에 정리합니다.</p>
+  <p class="lead" style="margin-top:20px;">발표, 역할극, 모둠 토론 평가를 실시간으로. 학생들의 의견 취합부터 채점 내역 확인 및 엑셀 다운로드까지 한 번에 정리합니다.</p>
 
   <!-- ===== 무엇을 하나요 ===== -->
   <div class="panel">
     <h2>무엇을 하나요?</h2>
-    <p style="margin:0 0 18px;color:var(--muted);font-size:17px;font-weight:700;">발표나 역할극 수업 시 동료 평가를 실시간 대시보드로 쉽게 관리하기 위해 만든 앱입니다.</p>
+    <p style="margin:0 0 18px;color:var(--muted);font-size:17px;font-weight:700;">발표나 역할극 수업을 할 때, 학생들이 서로를 실시간으로 평가하고 결과를 바로 확인하기 위해 만든 앱입니다.</p>
     <ul class="list">
-      <li><strong>🎯 평가 기준 커스텀</strong> — 3단계 기호(◎/○/△) 채점 및 5점 만점 별점 선택. 모둠별 질문과 전체 공통 질문(예: 베스트 학생 추천, 수업 소감)을 자유롭게 생성합니다.</li>
-      <li><strong>📱 편리한 학생 참여</strong> — 회원가입 없이 4자리 간편 코드로 입장하며, 자기 모둠을 선택하고 입장하면 본인 모둠의 평가 카드는 자동으로 숨겨집니다.</li>
-      <li><strong>📊 실시간 상세 대시보드</strong> — 실시간 제출율을 확인하고, 모둠 카드 클릭 시 타 모둠이 평가한 기준별 상세 채점 내역과 주관식 피드백을 질문별로 모아 실시간으로 역추적합니다.</li>
+      <li><strong>🎯 우리 반 맞춤 질문</strong> — 기호(◎/○/△)나 별점으로 점수를 매기고, 모둠별 개별 질문과 전체 공통 질문을 자유롭게 만듭니다.</li>
+      <li><strong>📱 클릭 한 번으로 로그인</strong> — 회원가입이 필요 없습니다. 4자리 코드를 입력하거나, 링크 클릭 한 번으로 자동 로그인하여 쉽게 참여합니다.</li>
+      <li><strong>📊 실시간 확인과 엑셀 저장</strong> — 학생들이 제출한 점수와 의견을 실시간 대시보드로 확인하고, 단 한 번의 클릭으로 깔끔하게 정리된 엑셀 파일을 내려받습니다.</li>
+      <li><strong>💾 최근 목록과 내역 지우기</strong> — 내가 최근에 만든 평가 방 목록이 홈 화면에 저장되어 빠르게 재입장할 수 있고, 필요 없는 내역은 언제든 목록에서 지울 수 있습니다.</li>
     </ul>
   </div>
 
   <!-- ===== 화면 미리보기 ===== -->
   <div class="panel">
     <h2>화면 미리보기</h2>
-    <p style="color:var(--muted);font-size:15px;margin:0 0 14px;">💡 이미지를 클릭하면 크게 볼 수 있습니다. (직접 캡처하여 이미지를 넣어주세요.)</p>
+    <p style="color:var(--muted);font-size:15px;margin:0 0 14px;">💡 이미지를 클릭하면 크게 볼 수 있습니다.</p>
     <div class="ss-grid">
       <div class="ss-card">
         <a href="javascript:void(0)" onclick="document.getElementById('lb-1').classList.add('show')">
           <img src="images/ss-pyungga-create.png" alt="평가 생성 화면" loading="lazy">
-          <div class="cap">▲ 🛠️ <strong>평가 생성</strong> — 제목, 모둠 수, 채점 척도, 모둠별/전체대상 질문 목록을 커스텀 정의합니다.</div>
+          <div class="cap">▲ 🛠️ <strong>평가 생성</strong> — 제목, 모둠 수, 채점 기준, 질문을 입력해 평가 방을 개설합니다.</div>
         </a>
       </div>
       <div class="ss-card">
         <a href="javascript:void(0)" onclick="document.getElementById('lb-2').classList.add('show')">
           <img src="images/ss-pyungga-select.png" alt="우리 모둠 선택 화면" loading="lazy">
-          <div class="cap">▲ 📱 <strong>우리 모둠 선택</strong> — 학생 로그인 없이 모둠을 골라 중복 내역을 조회하고 바로 평가를 시작합니다.</div>
+          <div class="cap">▲ 📱 <strong>우리 모둠 선택</strong> — 로그인 없이 4자리 번호나 자동 로그인 링크로 입장해 모둠을 선택합니다.</div>
         </a>
       </div>
       <div class="ss-card">
         <a href="javascript:void(0)" onclick="document.getElementById('lb-3').classList.add('show')">
           <img src="images/ss-pyungga-eval.png" alt="학생 평가 화면" loading="lazy">
-          <div class="cap">▲ 📝 <strong>모둠별 및 공통 질문 작성</strong> — 모둠별 척도/주관식 채점과 전체 공통 피드백을 분리하여 작성합니다.</div>
+          <div class="cap">▲ 📝 <strong>학생 평가 화면</strong> — 발표를 관람하며 별점/기호를 매기고 잘한 점과 피드백을 남깁니다.</div>
         </a>
       </div>
       <div class="ss-card">
         <a href="javascript:void(0)" onclick="document.getElementById('lb-4').classList.add('show')">
           <img src="images/ss-pyungga-dashboard.png" alt="실시간 대시보드 화면" loading="lazy">
-          <div class="cap">▲ 📊 <strong>상세 대시보드</strong> — 득표 합계, 평가 모둠별 세부 점수표, 서술 질문별 모아보기 피드백을 실시간 확인합니다.</div>
+          <div class="cap">▲ 📊 <strong>실시간 대시보드</strong> — 실시간 제출 현황, 세부 점수 및 의견 취합 결과를 확인하고 엑셀로 내려받습니다.</div>
         </a>
       </div>
     </div>
@@ -98,33 +99,33 @@
 
     <div class="tip">
       <strong>📌 시작하기 전에</strong>
-      <p>크롬, 엣지, 웨일 등 최신 웹 브라우저에서 실행 및 실시간 통신을 권장합니다.</p>
+      <p>인터넷이 연결된 환경에서 크롬, 엣지, 웨일 등 최신 웹 브라우저를 사용해 주세요.</p>
     </div>
 
     <div class="step-list">
       <div class="step-item">
-        <h3>1단계 — 평가 개설 (교사용)</h3>
-        <p>앱에 접속한 뒤 '새로운 평가 만들기'에서 평가 제목과 총 모둠 수를 정하고, 모둠별 주관식 문항 및 공통 주관식 문항을 필요한 만큼 개설하여 4자리 고유 코드를 발급받습니다.</p>
+        <h3>1단계 — 평가 방 만들기 (선생님)</h3>
+        <p>앱에 접속해 '새로운 평가 만들기'를 누릅니다. 제목, 모둠 수, 채점 기준, 질문을 적어 평가 방을 개설하고 4자리 고유 코드를 발급받습니다.</p>
       </div>
 
       <div class="step-item">
-        <h3>2단계 — 우리 모둠 선택 및 입장 (학생용)</h3>
-        <p>학생들은 발급받은 코드 4자리를 입력하고 입장한 뒤, 본인이 속한 모둠을 고릅니다. 기존에 작성한 내용이 있으면 자동으로 폼에 불러오며 수정 및 재제출이 가능합니다.</p>
+        <h3>2단계 — 링크 공유 및 입장 (학생)</h3>
+        <p>학생들에게 발급된 4자리 코드를 알려주거나, 화면에 표시된 자동 로그인용 주소(예: <code>?code=1234</code>가 포함된 링크)를 복사해 공유해주시면 코드 입력 없이 터치 한 번으로 간편하게 로그인할 수 있습니다.</p>
       </div>
 
       <div class="step-item">
-        <h3>3단계 — 동료 채점 진행</h3>
-        <p>각 모둠의 발표나 역할극을 보며 터치로 손쉽게 ◎○△ 또는 별점을 입력하고, 서술형 의견을 작성하여 제출합니다.</p>
+        <h3>3단계 — 다른 모둠 점수 주기 (학생)</h3>
+        <p>본인이 속한 모둠을 선택하고 입장하여, 발표를 보며 점수(기호 또는 별점)를 누르고 잘한 점이나 피드백 의견을 입력해 전송합니다. (내가 속한 모둠은 점수를 줄 수 없도록 화면에 나타나지 않습니다.)</p>
       </div>
 
       <div class="step-item" style="border-color:#d9f99d;background:#f7fee7;">
-        <h3>⚡ 4단계 — 실시간 수업 피드백 루틴 (수업 적용)</h3>
-        <p>발표가 끝나면 교실 TV에 대시보드 화면을 띄웁니다. 점수 카드를 클릭해 **어느 모둠이 어떤 기준에서 감점/가점했는지 세부 점수표**와 주관식 의견을 즉석에서 공유하며 피드백을 나눕니다.</p>
+        <h3>⚡ 4단계 — 실시간으로 피드백 나누기 (수업 중)</h3>
+        <p>발표가 끝나면 교실 TV 화면에 대시보드를 띄웁니다. 모둠 카드나 세부 점수표를 클릭하여 어느 모둠이 어떤 기준에서 점수를 주었는지, 어떤 글 피드백을 남겨주었는지 즉석에서 함께 공유하며 피드백을 나눕니다.</p>
       </div>
 
       <div class="step-item" style="border-color:#bae6fd;background:#f0f9ff;">
-        <h3>☁️ 실시간 저장 및 업데이트</h3>
-        <p>모든 데이터는 Firebase 실시간 데이터베이스에 업로드되어 실시간으로 업데이트되며, 학생들이 평가 도중 나가거나 브라우저를 새로고침해도 작성 중이던 답변 정보가 안전하게 임시 저장되어 복원됩니다.</p>
+        <h3>☁️ 엑셀 저장 및 최근 목록 관리 (수업 후)</h3>
+        <p>수업이 끝나면 대시보드 화면의 '통합 엑셀 다운로드' 버튼을 눌러 점수표와 의견 글이 각각 정리된 파일을 내려받아 보관합니다. 홈 화면에서는 최근에 만든 방 목록을 보고 언제든지 대시보드로 다시 진입하거나, 필요 없어진 방은 ❌ 버튼으로 목록에서 지웁니다.</p>
       </div>
     </div>
   </div>
@@ -133,9 +134,9 @@
   <div class="panel" style="background:#fefce8;border-color:#fde68a;">
     <h2 style="color:#854d0e;">📌 꼭 알아두세요</h2>
     <ul class="list">
-      <li><strong style="display:inline;">실시간 통신</strong> — 학생들의 신속한 피드백 반영을 위해 Firebase Realtime Database와 실시간 연동되어 작동합니다.</li>
-      <li><strong style="display:inline;">동일 평가 중복 제출 방지</strong> — 동일한 모둠이 여러 번 평가를 제출하더라도 기존 데이터가 수정 업데이트되어 최종 1개의 평점만 계산되어 공정합니다.</li>
-      <li><strong style="display:inline;">학교 수업 맞춤형 도구</strong> — 교사가 평가 질문을 완전히 자유롭게 커스텀할 수 있어 발표, 토론, 역할극, 체육 활동 등 다양한 모둠 수업에 적용하기 좋습니다.</li>
+      <li><strong style="display:inline;">인터넷 연결 필수</strong> — 학생들의 피드백을 실시간으로 취합하고 화면에 중계하기 위해 인터넷 연결이 필요합니다.</li>
+      <li><strong style="display:inline;">실수 수정 및 중복 방지</strong> — 동일한 학생(모둠)이 새로고침 등으로 여러 번 전송하더라도, 가장 마지막에 입력해 제출한 내용 1개만 반영되니 안심하고 다시 보내도 됩니다.</li>
+      <li><strong style="display:inline;">최근 만든 평가 보관</strong> — 내가 만든 방 목록은 인터넷 창에 임시로 저장(localStorage)됩니다. 인터넷 사용 기록이나 캐시를 지우면 리스트에서 사라질 수 있지만, 평가는 4자리 코드로 언제든지 다시 열 수 있습니다.</li>
     </ul>
   </div>
 
