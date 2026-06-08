@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>학급일지 만들기 | 초록덕후의 교실 도구함</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+    @font-face {
+      font-family: 'NanumSquareRound';
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareRoundR.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'NanumSquareRound';
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareRoundB.woff2') format('woff2');
+    }
+
+    /* 기존 테마 CSS 변수 연결 */
+    :root {
+      --green: #15803d;
+      --green-deep: #14532d;
+      --green-bright: #16a34a;
+      --green-soft: #dcfce7;
+      --green-mist: #f0fdf4;
+      --ink: #17201a;
+      --body: #27352b;
+      --muted: #66736a;
+      --line: #e3e8e1;
+      --line-green: #bbf7d0;
+      --canvas: #ffffff;
+      --warm: #fafaf7;
+      --surface: #f6f8f5;
+      --dark: #102418;
+      --shadow: 0 22px 50px rgba(16, 36, 24, 0.08);
+      --radius-lg: 22px;
+      --radius-xl: 30px;
+      --font-body: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', system-ui, sans-serif;
+      --font-display: 'NanumSquareRound', 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', system-ui, sans-serif;
+      --max: 800px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      color: var(--body);
+      background:
+        radial-gradient(circle at 15% 0%, rgba(187, 247, 208, 0.4), transparent 30%),
+        linear-gradient(180deg, #ffffff 0%, var(--warm) 100%);
+      line-height: 1.7;
+      word-break: keep-all;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(227, 232, 225, 0.75);
+    }
+    .nav {
+      height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-weight: 800;
+      color: var(--green-deep);
+      letter-spacing: -0.03em;
+    }
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: linear-gradient(135deg, var(--green), var(--green-bright));
+      box-shadow: 0 12px 28px rgba(21, 128, 61, 0.22);
+    }
+    .nav-links { display: flex; align-items: center; gap: 18px; font-size: 14px; color: var(--muted); }
+    .nav-links a:hover { color: var(--green); }
+
+    .content-area {
+      flex: 1;
+      padding: 40px 0 80px;
+    }
+
+    .slider-title-area {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .slider-title-area p {
+      margin: 0 0 8px;
+      color: var(--green);
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .slider-title-area h1 {
+      font-family: var(--font-display);
+      margin: 0;
+      color: var(--ink);
+      font-size: clamp(26px, 4vw, 36px);
+      letter-spacing: -0.04em;
+    }
+
+    .slider-container {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-bar-container {
+      background: var(--surface);
+      height: 6px;
+      width: 100%;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--green), var(--green-bright));
+      width: 25%;
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .step-header {
+      padding: 24px 40px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .step-number {
+      font-family: var(--font-display);
+      font-weight: 800;
+      color: var(--green);
+      font-size: 14px;
+      background: var(--green-mist);
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line-green);
+    }
+    .step-total {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .slides-wrapper {
+      position: relative;
+      min-height: 280px;
+    }
+    .slide-card {
+      padding: 20px 40px 40px;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .slide-card.active {
+      display: block;
+      opacity: 1;
+      animation: slideIn 0.4s ease;
+    }
+    @keyframes slideIn {
+      from { transform: translateY(8px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .slide-card h2 {
+      font-family: var(--font-display);
+      margin: 10px 0 14px;
+      color: var(--ink);
+      font-size: 22px;
+      letter-spacing: -0.02em;
+    }
+    .slide-card p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.65;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    .guide-box {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 20px;
+    }
+    .guide-box ol, .guide-box ul {
+      margin: 0;
+      padding-left: 20px;
+      color: #334238;
+      font-size: 15px;
+    }
+    .guide-box li {
+      margin-bottom: 8px;
+    }
+    .guide-box li:last-child {
+      margin-bottom: 0;
+    }
+    
+    .tip-box {
+      background: #fefcbf;
+      border: 1px solid #fef08a;
+      color: #713f12;
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 13.5px;
+      line-height: 1.5;
+      margin-top: 15px;
+    }
+
+    .visual-diff-box {
+      font-family: monospace;
+      background: var(--dark);
+      color: #e2e8f0;
+      border-radius: 12px;
+      padding: 16px;
+      font-size: 13.5px;
+      line-height: 1.5;
+      overflow-x: auto;
+      margin-bottom: 15px;
+    }
+    .diff-line {
+      display: block;
+      padding: 2px 0;
+    }
+    .diff-del {
+      background-color: rgba(239, 68, 68, 0.2);
+      color: #fca5a5;
+      border-radius: 4px;
+      padding: 0 4px;
+      text-decoration: line-through;
+    }
+    .diff-add {
+      background-color: rgba(34, 197, 94, 0.2);
+      color: #86efac;
+      border-radius: 4px;
+      padding: 0 4px;
+    }
+
+    .action-btn-area {
+      margin: 20px 0 10px;
+      text-align: center;
+    }
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green);
+      color: white;
+      font-weight: 800;
+      font-size: 15px;
+      padding: 12px 24px;
+      border-radius: 999px;
+      box-shadow: 0 10px 24px rgba(21, 128, 61, 0.16);
+      transition: transform 0.18s ease, background-color 0.18s ease;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-action:hover {
+      transform: translateY(-1.5px);
+      background-color: var(--green-bright);
+    }
+
+    .slider-nav {
+      border-top: 1px solid var(--line);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      background: var(--surface);
+    }
+    .btn-nav {
+      min-height: 44px;
+      padding: 0 20px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 13.5px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.18s ease, background 0.18s ease;
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--ink);
+    }
+    .btn-nav:hover {
+      background: var(--surface);
+      transform: translateY(-1px);
+    }
+    .btn-nav.disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+    .btn-nav-next {
+      background: var(--green-deep);
+      color: white;
+      border: none;
+    }
+    .btn-nav-next:hover {
+      background: var(--dark);
+    }
+
+    footer {
+      padding: 40px 0;
+      background: var(--dark);
+      color: rgba(255,255,255,.78);
+      margin-top: auto;
+      font-size: 13.5px;
+    }
+    footer .wrap { display: flex; justify-content: space-between; gap: 24px; align-items: center; flex-wrap: wrap; }
+    footer b { color: white; }
+
+    @media (max-width: 640px) {
+      .slide-card { padding: 15px 20px 30px; }
+      .slider-nav { padding: 16px 20px; }
+      .step-header { padding: 20px 20px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a href="../index.html" class="brand" aria-label="초록덕후의 교실 도구함 홈">
+        <span class="brand-mark">🌿</span>
+        <span>초록덕후의 교실 도구함</span>
+      </a>
+      <nav class="nav-links" aria-label="주요 메뉴">
+        <a href="../index.html">홈으로</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="content-area">
+    <div class="wrap">
+      
+      <div class="slider-title-area">
+        <p>Vibe Coding</p>
+        <h1>학급일지 만들기</h1>
+        <p style="font-size: 16px; color: var(--muted); margin: 10px 0 0;">제공받은 학급일지 틀을 커스터마이징해서 나만의 학급일지를 만들어 보세요.</p>
+      </div>
+
+      <div class="slider-container">
+        <!-- 상단 프로그레스 바 -->
+        <div class="progress-bar-container">
+          <div class="progress-bar-fill" id="progressBar"></div>
+        </div>
+
+        <!-- 상단 라벨 -->
+        <div class="step-header">
+          <div class="step-number" id="stepNumber">1단계</div>
+          <div class="step-total" id="stepTotal">1 / 4 단계</div>
+        </div>
+
+        <!-- 슬라이드 카드 모음 -->
+        <div class="slides-wrapper">
+          
+          <!-- [1단계] -->
+          <div class="slide-card active" data-step="1">
+            <h2>1단계: AI Studio 로그인하기</h2>
+            <p>구글 계정만 있다면 AI Studio에서 무료로 즉시 시작할 수 있습니다.</p>
+            
+            <div class="guide-box">
+              <ol>
+                <li>하단의 <b>[Google AI Studio 바로가기]</b>를 누릅니다.</li>
+                <li>화면 우측 상단 <b>[Sign in]</b>을 눌러 구글 계정으로 로그인합니다.</li>
+                <li>서비스 동의 절차를 마치고 입장합니다.</li>
+              </ol>
+            </div>
+
+            <div class="action-btn-area">
+              <a href="https://aistudio.google.com/" target="_blank" rel="noopener" class="btn-action">
+                Google AI Studio 바로가기 ↗
+              </a>
+            </div>
+
+            <div class="tip-box" style="background: #e0f2fe; border: 1px solid #bae6fd; color: #0369a1;">
+              🖥️ <b>화면 배치 Tip</b>: 모니터가 2개라면 한쪽에는 이 가이드 창을, 다른 쪽에는 AI Studio를 띄워놓고 따라 하시면 훨씬 편리합니다. 모니터가 1개라면 브라우저 창 2개를 좌우로 나란히 반씩 쪼개어 배치해 보세요!
+            </div>
+          </div>
+
+          <!-- [2단계] -->
+          <div class="slide-card" data-step="2">
+            <h2>2단계: 템플릿 다운로드 및 업로드하기</h2>
+            <p>제공되는 학급일지 템플릿 파일을 컴퓨터에 저장하고, AI Studio로 업로드(Import)합니다.</p>
+
+            <div class="guide-box">
+              <p style="margin-top: 0; font-weight: bold; color: var(--green-deep);">📋 학급일지 템플릿 기능 안내</p>
+              <ul style="margin-bottom: 15px;">
+                <li><b>입력</b>: 하루 동안 있었던 학생 행동이나 교실 상황 메모.</li>
+                <li><b>출력</b>: <b>1) 일일 요약평, 2) 학생별 특이 지도 사항, 3) 알림장 전달사항</b>을 자동으로 구분하여 작성.</li>
+              </ul>
+              
+              <ol>
+                <li>하단의 <b>[학급일지 템플릿 파일 다운로드]</b>를 눌러 파일을 내 컴퓨터에 저장합니다.</li>
+                <li>AI Studio 화면 좌측 상단의 <b>[Import prompt]</b> (또는 상단 파일 메뉴의 Import) 버튼을 클릭합니다.</li>
+                <li>다운로드한 <b>class-log.json</b> 파일을 선택하여 업로드합니다.</li>
+              </ol>
+            </div>
+
+            <div class="action-btn-area">
+              <button onclick="downloadTemplate()" class="btn-action">
+                학급일지 템플릿 파일 다운로드 🌿
+              </button>
+            </div>
+          </div>
+
+          <!-- [3단계] -->
+          <div class="slide-card" data-step="3">
+            <h2>3단계: 우리 반 정보 채우기</h2>
+            <p>복제된 내용에서 괄호 <code>[...]</code> 안의 텍스트만 내 정보로 바꿉니다.</p>
+
+            <div class="guide-box">
+              <ol>
+                <li>좌측 <b>System Instructions</b> 영역을 확인합니다.</li>
+                <li>아래 괄호 부분을 내 학급 상황에 맞춰 타이핑해 교체합니다.</li>
+              </ol>
+            </div>
+
+            <div class="visual-diff-box">
+              <span class="diff-line">- 학년/반: <span class="diff-del">[3학년 2반]</span> ➡️ <span class="diff-add">5학년 1반</span></span>
+              <span class="diff-line">- 담임 이름: <span class="diff-del">[홍길동]</span> ➡️ <span class="diff-add">김초록</span></span>
+              <span class="diff-line">- 학급 규칙: <span class="diff-del">[1. 고운 말 쓰기, 2. 복도에서 뛰지 않기]</span> ➡️ <span class="diff-add">1. 배려하며 대화하기</span></span>
+            </div>
+
+            <div class="tip-box">
+              💡 <b>Tip</b>: 한글 문서 편집하듯 내용만 바꾸어 주는 행위가 바로 바이브 코딩입니다!
+            </div>
+          </div>
+
+          <!-- [4단계] -->
+          <div class="slide-card" data-step="4">
+            <h2>4단계: 확인하고 즐겨찾기 저장</h2>
+            <p>나만의 일지가 잘 작성되는지 테스트하고, 매일 사용하기 위해 북마크에 추가합니다.</p>
+
+            <div class="guide-box">
+              <ol>
+                <li>우측 대화창(Test) 입력창에 오늘 일어난 일을 자유롭게 메모해 봅니다.<br>
+                    <i>(예: "철수가 모둠 활동을 매우 성실히 함. 내일 준비물 알림장 기입")</i></li>
+                <li>내 반 정보와 양식에 맞춰 학급일지가 자동 생성되는지 확인합니다.</li>
+                <li>작동을 확인했다면 브라우저 상단에서 <b>즐겨찾기 추가 (Ctrl+D)</b>를 해 둡니다.</li>
+              </ol>
+            </div>
+
+            <div class="action-btn-area">
+              <a href="../index.html" class="btn-action">
+                완료하고 홈으로 가기 🎉
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 하단 내비게이션 버튼 바 -->
+        <div class="slider-nav">
+          <button class="btn-nav btn-nav-prev disabled" id="btnPrev" onclick="changeSlide(-1)">이전 단계</button>
+          <button class="btn-nav btn-nav-next" id="btnNext" onclick="changeSlide(1)">다음 단계</button>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>선생님들의 편안한 학교생활을 응원합니다</div>
+      <div>© 초록덕후의 교실 도구함</div>
+    </div>
+  </footer>
+
+  <script>
+    let currentStep = 1;
+    const totalSteps = 4;
+
+    const progressBar = document.getElementById('progressBar');
+    const stepNumber = document.getElementById('stepNumber');
+    const stepTotal = document.getElementById('stepTotal');
+    const btnPrev = document.getElementById('btnPrev');
+    const btnNext = document.getElementById('btnNext');
+
+    function changeSlide(direction) {
+      const nextStep = currentStep + direction;
+      
+      if (nextStep < 1 || nextStep > totalSteps) return;
+
+      const activeCard = document.querySelector(`.slide-card[data-step="${currentStep}"]`);
+      activeCard.classList.remove('active');
+
+      currentStep = nextStep;
+      const nextCard = document.querySelector(`.slide-card[data-step="${currentStep}"]`);
+      nextCard.classList.add('active');
+
+      updateUI();
+    }
+
+    function updateUI() {
+      const percentage = (currentStep / totalSteps) * 100;
+      progressBar.style.width = percentage + '%';
+
+      stepNumber.textContent = currentStep + '단계';
+      stepTotal.textContent = currentStep + ' / ' + totalSteps + ' 단계';
+
+      if (currentStep === 1) {
+        btnPrev.classList.add('disabled');
+      } else {
+        btnPrev.classList.remove('disabled');
+      }
+
+      if (currentStep === totalSteps) {
+        btnNext.textContent = '처음으로 돌아가기';
+      } else {
+        btnNext.textContent = '다음 단계';
+      }
+    }
+
+    btnNext.addEventListener('click', function() {
+      if (currentStep === totalSteps) {
+        const activeCard = document.querySelector(`.slide-card[data-step="${currentStep}"]`);
+        activeCard.classList.remove('active');
+        
+        currentStep = 1;
+        const firstCard = document.querySelector(`.slide-card[data-step="1"]`);
+        firstCard.classList.add('active');
+        updateUI();
+      } else {
+        changeSlide(1);
+      }
+    });
+
+    btnPrev.addEventListener('click', function() {
+      changeSlide(-1);
+    });
+
+    // 동적 JSON 템플릿 파일 생성 및 다운로드 함수
+    function downloadTemplate() {
+      const templateData = {
+        "systemInstruction": "너는 초등학교 학급 운영을 돕는 친절하고 꼼꼼한 교사 행정 비서야.\n선생님이 하루 동안 교실에서 일어난 핵심 메모(학생 행동, 특이사항, 오늘 한 일)를 자유롭게 던져주면, 이를 바탕으로 정돈된 [일일 학급일지] 보고서를 작성해 줘야 해.\n\n# 출력 양식\n1. 오늘의 학급 요약 (한 줄 평)\n2. 주요 지도 사항 및 특이 행동 학생 (이름과 구체적 행동 기록)\n3. 내일의 메모 및 전달 사항 (알림장에 들어갈 내용 자동 추출)\n4. 선생님을 위한 격려의 메시지 (따뜻한 톤)\n\n# 우리 반 기본 정보 (선생님들이 이 부분을 바이브 코딩으로 직접 수정할 것)\n- 학년/반: [3학년 2반]\n- 담임 선생님 이름: [홍길동 선생님]\n- 학급 규칙: [1. 고운 말 쓰기, 2. 복도에서 뛰지 않기]",
+        "generationConfig": {
+          "temperature": 1,
+          "topP": 0.95,
+          "topK": 40,
+          "maxOutputTokens": 8192,
+          "responseMimeType": "text/plain"
+        }
+      };
+      
+      const blob = new Blob([JSON.stringify(templateData, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.href = url;
+      downloadAnchor.download = "class-log.json";
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      document.body.removeChild(downloadAnchor);
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
