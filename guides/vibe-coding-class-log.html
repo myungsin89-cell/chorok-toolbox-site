@@ -345,6 +345,35 @@
       .slider-nav { padding: 16px 20px; }
       .step-header { padding: 20px 20px 0; }
     }
+
+    /* 가이드 스크린샷 이미지 스타일 */
+    .guide-img-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin: 24px 0;
+    }
+    .guide-screenshot-box {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 6px 16px rgba(16, 36, 24, 0.05);
+      background: white;
+    }
+    .guide-screenshot-box span {
+      display: block;
+      padding: 10px 16px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--green-deep);
+    }
+    .guide-screenshot-img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
   </style>
 </head>
 <body>
@@ -414,9 +443,21 @@
             <div class="guide-box">
               <ol>
                 <li>아래의 <b>[학급일지 앱 템플릿 복제하기 🌿]</b> 버튼을 클릭하여 공유된 AI Studio 템플릿 페이지를 엽니다.</li>
-                <li>새 탭으로 공유 화면이 열리면, 우측 상단에 위치한 파란색 <b>[Remix] (또는 복제)</b> 버튼을 클릭합니다.</li>
+                <li>새 탭으로 경고창이 열리면, 빨간 테두리로 강조된 <b>[Continue to the app]</b> 버튼을 클릭합니다. (아래 1번 이미지)</li>
+                <li>이후 열리는 화면의 우측 상단에 있는 <b>[Remix] (또는 복제)</b> 버튼을 클릭합니다. (아래 2번 이미지)</li>
                 <li>클릭 즉시 템플릿 사본이 내 AI Studio 보관함(My apps)에 저장되며, 내가 직접 수정할 수 있는 편집 화면으로 전환됩니다.</li>
               </ol>
+            </div>
+
+            <div class="guide-img-container">
+              <div class="guide-screenshot-box">
+                <span>① 타사 개발자 안내창 ➡️ [Continue to the app] 누르기</span>
+                <img class="guide-screenshot-img" src="../assets/images/guide-step2-continue.png" alt="타사 개발자 경고창에서 Continue to the app 버튼 누르기" />
+              </div>
+              <div class="guide-screenshot-box">
+                <span>② 우측 상단 ➡️ [Remix] 누르기</span>
+                <img class="guide-screenshot-img" src="../assets/images/guide-step2-remix.png" alt="상단 우측 Remix 버튼 클릭하여 사본 복제하기" />
+              </div>
             </div>
 
             <div class="action-btn-area">
