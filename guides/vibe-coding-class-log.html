@@ -386,14 +386,14 @@
           
           <!-- [1단계] -->
           <div class="slide-card active" data-step="1">
-            <h2>1단계: AI Studio 로그인하기</h2>
-            <p>구글 계정만 있다면 AI Studio에서 무료로 즉시 시작할 수 있습니다.</p>
+            <h2>1단계: AI Studio 시작하기</h2>
+            <p>구글 계정만 있다면 AI Studio 빌더 환경에서 즉시 나만의 앱을 만들 수 있습니다.</p>
             
             <div class="guide-box">
               <ol>
                 <li>하단의 <b>[Google AI Studio 바로가기]</b>를 누릅니다.</li>
-                <li>화면 우측 상단 <b>[Sign in]</b>을 눌러 구글 계정으로 로그인합니다.</li>
-                <li>서비스 동의 절차를 마치고 입장합니다.</li>
+                <li>화면 우측 상단 <b>[Sign in]</b>을 눌러 로그인합니다.</li>
+                <li>로그인 후, 중앙 화면의 AI Studio 빌더 홈을 확인합니다.</li>
               </ol>
             </div>
 
@@ -410,39 +410,39 @@
 
           <!-- [2단계] -->
           <div class="slide-card" data-step="2">
-            <h2>2단계: 템플릿 다운로드 및 업로드하기</h2>
-            <p>제공되는 학급일지 템플릿 파일을 컴퓨터에 저장하고, AI Studio로 업로드(Import)합니다.</p>
+            <h2>2단계: 학급일지 앱 템플릿 리믹스(Remix)하기</h2>
+            <p>제공되는 완성형 학급일지 템플릿의 사본을 내 보관함으로 단번에 복제해 옵니다.</p>
 
             <div class="guide-box">
               <p style="margin-top: 0; font-weight: bold; color: var(--green-deep);">📋 학급일지 템플릿 기능 안내</p>
-              <ul style="margin-bottom: 15px;">
+              <ul style="margin-bottom: 12px;">
                 <li><b>입력</b>: 하루 동안 있었던 학생 행동이나 교실 상황 메모.</li>
                 <li><b>출력</b>: <b>1) 일일 요약평, 2) 학생별 특이 지도 사항, 3) 알림장 전달사항</b>을 자동으로 구분하여 작성.</li>
               </ul>
               
               <ol>
-                <li>하단의 <b>[학급일지 템플릿 파일 다운로드]</b>를 눌러 파일을 내 컴퓨터에 저장합니다.</li>
-                <li>AI Studio 화면 좌측 상단의 <b>[Import prompt]</b> (또는 상단 파일 메뉴의 Import) 버튼을 클릭합니다.</li>
-                <li>다운로드한 <b>class-log.json</b> 파일을 선택하여 업로드합니다.</li>
+                <li>아래의 <b>[학급일지 앱 템플릿 복제하기 🌿]</b> 버튼을 누릅니다.</li>
+                <li>열린 화면에서 <b>[Remix] (또는 사본 만들기)</b> 단추를 클릭합니다.</li>
+                <li>내 보관함인 <b>My apps</b> 메뉴에 나만의 학급일지 앱이 즉시 등록됩니다.</li>
               </ol>
             </div>
 
             <div class="action-btn-area">
-              <button onclick="downloadTemplate()" class="btn-action">
-                학급일지 템플릿 파일 다운로드 🌿
-              </button>
+              <a href="https://aistudio.google.com/apps/d403cfe9-5992-43f8-83f8-e443a55f1006" target="_blank" rel="noopener" class="btn-action">
+                학급일지 앱 템플릿 복제하기 🌿
+              </a>
             </div>
           </div>
 
           <!-- [3단계] -->
           <div class="slide-card" data-step="3">
-            <h2>3단계: 우리 반 정보 채우기</h2>
-            <p>복제된 내용에서 괄호 <code>[...]</code> 안의 텍스트만 내 정보로 바꿉니다.</p>
+            <h2>3단계: 우리 반 정보로 고쳐 쓰기 (바이브 코딩)</h2>
+            <p>복제한 내 학급일지 앱 내의 프롬프트에서 괄호 <code>[...]</code> 안의 내용만 내 정보로 바꿉니다.</p>
 
             <div class="guide-box">
               <ol>
-                <li>좌측 <b>System Instructions</b> 영역을 확인합니다.</li>
-                <li>아래 괄호 부분을 내 학급 상황에 맞춰 타이핑해 교체합니다.</li>
+                <li>내 보관함(My apps)에서 복제된 학급일지를 열고 **System Instructions** 영역을 찾습니다.</li>
+                <li>아래 괄호 안의 기본 정보들을 내 상황에 맞게 텍스트로 타이핑하여 수정합니다.</li>
               </ol>
             </div>
 
@@ -453,22 +453,26 @@
             </div>
 
             <div class="tip-box">
-              💡 <b>Tip</b>: 한글 문서 편집하듯 내용만 바꾸어 주는 행위가 바로 바이브 코딩입니다!
+              💡 <b>Tip</b>: 한글 문서 편집하듯 이름과 규칙 텍스트만 원하는 대로 바꿔 주는 행위 자체가 훌륭한 <b>'바이브 코딩'</b>입니다!
             </div>
           </div>
 
           <!-- [4단계] -->
           <div class="slide-card" data-step="4">
-            <h2>4단계: 확인하고 즐겨찾기 저장</h2>
-            <p>나만의 일지가 잘 작성되는지 테스트하고, 매일 사용하기 위해 북마크에 추가합니다.</p>
+            <h2>4단계: 열쇠(API Key) 연동하고 배포하기</h2>
+            <p>내가 만든 학급일지 앱을 진짜로 작동시키기 위해 AI Studio 열쇠(API Key)를 복사하여 프로그램에 등록합니다.</p>
 
             <div class="guide-box">
               <ol>
-                <li>우측 대화창(Test) 입력창에 오늘 일어난 일을 자유롭게 메모해 봅니다.<br>
-                    <i>(예: "철수가 모둠 활동을 매우 성실히 함. 내일 준비물 알림장 기입")</i></li>
-                <li>내 반 정보와 양식에 맞춰 학급일지가 자동 생성되는지 확인합니다.</li>
-                <li>작동을 확인했다면 브라우저 상단에서 <b>즐겨찾기 추가 (Ctrl+D)</b>를 해 둡니다.</li>
+                <li>AI Studio 화면 **맨 좌측 하단 구석**에 있는 **열쇠(🔑) 모양 아이콘**을 클릭합니다.</li>
+                <li>화면 중앙의 파란색 <b>[Create API key]</b> 버튼을 누른 뒤, 생성된 키 우측의 <b>[Copy] (복사)</b>를 클릭합니다.</li>
+                <li>학급일지 프로그램의 <b>[설정]</b> 메뉴를 열고, 복사한 <b>[API Key]</b>와 홈페이지 하단에서 가이드받은 <b>[Firebase 설정값]</b>을 각각 붙여넣고 저장합니다.</li>
               </ol>
+            </div>
+
+            <div class="tip-box" style="background: #e0f2fe; border: 1px solid #bae6fd; color: #0369a1;">
+              🎉 <b>배포 완료!</b> 이제 브라우저 즐겨찾기(Ctrl+D)에 등록해 두고 퇴근 전 메모만 던지면 나만의 전용 서버에 학급일지 데이터가 안전하게 누적 저장됩니다.<br>
+              💳 <b>비용 걱정 제로</b>: 구글 AI Studio 열쇠(API Key)는 결제 카드를 연결할 필요가 없으며, 개인 업무용 한도 내에서 100% 평생 무료로 사용하실 수 있으니 안심하세요!
             </div>
 
             <div class="action-btn-area">
@@ -482,8 +486,8 @@
 
         <!-- 하단 내비게이션 버튼 바 -->
         <div class="slider-nav">
-          <button class="btn-nav btn-nav-prev disabled" id="btnPrev" onclick="changeSlide(-1)">이전 단계</button>
-          <button class="btn-nav btn-nav-next" id="btnNext" onclick="changeSlide(1)">다음 단계</button>
+          <button class="btn-nav btn-nav-prev disabled" id="btnPrev">이전 단계</button>
+          <button class="btn-nav btn-nav-next" id="btnNext">다음 단계</button>
         </div>
 
       </div>
@@ -560,30 +564,6 @@
     btnPrev.addEventListener('click', function() {
       changeSlide(-1);
     });
-
-    // 동적 JSON 템플릿 파일 생성 및 다운로드 함수
-    function downloadTemplate() {
-      const templateData = {
-        "systemInstruction": "너는 초등학교 학급 운영을 돕는 친절하고 꼼꼼한 교사 행정 비서야.\n선생님이 하루 동안 교실에서 일어난 핵심 메모(학생 행동, 특이사항, 오늘 한 일)를 자유롭게 던져주면, 이를 바탕으로 정돈된 [일일 학급일지] 보고서를 작성해 줘야 해.\n\n# 출력 양식\n1. 오늘의 학급 요약 (한 줄 평)\n2. 주요 지도 사항 및 특이 행동 학생 (이름과 구체적 행동 기록)\n3. 내일의 메모 및 전달 사항 (알림장에 들어갈 내용 자동 추출)\n4. 선생님을 위한 격려의 메시지 (따뜻한 톤)\n\n# 우리 반 기본 정보 (선생님들이 이 부분을 바이브 코딩으로 직접 수정할 것)\n- 학년/반: [3학년 2반]\n- 담임 선생님 이름: [홍길동 선생님]\n- 학급 규칙: [1. 고운 말 쓰기, 2. 복도에서 뛰지 않기]",
-        "generationConfig": {
-          "temperature": 1,
-          "topP": 0.95,
-          "topK": 40,
-          "maxOutputTokens": 8192,
-          "responseMimeType": "text/plain"
-        }
-      };
-      
-      const blob = new Blob([JSON.stringify(templateData, null, 2)], { type: "application/json" });
-      const url = URL.createObjectURL(blob);
-      const downloadAnchor = document.createElement('a');
-      downloadAnchor.href = url;
-      downloadAnchor.download = "class-log.json";
-      document.body.appendChild(downloadAnchor);
-      downloadAnchor.click();
-      document.body.removeChild(downloadAnchor);
-      URL.revokeObjectURL(url);
-    }
   </script>
 </body>
 </html>
