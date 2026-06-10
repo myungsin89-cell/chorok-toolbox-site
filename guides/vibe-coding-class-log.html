@@ -386,44 +386,36 @@
           
           <!-- [1단계] -->
           <div class="slide-card active" data-step="1">
-            <h2>1단계: AI Studio 시작하기</h2>
-            <p>구글 계정만 있다면 AI Studio 빌더 환경에서 즉시 나만의 앱을 만들 수 있습니다.</p>
+            <h2>1단계: 개발 환경 준비하기</h2>
+            <p>안정적인 실습을 위해 크롬 브라우저를 설정하고 모니터 화면을 배치합니다.</p>
             
             <div class="guide-box">
               <ol>
-                <li>하단의 <b>[Google AI Studio 바로가기]</b>를 누릅니다.</li>
-                <li>화면 우측 상단 <b>[Sign in]</b>을 눌러 로그인합니다.</li>
-                <li>로그인 후, 중앙 화면의 AI Studio 빌더 홈을 확인합니다.</li>
+                <li><b>크롬 브라우저 로그인</b>: 내 구글 계정으로 크롬(Chrome) 브라우저에 정상 로그인되어 있는지 확인합니다.</li>
+                <li><b>화면 배치 세팅</b>:
+                  <ul>
+                    <li><b>듀얼 모니터</b>: 한쪽 모니터에는 이 가이드 창을, 다른 모니터에는 AI Studio 화면을 띄워 놓고 실습합니다.</li>
+                    <li><b>단일 모니터</b>: 웹 브라우저 창 2개를 좌우로 반씩 쪼개어 배치해 한눈에 보며 따라 하도록 세팅합니다.</li>
+                  </ul>
+                </li>
               </ol>
             </div>
 
-            <div class="action-btn-area">
-              <a href="https://aistudio.google.com/" target="_blank" rel="noopener" class="btn-action">
-                Google AI Studio 바로가기 ↗
-              </a>
-            </div>
-
             <div class="tip-box" style="background: #e0f2fe; border: 1px solid #bae6fd; color: #0369a1;">
-              🖥️ <b>화면 배치 Tip</b>: 모니터가 2개라면 한쪽에는 이 가이드 창을, 다른 쪽에는 AI Studio를 띄워놓고 따라 하시면 훨씬 편리합니다. 모니터가 1개라면 브라우저 창 2개를 좌우로 나란히 반씩 쪼개어 배치해 보세요!
+              🖥️ <b>영문 메뉴 번역 팁</b>: 구글 AI Studio는 기본적으로 영문 인터페이스를 제공합니다. 영어 메뉴가 낯설다면 마우스 우클릭 후 <b>[한국어로 번역]</b>을 선택해 쉽게 진행해 보세요!
             </div>
           </div>
 
           <!-- [2단계] -->
           <div class="slide-card" data-step="2">
-            <h2>2단계: 학급일지 앱 템플릿 리믹스(Remix)하기</h2>
-            <p>제공되는 완성형 학급일지 템플릿의 사본을 내 보관함으로 단번에 복제해 옵니다.</p>
+            <h2>2단계: 학급일지 템플릿 원클릭 가져오기</h2>
+            <p>초록덕후가 미리 완성해 둔 학급일지 앱 템플릿의 사본을 내 계정으로 가져옵니다.</p>
 
             <div class="guide-box">
-              <p style="margin-top: 0; font-weight: bold; color: var(--green-deep);">📋 학급일지 템플릿 기능 안내</p>
-              <ul style="margin-bottom: 12px;">
-                <li><b>입력</b>: 하루 동안 있었던 학생 행동이나 교실 상황 메모.</li>
-                <li><b>출력</b>: <b>1) 일일 요약평, 2) 학생별 특이 지도 사항, 3) 알림장 전달사항</b>을 자동으로 구분하여 작성.</li>
-              </ul>
-              
               <ol>
-                <li>아래의 <b>[학급일지 앱 템플릿 복제하기 🌿]</b> 버튼을 누릅니다.</li>
-                <li>열린 화면에서 <b>[Remix] (또는 사본 만들기)</b> 단추를 클릭합니다.</li>
-                <li>내 보관함인 <b>My apps</b> 메뉴에 나만의 학급일지 앱이 즉시 등록됩니다.</li>
+                <li>아래의 <b>[학급일지 앱 템플릿 복제하기 🌿]</b> 버튼을 클릭하여 공유된 AI Studio 템플릿 페이지를 엽니다.</li>
+                <li>새 탭으로 공유 화면이 열리면, 우측 상단에 위치한 파란색 <b>[Remix] (또는 복제)</b> 버튼을 클릭합니다.</li>
+                <li>클릭 즉시 템플릿 사본이 내 AI Studio 보관함(My apps)에 저장되며, 내가 직접 수정할 수 있는 편집 화면으로 전환됩니다.</li>
               </ol>
             </div>
 
@@ -436,43 +428,46 @@
 
           <!-- [3단계] -->
           <div class="slide-card" data-step="3">
-            <h2>3단계: 우리 반 정보로 고쳐 쓰기 (바이브 코딩)</h2>
-            <p>복제한 내 학급일지 앱 내의 프롬프트에서 괄호 <code>[...]</code> 안의 내용만 내 정보로 바꿉니다.</p>
+            <h2>3단계: 한글 채팅으로 조작하기 (바이브코딩)</h2>
+            <p>코드를 만지지 않고, AI Studio 채팅창에서 원하는 바를 한글로 편하게 타이핑하여 기능을 고칩니다.</p>
 
             <div class="guide-box">
               <ol>
-                <li>내 보관함(My apps)에서 복제된 학급일지를 열고 **System Instructions** 영역을 찾습니다.</li>
-                <li>아래 괄호 안의 기본 정보들을 내 상황에 맞게 텍스트로 타이핑하여 수정합니다.</li>
+                <li>AI Studio 편집 화면 우측 혹은 하단에 있는 <b>채팅 입력창(Prompt Chat)</b>을 찾습니다.</li>
+                <li>마치 카카오톡을 하듯, 내가 필요한 기능을 한글 자연어로 직접 타이핑하여 요청해 봅니다.</li>
+                <li>내 대화에 맞춰 AI가 실시간으로 코드를 추가 및 갱신하는 놀라운 <b>'바이브코딩'</b>을 경험해 보세요.</li>
               </ol>
             </div>
 
             <div class="visual-diff-box">
-              <span class="diff-line">- 학년/반: <span class="diff-del">[3학년 2반]</span> ➡️ <span class="diff-add">5학년 1반</span></span>
-              <span class="diff-line">- 담임 이름: <span class="diff-del">[홍길동]</span> ➡️ <span class="diff-add">김초록</span></span>
-              <span class="diff-line">- 학급 규칙: <span class="diff-del">[1. 고운 말 쓰기, 2. 복도에서 뛰지 않기]</span> ➡️ <span class="diff-add">1. 배려하며 대화하기</span></span>
+              <span class="diff-line"><span class="diff-add">💬 "상단 메뉴에 [성적 관리] 탭도 하나 만들어줘"</span></span>
+              <span class="diff-line"><span class="diff-add">💬 "오늘 알림장에 [급식 정보]를 입력할 수 있는 텍스트 상자 추가해줘"</span></span>
+              <span class="diff-line"><span class="diff-add">💬 "학생 이름 입력창 바로 옆에 [출석 완료] 체크박스를 달아줘"</span></span>
             </div>
 
             <div class="tip-box">
-              💡 <b>Tip</b>: 한글 문서 편집하듯 이름과 규칙 텍스트만 원하는 대로 바꿔 주는 행위 자체가 훌륭한 <b>'바이브 코딩'</b>입니다!
+              💡 <b>Tip</b>: 코딩 문법을 전혀 몰라도 한글 문서를 작성하거나 메신저로 요청하듯 한글로 질문을 던지는 것만으로도 나만의 앱이 완성됩니다. 원하는 모습이 구현될 때까지 AI와 채팅으로 계속 소통해보세요!
             </div>
           </div>
 
           <!-- [4단계] -->
           <div class="slide-card" data-step="4">
-            <h2>4단계: 열쇠(API Key) 연동하고 배포하기</h2>
-            <p>내가 만든 학급일지 앱을 진짜로 작동시키기 위해 AI Studio 열쇠(API Key)를 복사하여 프로그램에 등록합니다.</p>
+            <h2>4단계: 나만의 주소로 배포 및 결제 설정하기</h2>
+            <p>완성된 학급일지를 인터넷에 배포하여 언제 어디서나 전용 주소로 바로 사용할 수 있도록 호스팅합니다.</p>
 
             <div class="guide-box">
               <ol>
-                <li>AI Studio 화면 **맨 좌측 하단 구석**에 있는 **열쇠(🔑) 모양 아이콘**을 클릭합니다.</li>
-                <li>화면 중앙의 파란색 <b>[Create API key]</b> 버튼을 누른 뒤, 생성된 키 우측의 <b>[Copy] (복사)</b>를 클릭합니다.</li>
-                <li>학급일지 프로그램의 <b>[설정]</b> 메뉴를 열고, 복사한 <b>[API Key]</b>와 홈페이지 하단에서 가이드받은 <b>[Firebase 설정값]</b>을 각각 붙여넣고 저장합니다.</li>
+                <li>AI Studio 편집 화면 우측 상단의 <b>[Publish] (또는 Deploy)</b> 버튼을 누릅니다.</li>
+                <li>화면 내에 구글 클라우드 결제 설정을 연동하라는 <b>[결제 수단 등록 (Billing)]</b> 팝업 창이 뜹니다.</li>
+                <li>안내에 따라 신용카드 등 구글 계정의 결제 수단 등록 절차를 마칩니다.</li>
+                <li>결제 연동이 끝나면 구글이 나만의 <b>[고유한 웹앱 라이브 URL 주소]</b>를 생성해 줍니다. 이 주소를 즐겨찾기(Ctrl+D)하여 실무에 씁니다.</li>
               </ol>
             </div>
 
             <div class="tip-box" style="background: #e0f2fe; border: 1px solid #bae6fd; color: #0369a1;">
-              🎉 <b>배포 완료!</b> 이제 브라우저 즐겨찾기(Ctrl+D)에 등록해 두고 퇴근 전 메모만 던지면 나만의 전용 서버에 학급일지 데이터가 안전하게 누적 저장됩니다.<br>
-              💳 <b>비용 걱정 제로</b>: 구글 AI Studio 열쇠(API Key)는 결제 카드를 연결할 필요가 없으며, 개인 업무용 한도 내에서 100% 평생 무료로 사용하실 수 있으니 안심하세요!
+              💳 <b>결제 요금 관련 안심 안내</b>:<br>
+              - 구글 AI Studio를 통해 직접 앱을 배포하고 개인 실무(프로토타입/체험) 용도로 소소하게 사용하는 범위 내에서는 실질적으로 <b>요금이 청구되지 않거나 수 센트 단위의 극소액</b>만 청구됩니다.<br>
+              - 외부 해킹 위험이 없는 구글의 정식 안전 인프라 서버를 할당받는 인증 절차로 <b>안심하고 신용카드 등록(결제 설정)을 완료</b>하셔도 괜찮습니다!
             </div>
 
             <div class="action-btn-area">
