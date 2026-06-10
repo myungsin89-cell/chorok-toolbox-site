@@ -514,21 +514,45 @@
           <!-- [4단계] -->
           <div class="slide-card" data-step="4">
             <h2>4단계: 나만의 주소로 배포 및 결제 설정하기</h2>
-            <p>완성된 학급일지를 인터넷에 배포하여 언제 어디서나 전용 주소로 바로 사용할 수 있도록 호스팅합니다.</p>
+            <p>완성된 학급일지를 인터넷에 배포하여 나만의 고유한 사이트 주소를 만들고 배포를 완료합니다.</p>
 
             <div class="guide-box">
               <ol>
-                <li>AI Studio 편집 화면 우측 상단의 <b>[Publish] (또는 Deploy)</b> 버튼을 누릅니다.</li>
-                <li>화면 내에 구글 클라우드 결제 설정을 연동하라는 <b>[결제 수단 등록 (Billing)]</b> 팝업 창이 뜹니다.</li>
-                <li>안내에 따라 신용카드 등 구글 계정의 결제 수단 등록 절차를 마칩니다.</li>
-                <li>결제 연동이 끝나면 구글이 나만의 <b>[고유한 웹앱 라이브 URL 주소]</b>를 생성해 줍니다. 이 주소를 즐겨찾기(Ctrl+D)하여 실무에 씁니다.</li>
+                <li>AI Studio 편집 화면 우측 상단의 <b>[Publish]</b> 버튼을 누릅니다. (아래 1번 이미지)</li>
+                <li>배포 안내 팝업이 나타나면 <b>[Get started]</b> 버튼을 클릭합니다. (아래 2번 이미지)</li>
+                <li>구글 클라우드 프로젝트 확인 창에서 기본값으로 자동 설정되어 있는 <b>[Default Gemini Project]</b>를 그대로 선택한 상태로 하단의 <b>[Set up billing]</b>을 클릭합니다. (아래 3번 이미지)</li>
+                <li>결제 계정 세부정보 등록 팝업창에서 고객 정보(계좌 유형: 개인, 세금 정보: 개인, 주소 등)와 카드 결제 수단을 연동합니다. (아래 4번 이미지)</li>
+                <li>결제 등록 완료 후 최종적으로 <b>[나만의 학급일지 is published!]</b> 화면이 나타나 배포가 완료됩니다. 상단의 <b>[Visit]</b> 버튼을 눌러 나만의 라이브 학급일지 웹사이트로 직접 들어가 볼 수 있습니다. 생성된 고유한 웹 주소(App URL)는 꼭 즐겨찾기(Ctrl+D)해두고 사용하세요. (아래 5번 이미지)</li>
               </ol>
             </div>
 
             <div class="tip-box" style="background: #e0f2fe; border: 1px solid #bae6fd; color: #0369a1;">
-              💳 <b>결제 요금 관련 안심 안내</b>:<br>
-              - 구글 AI Studio를 통해 직접 앱을 배포하고 개인 실무(프로토타입/체험) 용도로 소소하게 사용하는 범위 내에서는 실질적으로 <b>요금이 청구되지 않거나 수 센트 단위의 극소액</b>만 청구됩니다.<br>
-              - 외부 해킹 위험이 없는 구글의 정식 안전 인프라 서버를 할당받는 인증 절차로 <b>안심하고 신용카드 등록(결제 설정)을 완료</b>하셔도 괜찮습니다!
+              💳 <b>빌링(결제) 설정 관련 안심 가이드</b>:<br>
+              - 결제 수단 등록은 <b>최초 1회만 연동해 두면</b> 앞으로 다른 AI 앱이나 프로젝트를 배포해 사용할 때 별도의 추가 절차 없이 아주 편리하게 바로 사용하실 수 있습니다.<br>
+              - 선생님들께서 개인 업무용(프로토타입/체험)으로 소소하게 사용하시는 범위 내에서는 구글 클라우드가 제공하는 기본 무료 요금 한도 내에 머물기 때문에 <b>실질적으로 요금이 전혀 발생하지 않거나 극소액에 그쳐 전혀 걱정하지 않으셔도 괜찮습니다!</b> 안심하고 등록을 진행하세요.
+            </div>
+
+            <div class="guide-img-container">
+              <div class="guide-screenshot-box">
+                <span>① 우측 상단 ➡️ [Publish] 버튼 클릭</span>
+                <img class="guide-screenshot-img" src="../assets/images/guide-step4-publish.png" alt="AI Studio 우측 상단 Publish 버튼 위치" />
+              </div>
+              <div class="guide-screenshot-box">
+                <span>② 시작 팝업 ➡️ [Get started] 클릭</span>
+                <img class="guide-screenshot-img" src="../assets/images/guide-step4-getstarted.png" alt="배포 안내창 Get started 버튼 누르기" />
+              </div>
+              <div class="guide-screenshot-box">
+                <span>③ 프로젝트 ➡️ [기본 프로젝트] 선택 후 [Set up billing] 클릭</span>
+                <img class="guide-screenshot-img" src="../assets/images/guide-step4-project.png" alt="기본 Default Gemini Project 선택 및 Set up billing 버튼 누르기" />
+              </div>
+              <div class="guide-screenshot-box">
+                <span>④ 결제 등록 ➡️ 고객 정보 및 신용카드 연동하기</span>
+                <img class="guide-screenshot-img" src="../assets/images/guide-step4-billing.png" alt="고객정보 및 결제 계정 세부정보 추가 화면" />
+              </div>
+              <div class="guide-screenshot-box">
+                <span>⑤ 완료 ➡️ [Visit]을 눌러 홈페이지 접속 & 주소 기억하기</span>
+                <img class="guide-screenshot-img" src="../assets/images/guide-step4-complete.png" alt="배포 완료 화면 및 Visit 버튼 확인" />
+              </div>
             </div>
 
             <div class="action-btn-area">
