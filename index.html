@@ -511,17 +511,23 @@
       section { padding: 54px 0; }
     }
 
-    /* 도서 소개 섹션 */
-    .book-section {
-      background: var(--warm);
-      border-top: 1px solid var(--line);
-      padding: 80px 0;
-    }
-    .book-grid {
+    /* 도서 소개 섹션 (다른 섹션과 통일) */
+    .book-guide-card {
       display: grid;
-      grid-template-columns: 280px 1fr;
+      grid-template-columns: 240px 1fr;
       gap: 48px;
       align-items: center;
+      padding: 40px;
+      border-radius: var(--radius-xl);
+      background: white;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+    .book-guide-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 42px rgba(21, 128, 61, 0.14);
+      border-color: var(--line-green);
     }
     .book-cover-wrapper {
       perspective: 1000px;
@@ -530,49 +536,48 @@
     }
     .book-cover-img {
       width: 100%;
-      max-width: 240px;
+      max-width: 200px;
       border-radius: 6px 14px 14px 6px;
       box-shadow: 
-        -5px 5px 15px rgba(0, 0, 0, 0.08),
-        5px 15px 25px rgba(16, 36, 24, 0.15);
+        -3px 3px 10px rgba(0, 0, 0, 0.08),
+        3px 8px 18px rgba(16, 36, 24, 0.12);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      transform: rotateY(-5deg);
+      transform: rotateY(-6deg);
     }
-    .book-cover-wrapper:hover .book-cover-img {
-      transform: translateY(-8px) rotateY(0deg) scale(1.02);
+    .book-guide-card:hover .book-cover-img {
+      transform: translateY(-4px) rotateY(0deg) scale(1.02);
       box-shadow: 
-        -8px 8px 20px rgba(0, 0, 0, 0.1),
-        8px 20px 35px rgba(16, 36, 24, 0.22);
+        -5px 5px 15px rgba(0, 0, 0, 0.1),
+        5px 15px 25px rgba(16, 36, 24, 0.18);
     }
-    .book-content h3 {
+    .book-guide-content h3 {
       font-family: var(--font-display);
-      font-size: clamp(24px, 3.5vw, 32px);
-      margin: 8px 0 12px;
+      font-size: 24px;
+      margin: 0 0 8px;
       color: var(--ink);
-      line-height: 1.25;
     }
     .book-subtitle {
-      font-size: 16px;
+      font-size: 15px;
       color: var(--green);
       font-weight: 700;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       line-height: 1.5;
     }
     .book-desc {
       color: var(--muted);
-      font-size: 15px;
-      line-height: 1.75;
-      margin-bottom: 24px;
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 20px;
     }
     .book-meta {
       font-size: 13px;
       color: #59645c;
       background: var(--surface);
       border: 1px solid var(--line);
-      padding: 10px 16px;
-      border-radius: 12px;
+      padding: 8px 14px;
+      border-radius: 10px;
       display: inline-block;
-      margin-bottom: 28px;
+      margin-bottom: 20px;
     }
 
     /* 모달 내부 미니 도서 카드 */
@@ -619,17 +624,18 @@
 
     /* 반응형 미디어쿼리 업데이트 */
     @media (max-width: 768px) {
-      .book-grid {
+      .book-guide-card {
         grid-template-columns: 1fr;
-        gap: 32px;
+        gap: 28px;
+        padding: 28px;
         text-align: center;
       }
       .book-cover-img {
-        max-width: 200px;
+        max-width: 180px;
         transform: none;
       }
-      .book-cover-wrapper:hover .book-cover-img {
-        transform: translateY(-5px) scale(1.02);
+      .book-guide-card:hover .book-cover-img {
+        transform: translateY(-3px) scale(1.02);
       }
       .book-meta {
         display: block;
@@ -770,24 +776,32 @@
     </section>
 
     <!-- 신간 도서 소개 섹션 -->
-    <section class="book-section" id="book-introduction">
-      <div class="wrap book-grid">
-        <div class="book-cover-wrapper">
-          <img class="book-cover-img" src="assets/images/book-cover.png" alt="요즘 교사를 위한 구글 AI 3대장 책 표지" />
-        </div>
-        <div class="book-content">
-          <p class="section-kicker">New Book</p>
-          <h3>요즘 교사를 위한 구글 AI 3대장</h3>
-          <p class="book-subtitle">제미나이 · 노트북LM · AI 스튜디오로 수업준비, 행정업무, 학급경영 한 번에 해결!</p>
-          <p class="book-desc">
-            학급 경영과 행정 업무에 지친 선생님들을 위해 구글 AI 대표 3대장(제미나이, 노트북LM, AI 스튜디오)을 가장 쉽게 풀어냈습니다. 
-            현직 교사들이 교실에서 직접 검증하고 사용 중인 42가지 실습과 66가지 풍성한 실전 사례를 통해 내일부터 바로 쓰는 업무 꿀팁들을 확인해보세요.
-          </p>
-          <div class="book-meta">
-            ✍️ <strong>저자</strong> : 송명신(초록덕후), 최연준, 최수진, 양서현 공저 | 🏢 <strong>출판사</strong> : 앤써북
-          </div>
+    <section id="book-introduction">
+      <div class="wrap">
+        <div class="section-head">
           <div>
-            <a class="btn btn-primary" href="https://www.yes24.com/product/goods/191481932" target="_blank" rel="noopener">도서 정보 & 구매처 바로가기 ↗</a>
+            <p class="section-kicker">Book</p>
+            <h2>집필 도서 소개</h2>
+          </div>
+          <p class="section-desc">학교 업무와 학급 경영에 즉시 활용하는 구글 AI 활용 가이드북입니다.</p>
+        </div>
+        <div class="book-guide-card">
+          <div class="book-cover-wrapper">
+            <img class="book-cover-img" src="assets/images/book-cover.png" alt="요즘 교사를 위한 구글 AI 3대장 책 표지" />
+          </div>
+          <div class="book-guide-content">
+            <h3>요즘 교사를 위한 구글 AI 3대장</h3>
+            <p class="book-subtitle">제미나이 · 노트북LM · AI 스튜디오로 수업준비, 행정업무, 학급경영 한 번에 해결!</p>
+            <p class="book-desc">
+              학급 경영과 행정 업무에 지친 선생님들을 위해 구글 AI 대표 3대장(제미나이, 노트북LM, AI 스튜디오)을 가장 쉽게 풀어냈습니다. 
+              현직 교사들이 교실에서 직접 검증하고 사용 중인 42가지 실습과 66가지 풍성한 실전 사례를 통해 내일부터 바로 쓰는 업무 꿀팁들을 확인해보세요.
+            </p>
+            <div class="book-meta">
+              ✍️ <strong>저자</strong> : 송명신(초록덕후), 최연준, 최수진, 양서현 공저 | 🏢 <strong>출판사</strong> : 앤써북
+            </div>
+            <div>
+              <a class="btn btn-primary" href="https://www.yes24.com/product/goods/191481932" target="_blank" rel="noopener">도서 정보 & 구매처 바로가기 ↗</a>
+            </div>
           </div>
         </div>
       </div>
