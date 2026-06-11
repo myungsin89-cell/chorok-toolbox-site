@@ -438,7 +438,12 @@
               </ol>
             </div>
 
-            <div class="tip-box" style="background: #e0f2fe; border: 1px solid #bae6fd; color: #0369a1;">
+            <div class="tip-box" style="background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; margin-top: 0; margin-bottom: 15px;">
+              ⚠️ <b>중요 (교육청 계정 접속 차단 안내)</b>:<br>
+              학교/교육청 구글 계정(예: <code>@o365.go.kr</code>, <code>@office.edu</code> 등)은 교육망 보안 및 연령 제한 정책에 의해 AI Studio 서비스 접근이 차단됩니다. <b>반드시 개인 구글 계정(@gmail.com)</b>으로 로그인을 진행해 주세요.
+            </div>
+
+            <div class="tip-box" style="background: #e0f2fe; border: 1px solid #bae6fd; color: #0369a1; margin-top: 0;">
               🖥️ <b>영문 메뉴 번역 팁</b>: 구글 AI Studio는 기본적으로 영문 인터페이스를 제공합니다. 영어 메뉴가 낯설다면 마우스 우클릭 후 <b>[한국어로 번역]</b>을 선택해 쉽게 진행해 보세요!
             </div>
           </div>
@@ -506,8 +511,14 @@
               </div>
             </div>
 
-            <div class="tip-box">
+            <div class="tip-box" style="margin-bottom: 15px;">
               💡 <b>Tip</b>: 코딩 문법을 전혀 몰라도 한글 문서를 작성하거나 메신저로 요청하듯 한글로 질문을 던지는 것만으로도 나만의 앱이 완성됩니다. 원하는 모습이 구현될 때까지 AI와 채팅으로 계속 소통해보세요!
+            </div>
+
+            <div class="tip-box" style="background: #e0f2fe; border: 1px solid #bae6fd; color: #0369a1; margin-top: 0;">
+              🛠️ <b>바이브코딩 오류 자가 복구 팁</b>:<br>
+              - <b>원격 되돌리기(Undo)</b>: AI 채팅 답변 도중 기존 로직이 깨지거나 오작동하면, 당황하지 말고 우측 채팅창에서 <b>이전 질문/답변 블록을 삭제(또는 실행 취소/Undo)</b>하여 직전 성공 시점으로 되돌리세요.<br>
+              - <b>점진적 명령</b>: 한 번에 너무 많은 기능 수정을 요구하면 코드가 망가지기 쉽습니다. 기능 한 개씩 순차적으로 바이브코딩하며 매번 작동을 점검하세요.
             </div>
           </div>
 
@@ -527,10 +538,21 @@
               </ol>
             </div>
 
-            <div class="tip-box" style="background: #e0f2fe; border: 1px solid #bae6fd; color: #0369a1;">
-              💳 <b>빌링(결제) 설정 관련 안심 가이드</b>:<br>
-              - 결제 수단 등록은 <b>최초 1회만 연동해 두면</b> 앞으로 다른 AI 앱이나 프로젝트를 배포해 사용할 때 별도의 추가 절차 없이 아주 편리하게 바로 사용하실 수 있습니다.<br>
-              - 선생님들께서 개인 업무용(프로토타입/체험)으로 소소하게 사용하시는 범위 내에서는 구글 클라우드가 제공하는 기본 무료 요금 한도 내에 머물기 때문에 <b>실질적으로 요금이 전혀 발생하지 않거나 극소액에 그쳐 전혀 걱정하지 않으셔도 괜찮습니다!</b> 안심하고 등록을 진행하세요.
+            <div class="tip-box" style="background: #e0f2fe; border: 1px solid #bae6fd; color: #0369a1; margin-bottom: 15px;">
+              💳 <b>빌링(결제) 설정 및 요금 안심 가이드</b>:<br>
+              - <b>최초 1회만 연동</b>: 결제 계정 카드 등록은 최초 1회만 해두면 향후 다른 AI 앱 배포 시 번거로운 과정 없이 편리하게 사용할 수 있습니다.<br>
+              - <b>무료 요금 한도 적용</b>: 개인 학급 운영 등 소규모 프로토타입 범위 내에서는 구글 클라우드가 매월 제공하는 기본 무료량(Gemini 1.5 Flash 기준 <b>15 RPM / 1,500 RPD</b>) 내에 충분히 머물기 때문에 요금이 실질적으로 청구되지 않아 전혀 걱정하지 않으셔도 좋습니다.<br>
+              - <b>결제 등록을 원치 않으시는 경우 (우회법)</b>: 신용카드 정보 등록이 어렵거나 꺼려지신다면, 배포(Publish) 절차를 생략하고 AI Studio 우측의 <b>[Preview]</b> 테스트 화면을 전체화면으로 넓혀서 즉석에서 학급 관리에 그대로 활용하셔도 무방합니다.
+            </div>
+
+            <div class="tip-box" style="background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; margin-top: 0; margin-bottom: 15px;">
+              ⚠️ <b>학내망 접속 차단 시 조치 방법 (방화벽 대처)</b>:<br>
+              배포 완료 후 발급받은 사이트(<code>*.run.app</code>)가 학교 컴퓨터실이나 교실에서 차단될 수 있습니다. 이 경우 임시로 **모바일 핫스팟/테더링**에 연결해 작동을 확인하시고, 실제 실무에서 지속적으로 사용하려면 학교 정보부장을 통해 교육정보원에 배포 사이트의 **'방화벽 예외(유해사이트 차단 해제) 신청'**을 진행해 주시면 정상 사용이 가능합니다.
+            </div>
+
+            <div class="tip-box" style="background: #fefcbf; border: 1px solid #fef08a; color: #713f12; margin-top: 0;">
+              💡 <b>주소창 우측에 다운로드(설치) 아이콘이 안 보일 때 우회 설치법</b>:<br>
+              웹 통신 규격에 따라 크롬 주소창에 다운로드(PWA) 아이콘이 나타나지 않을 수 있습니다. 이때는 크롬 브라우저 우측 상단 **[점 3개 메뉴(⋮)] -> [저장 및 공유] -> [바로가기 만들기]**를 클릭하신 뒤, **[창으로 열기] 옵션을 꼭 체크**하고 만들기를 누르면 바탕화면에 동일하게 설치 형태로 사용하실 수 있습니다.
             </div>
 
             <div class="guide-img-container">
