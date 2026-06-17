@@ -682,6 +682,7 @@
       nextCard.classList.add('active');
 
       updateUI();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function updateUI() {
@@ -713,6 +714,7 @@
         const firstCard = document.querySelector(`.slide-card[data-step="1"]`);
         firstCard.classList.add('active');
         updateUI();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         changeSlide(1);
       }
