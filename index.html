@@ -205,16 +205,21 @@
     .chip:nth-child(3) { background: #dcfce7; }
     .chip:nth-child(4) { background: #fef9c3; }
 
-    section { padding: 72px 0; }
-    .section-head { display: flex; justify-content: space-between; gap: 20px; align-items: end; margin-bottom: 26px; }
-    .section-kicker { margin: 0 0 8px; color: var(--green); font-weight: 900; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; }
+    section { padding: 80px 0; }
+    .section-head { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-bottom: 32px; }
+    .section-kicker { margin: 0 0 4px; color: var(--green); font-weight: 900; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; }
     h2 { font-family: var(--font-display); margin: 0; color: var(--ink); font-size: clamp(30px, 4vw, 44px); line-height: 1.16; letter-spacing: -0.045em; }
-    .section-desc { max-width: 430px; color: var(--muted); margin: 0; font-size: 15px; }
+    .section-desc { max-width: 640px; color: #323f35; opacity: 0.85; margin: 0; font-size: 15px; line-height: 1.6; }
 
     .apps {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 16px;
+    }
+    .guides-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
     }
     .card {
       min-height: 280px;
@@ -241,7 +246,69 @@
       font-size: 24px;
     }
     .card h3 { font-family: var(--font-display); margin: 0; color: var(--ink); font-size: 20px; line-height: 1.35; letter-spacing: -0.02em; }
-    .card p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .card p { margin: 0; color: #323f35; opacity: 0.85; font-size: 14px; line-height: 1.6; }
+
+    /* 준비 중 도구 미니 그리드 스타일 */
+    .coming-section {
+      margin-top: 48px;
+      border-top: 1px dashed var(--line);
+      padding-top: 40px;
+    }
+    .coming-title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--muted);
+      margin: 0 0 20px;
+      letter-spacing: -0.02em;
+    }
+    .coming-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 12px;
+    }
+    .coming-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      opacity: 0.65;
+      transition: opacity 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+    }
+    .coming-card:hover {
+      opacity: 0.9;
+      border-color: var(--line-green);
+      background-color: var(--green-mist);
+    }
+    .coming-icon {
+      font-size: 24px;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: white;
+      border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+    }
+    .coming-info {
+      flex: 1;
+    }
+    .coming-info h4 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: 14.5px;
+      font-weight: 800;
+      color: var(--ink);
+    }
+    .coming-info p {
+      margin: 3px 0 0;
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
     .meta { margin-top: auto; display: flex; flex-wrap: wrap; gap: 8px; }
     .tag {
       padding: 5px 9px;
@@ -505,6 +572,7 @@
       .hero { padding-top: 58px; }
       .hero p { font-size: 17px; }
       .apps { grid-template-columns: 1fr; }
+      .guides-grid { grid-template-columns: 1fr; }
       .schedule { grid-template-columns: 1fr; }
       .day { min-height: 88px; }
       .story-panel, .detail-copy { padding: 26px; }
@@ -707,36 +775,48 @@
             <p>발표, 역할극, 모둠 토론 평가를 실시간으로. 학생 의견 취합부터 채점 내역 확인까지.</p>
             <div class="meta"><span class="tag">실시간 평가</span><span class="tag">질문 커스텀</span><span class="tag">상세 대시보드</span><span class="tag">실시간DB</span></div>
           </a>
-          <a class="card coming-soon" href="#">
-            <div class="icon">🧰</div>
-            <h3>교실도구함</h3>
-            <p>교실에서 자주 쓰는 도구를 한곳에 모은 앱입니다. 지금은 작업중입니다.</p>
-            <div class="meta"><span class="tag">학생명단</span><span class="tag">자리배치</span><span class="tag">랜덤도구</span><span class="coming-label">🔧 작업중</span></div>
-          </a>
-          <a class="card coming-soon" href="#">
-            <div class="icon">🧑‍🏫</div>
-            <h3>동학년 게시판</h3>
-            <p>동학년 자료와 공지를 한곳에 모읍니다.</p>
-            <div class="meta"><span class="tag">동학년</span><span class="tag">공유</span><span class="coming-label">🔧 작업중</span></div>
-          </a>
-          <a class="card coming-soon" href="#">
-            <div class="icon">📺</div>
-            <h3>학급 방송앱</h3>
-            <p>학급 안내와 화면 방송을 쉽게 준비합니다.</p>
-            <div class="meta"><span class="tag">학급 운영</span><span class="tag">방송</span><span class="coming-label">🔧 작업중</span></div>
-          </a>
-          <a class="card coming-soon" href="#">
-            <div class="icon">✅</div>
-            <h3>진단평가 자동채점</h3>
-            <p>진단평가 채점과 결과 확인 시간을 줄입니다.</p>
-            <div class="meta"><span class="tag">평가</span><span class="tag">자동채점</span><span class="coming-label">🔧 작업중</span></div>
-          </a>
-          <a class="card coming-soon" href="#">
-            <div class="icon">🏫</div>
-            <h3>반배정 프로그램</h3>
-            <p>조건을 보며 반배정 기준을 정리합니다.</p>
-            <div class="meta"><span class="tag">학교 업무</span><span class="tag">민감정보 주의</span><span class="coming-label">🔧 작업중</span></div>
-          </a>
+        </div>
+
+        <!-- 준비 중 도구 미니 그리드 -->
+        <div class="coming-section">
+          <h3 class="coming-title">🚧 개발 예정 및 작업 중인 교실 도구</h3>
+          <div class="coming-grid">
+            <div class="coming-card">
+              <span class="coming-icon">🧰</span>
+              <div class="coming-info">
+                <h4>교실도구함</h4>
+                <p>자리배치, 랜덤명단, 타이머 등 학급 유틸리티 모음</p>
+              </div>
+            </div>
+            <div class="coming-card">
+              <span class="coming-icon">🧑‍🏫</span>
+              <div class="coming-info">
+                <h4>동학년 게시판</h4>
+                <p>동학년 자료 공유 및 업무 공지용 실시간 게시판 앱</p>
+              </div>
+            </div>
+            <div class="coming-card">
+              <span class="coming-icon">📺</span>
+              <div class="coming-info">
+                <h4>학급 방송앱</h4>
+                <p>학급 안내사항 공지 및 화면 방송 시스템</p>
+              </div>
+            </div>
+            <div class="coming-card">
+              <span class="coming-icon">✅</span>
+              <div class="coming-info">
+                <h4>진단평가 자동채점</h4>
+                <p>기초학력 진단평가 간편 채점 및 결과 시각화 앱</p>
+              </div>
+            </div>
+            <div class="coming-card">
+              <span class="coming-icon">🏫</span>
+              <div class="coming-info">
+                <h4>반배정 프로그램</h4>
+                <p>성별, 학업 수준, 교우관계 고려 반배정 기준 정리 도구</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -750,7 +830,7 @@
           </div>
           <p class="section-desc">도서 <b>&lt;요즘 교사를 위한 구글 AI 3대장&gt;</b> 수록, 템플릿을 활용한 초간단 코딩 및 배포 실습입니다.</p>
         </div>
-        <div class="apps">
+        <div class="guides-grid">
           <a class="card featured" href="guides/vibe-coding-class-log.html">
             <div class="icon">📋</div>
             <h3>학급일지 만들기</h3>
