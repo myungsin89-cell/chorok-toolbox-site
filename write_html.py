@@ -804,6 +804,10 @@ html_content = """<!doctype html>
             <h2>4단계: 배포하고 바탕화면 설치 & 동학년 공유하기</h2>
             <p>나만의 주소로 게시판을 업로드하여 동학년 선생님들과 고유 주소를 공유하고협업을 시작합니다.</p>
 
+            <div class="tip-box" style="background: var(--green-mist); border: 1px solid var(--line-green); color: var(--green-deep); margin-bottom: 20px;">
+              💡 <b>안내:</b> 마지막 4단계(배포 및 바탕화면 PWA 앱 설치)는 앞서 진행한 <b>학급일지 배포하기 강좌와 모든 순서와 과정이 동일</b>합니다. 학급일지를 이미 배포해 보셨다면 더욱 쉽고 막힘없이 진행하실 수 있습니다!
+            </div>
+
             <details class="accordion-tip">
               <summary>💳 구글 클라우드 배포 및 결제 등록 정보 (필독)</summary>
               <div class="accordion-content">
