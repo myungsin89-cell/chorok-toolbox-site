@@ -374,6 +374,161 @@
       width: 100%;
       height: auto;
     }
+
+    /* 인라인 UI 뱃지 스타일 */
+    .badge-ui {
+      display: inline-flex;
+      align-items: center;
+      background: #f1f5f9;
+      color: #334155;
+      border: 1px solid #cbd5e1;
+      padding: 2px 6px;
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: 6px;
+      font-family: var(--font-body);
+      vertical-align: middle;
+      line-height: 1.2;
+      margin: 0 2px;
+    }
+    .badge-action {
+      display: inline-flex;
+      align-items: center;
+      background: var(--green);
+      color: white;
+      padding: 2px 8px;
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: 6px;
+      font-family: var(--font-body);
+      vertical-align: middle;
+      line-height: 1.2;
+      margin: 0 2px;
+    }
+    .badge-action.blue {
+      background: #0284c7;
+    }
+
+    /* 1:1 이미지-텍스트 흐름 레이아웃 */
+    .flow-container {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin: 20px 0;
+    }
+    .flow-item {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(16, 36, 24, 0.03);
+      display: flex;
+      flex-direction: column;
+    }
+    .flow-text {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+    }
+    .flow-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .flow-num {
+      background: var(--green-soft);
+      color: var(--green-deep);
+      font-weight: 800;
+      font-size: 12px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-family: var(--font-display);
+    }
+    .flow-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 15.5px;
+      color: var(--ink);
+    }
+    .flow-desc {
+      margin: 0;
+      font-size: 14.5px;
+      color: var(--body);
+      line-height: 1.6;
+    }
+    .flow-media {
+      background: white;
+      padding: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .flow-screenshot {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid #f1f5f9;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+
+    /* 아코디언 스타일 (details / summary) */
+    .accordion-tip {
+      background: var(--warm);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      margin-bottom: 16px;
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+    .accordion-tip[open] {
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+      border-color: var(--line-green);
+    }
+    .accordion-tip summary {
+      padding: 16px 20px;
+      font-weight: 800;
+      font-size: 14.5px;
+      color: var(--green-deep);
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      outline: none;
+      font-family: var(--font-display);
+    }
+    .accordion-tip summary::-webkit-details-marker {
+      display: none;
+    }
+    .accordion-tip summary::after {
+      content: "▼";
+      font-size: 10px;
+      color: var(--green);
+      transition: transform 0.2s ease;
+    }
+    .accordion-tip[open] summary::after {
+      transform: rotate(180deg);
+    }
+    .accordion-content {
+      padding: 0 20px 20px;
+      font-size: 13.5px;
+      color: var(--body);
+      line-height: 1.65;
+      border-top: 1px dashed var(--line);
+      padding-top: 16px;
+    }
+    .accordion-content ul, .accordion-content ol {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .accordion-content li {
+      margin-bottom: 6px;
+    }
+    .accordion-content li:last-child {
+      margin-bottom: 0;
+    }
   </style>
 </head>
 <body>
@@ -418,67 +573,107 @@
             <h2>1단계: 개발 환경 준비하기</h2>
             <p>안정적인 실습을 위해 크롬 브라우저를 설정하고 모니터 화면을 배치합니다.</p>
 
-            <div class="guide-img-container" style="margin-bottom: 24px;">
-              <div class="guide-screenshot-box">
-                <span>🌿 제공할 기본 '스마트 학급일지' 미리보기</span>
-                <img class="guide-screenshot-img" src="../assets/images/guide-step1-preview.png" alt="제공할 기본 스마트 학급일지 앱 화면 미리보기" />
+            <div class="flow-container">
+              <div class="flow-item">
+                <div class="flow-text">
+                  <div class="flow-header">
+                    <span class="flow-num">1-1</span>
+                    <span class="flow-title">완성할 학급일지 미리 보기</span>
+                  </div>
+                  <p class="flow-desc">이번 튜토리얼을 통해 완성하게 될 <b>기본 제공 학급일지 앱</b>의 모습입니다. 2단계에서 이 틀을 내 계정으로 가져가게 됩니다.</p>
+                </div>
+                <div class="flow-media">
+                  <img class="flow-screenshot" src="../assets/images/guide-step1-preview.png" alt="제공할 기본 스마트 학급일지 앱 화면 미리보기" />
+                </div>
+              </div>
+
+              <div class="flow-item">
+                <div class="flow-text" style="border-bottom: none;">
+                  <div class="flow-header">
+                    <span class="flow-num">1-2</span>
+                    <span class="flow-title">크롬 브라우저 개인 계정 로그인</span>
+                  </div>
+                  <p class="flow-desc">내 구글 계정(@gmail.com)으로 크롬(Chrome) 브라우저에 로그인되어 있는지 확인합니다.</p>
+                </div>
+              </div>
+
+              <div class="flow-item">
+                <div class="flow-text" style="border-bottom: none;">
+                  <div class="flow-header">
+                    <span class="flow-num">1-3</span>
+                    <span class="flow-title">화면 분할 배치하기</span>
+                  </div>
+                  <p class="flow-desc">
+                    - <b>듀얼 모니터</b>: 한쪽 화면에는 이 가이드를, 다른 한쪽에는 AI Studio 편집 화면을 배치합니다.<br>
+                    - <b>단일 모니터</b>: 웹 브라우저 창 2개를 좌우로 반씩 분할 배치해 한눈에 보며 실습할 수 있도록 배치합니다.
+                  </p>
+                </div>
               </div>
             </div>
-            
-            <div class="guide-box">
-              <ol>
-                <li><b>기본 학급일지 확인</b>: 위 화면은 2단계에서 복제하여 나만의 것으로 가공해 나갈 <b>기본 제공 학급일지 앱</b>의 초기 레이아웃입니다.</li>
-                <li><b>크롬 브라우저 로그인</b>: 내 구글 계정으로 크롬(Chrome) 브라우저에 정상 로그인되어 있는지 확인합니다.</li>
-                <li><b>화면 배치 세팅</b>:
-                  <ul>
-                    <li><b>듀얼 모니터</b>: 한쪽 모니터에는 이 가이드 창을, 다른 모니터에는 AI Studio 화면을 띄워 놓고 실습합니다.</li>
-                    <li><b>단일 모니터</b>: 웹 브라우저 창 2개를 좌우로 반씩 쪼개어 배치해 한눈에 보며 따라 하도록 세팅합니다.</li>
-                  </ul>
-                </li>
-              </ol>
-            </div>
 
-            <div class="tip-box" style="background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; margin-top: 0; margin-bottom: 15px;">
-              ⚠️ <b>중요 (교육청 계정 접속 차단 안내)</b>:<br>
-              학교/교육청 구글 계정(예: <code>@o365.go.kr</code>, <code>@office.edu</code> 등)은 교육망 보안 및 연령 제한 정책에 의해 AI Studio 서비스 접근이 차단됩니다. <b>반드시 개인 구글 계정(@gmail.com)</b>으로 로그인을 진행해 주세요.
-            </div>
+            <!-- 중요/팁 아코디언 정리 -->
+            <details class="accordion-tip" style="margin-top: 20px;">
+              <summary>⚠️ 중요: 학교/교육청 구글 계정 차단 안내</summary>
+              <div class="accordion-content">
+                학교/교육청 구글 계정(예: <code>@o365.go.kr</code>, <code>@office.edu</code> 등)은 교육망 보안 및 연령 제한 정책에 의해 AI Studio 서비스 접근이 차단됩니다. <b>반드시 개인 구글 계정(@gmail.com)</b>으로 로그인을 진행해 주세요.
+              </div>
+            </details>
 
-            <div class="tip-box" style="background: #e0f2fe; border: 1px solid #bae6fd; color: #0369a1; margin-top: 0;">
-              🖥️ <b>영문 메뉴 번역 팁</b>: 구글 AI Studio는 기본적으로 영문 인터페이스를 제공합니다. 영어 메뉴가 낯설다면 마우스 우클릭 후 <b>[한국어로 번역]</b>을 선택해 쉽게 진행해 보세요!
-            </div>
+            <details class="accordion-tip">
+              <summary>🖥️ 팁: 영어 메뉴 번역 및 듀얼 화면 사용 방법</summary>
+              <div class="accordion-content">
+                구글 AI Studio는 영문 인터페이스를 제공합니다. 영어가 불편하다면 브라우저 화면 빈 곳을 마우스 우클릭 후 <b>[한국어로 번역]</b>을 선택해 쉽게 한글 메뉴로 보며 진행해 보세요!
+              </div>
+            </details>
           </div>
 
           <!-- [2단계] -->
           <div class="slide-card" data-step="2">
             <h2>2단계: 학급일지 템플릿 원클릭 가져오기</h2>
-            <p>초록덕후가 미리 완성해 둔 학급일지 앱 템플릿의 사본을 내 계정으로 가져옵니다.</p>
+            <p>미리 완성해 둔 학급일지 앱 템플릿의 사본을 내 계정으로 가져옵니다.</p>
 
-            <div class="guide-box">
-              <ol>
-                <li>아래의 <b>[학급일지 앱 템플릿 복제하기 🌿]</b> 버튼을 클릭하여 공유된 AI Studio 템플릿 페이지를 엽니다.</li>
-                <li>새 탭으로 경고창이 열리면, 빨간 테두리로 강조된 <b>[Continue to the app]</b> 버튼을 클릭합니다. (아래 1번 이미지)</li>
-                <li>이후 열리는 화면의 우측 상단에 있는 <b>[Remix] (또는 복제)</b> 버튼을 클릭합니다. (아래 2번 이미지)</li>
-                <li>Remix 팝업창이 나타나면, 우측 하단에 있는 <b>[Apply]</b> 버튼을 클릭합니다. (아래 3번 이미지)</li>
-                <li>클릭 즉시 템플릿 사본이 내 AI Studio 보관함(My apps)에 저장되며, 내가 직접 수정할 수 있는 편집 화면으로 전환됩니다.</li>
-              </ol>
+            <div class="flow-container">
+              <div class="flow-item">
+                <div class="flow-text">
+                  <div class="flow-header">
+                    <span class="flow-num">2-1</span>
+                    <span class="flow-title">안내창 통과하기</span>
+                  </div>
+                  <p class="flow-desc">아래의 <b>[학급일지 앱 템플릿 복제하기 🌿]</b> 버튼을 클릭하여 공유 창이 뜨면, 화면 중앙의 <span class="badge-action">Continue to the app</span> 버튼을 클릭합니다.</p>
+                </div>
+                <div class="flow-media">
+                  <img class="flow-screenshot" src="../assets/images/guide-step2-continue.png" alt="타사 개발자 경고창에서 Continue to the app 버튼 누르기" />
+                </div>
+              </div>
+
+              <div class="flow-item">
+                <div class="flow-text">
+                  <div class="flow-header">
+                    <span class="flow-num">2-2</span>
+                    <span class="flow-title">복제(Remix) 시작하기</span>
+                  </div>
+                  <p class="flow-desc">편집 창 우측 상단의 <span class="badge-ui">Remix</span> (또는 복제) 버튼을 누릅니다.</p>
+                </div>
+                <div class="flow-media">
+                  <img class="flow-screenshot" src="../assets/images/guide-step2-remix.png" alt="상단 우측 Remix 버튼 클릭하여 사본 복제하기" />
+                </div>
+              </div>
+
+              <div class="flow-item">
+                <div class="flow-text">
+                  <div class="flow-header">
+                    <span class="flow-num">2-3</span>
+                    <span class="flow-title">최종 가져오기 승인</span>
+                  </div>
+                  <p class="flow-desc">Remix 확인 팝업창이 나타나면, 우측 하단의 <span class="badge-action">Apply</span>를 클릭합니다. 클릭 즉시 사본이 내 AI Studio 보관함에 복사되며 직접 편집할 수 있는 화면이 열립니다.</p>
+                </div>
+                <div class="flow-media">
+                  <img class="flow-screenshot" src="../assets/images/guide-step2-apply.png" alt="팝업창 우측 하단의 Apply 버튼 클릭하여 완성하기" />
+                </div>
+              </div>
             </div>
 
-            <div class="guide-img-container">
-              <div class="guide-screenshot-box">
-                <span>① 타사 개발자 안내창 ➡️ [Continue to the app] 누르기</span>
-                <img class="guide-screenshot-img" src="../assets/images/guide-step2-continue.png" alt="타사 개발자 경고창에서 Continue to the app 버튼 누르기" />
-              </div>
-              <div class="guide-screenshot-box">
-                <span>② 우측 상단 ➡️ [Remix] 누르기</span>
-                <img class="guide-screenshot-img" src="../assets/images/guide-step2-remix.png" alt="상단 우측 Remix 버튼 클릭하여 사본 복제하기" />
-              </div>
-              <div class="guide-screenshot-box">
-                <span>③ Remix 확인 팝업창 ➡️ [Apply] 누르기</span>
-                <img class="guide-screenshot-img" src="../assets/images/guide-step2-apply.png" alt="팝업창 우측 하단의 Apply 버튼 클릭하여 완성하기" />
-              </div>
-            </div>
-
-            <div class="action-btn-area">
+            <div class="action-btn-area" style="margin-top: 24px;">
               <a href="https://aistudio.google.com/apps/d403cfe9-5992-43f8-83f8-e443a55f1006" target="_blank" rel="noopener" class="btn-action">
                 학급일지 앱 템플릿 복제하기 🌿
               </a>
@@ -490,35 +685,34 @@
             <h2>3단계: 한글 채팅으로 조작하기 (바이브코딩)</h2>
             <p>코드를 만지지 않고, AI Studio 채팅창에서 원하는 바를 한글로 편하게 타이핑하여 기능을 고칩니다.</p>
 
-            <div class="guide-box">
-              <ol>
-                <li>AI Studio 편집 화면의 좌측 또는 중앙 하단에 있는 <b>채팅 입력창(Prompt Chat)</b>을 찾습니다.</li>
-                <li>마치 카카오톡을 하듯, 내가 필요한 기능을 한글 자연어로 직접 타이핑하여 요청해 봅니다. (아래 예시 참고)</li>
-                <li>내 대화에 맞춰 AI가 실시간으로 코드를 추가 및 갱신하는 놀라운 <b>'바이브코딩'</b>을 경험해 보세요.</li>
-              </ol>
-            </div>
-
-            <div class="visual-diff-box">
-              <span class="diff-line"><span class="diff-add">💬 "메모장 메뉴 추가해줘. 포스트잇 모양으로 추가할 수 있게 디자인해줘." (추천)</span></span>
-              <span class="diff-line"><span class="diff-add">💬 "상단 메뉴에 [성적 관리] 탭도 하나 만들어줘"</span></span>
-              <span class="diff-line"><span class="diff-add">💬 "학생 이름 입력창 바로 옆에 [출석 완료] 체크박스를 달아줘"</span></span>
-            </div>
-
-            <div class="guide-img-container" style="margin-bottom: 24px;">
-              <div class="guide-screenshot-box">
-                <span>🌿 AI Studio 채팅창에 한글로 요청을 작성하는 모습</span>
-                <img class="guide-screenshot-img" src="../assets/images/guide-step3-chat.png" alt="AI Studio에서 한글로 바이브코딩하는 실습 화면" />
+            <details class="accordion-tip">
+              <summary>🛠️ 바이브코딩 오류 시 자가 복구 팁 (동작이 이상해졌을 때)</summary>
+              <div class="accordion-content">
+                <ul>
+                  <li><strong>원격 되돌리기(Undo)</strong>: AI 채팅 답변 도중 기존 로직이 깨지거나 오작동하면, 당황하지 말고 우측 채팅창에서 <b>이전 질문/답변 블록을 삭제(또는 실행 취소/Undo)</b>하여 직전 성공 시점으로 되돌리세요.</li>
+                  <li><strong>점진적 명령</strong>: 한 번에 너무 많은 기능 수정을 요구하면 코드가 망가지기 쉽습니다. 기능 한 개씩 순차적으로 바이브코딩하며 매번 작동을 점검하세요.</li>
+                </ul>
               </div>
-            </div>
+            </details>
 
-            <div class="tip-box" style="margin-bottom: 15px;">
-              💡 <b>Tip</b>: 코딩 문법을 전혀 몰라도 한글 문서를 작성하거나 메신저로 요청하듯 한글로 질문을 던지는 것만으로도 나만의 앱이 완성됩니다. 원하는 모습이 구현될 때까지 AI와 채팅으로 계속 소통해보세요!
-            </div>
-
-            <div class="tip-box" style="background: #e0f2fe; border: 1px solid #bae6fd; color: #0369a1; margin-top: 0;">
-              🛠️ <b>바이브코딩 오류 자가 복구 팁</b>:<br>
-              - <b>원격 되돌리기(Undo)</b>: AI 채팅 답변 도중 기존 로직이 깨지거나 오작동하면, 당황하지 말고 우측 채팅창에서 <b>이전 질문/답변 블록을 삭제(또는 실행 취소/Undo)</b>하여 직전 성공 시점으로 되돌리세요.<br>
-              - <b>점진적 명령</b>: 한 번에 너무 많은 기능 수정을 요구하면 코드가 망가지기 쉽습니다. 기능 한 개씩 순차적으로 바이브코딩하며 매번 작동을 점검하세요.
+            <div class="flow-container">
+              <div class="flow-item">
+                <div class="flow-text">
+                  <div class="flow-header">
+                    <span class="flow-num">3-1</span>
+                    <span class="flow-title">한글 채팅창에 원하는 요청 입력하기</span>
+                  </div>
+                  <p class="flow-desc">AI Studio 화면 좌측 또는 중앙 하단에 있는 <b>채팅창(Prompt Chat)</b>에 한글 자연어로 요청을 보냅니다.</p>
+                  <div class="visual-diff-box" style="font-family: monospace; background: var(--dark); color: #86efac; padding: 12px; border-radius: 8px; margin-top: 10px; font-size: 13px;">
+                    💬 "메모장 메뉴 추가해줘. 포스트잇 모양으로 추가할 수 있게 디자인해줘." (추천)<br>
+                    💬 "상단 메뉴에 [성적 관리] 탭도 하나 만들어줘"<br>
+                    💬 "학생 이름 입력창 바로 옆에 [출석 완료] 체크박스를 달아줘"
+                  </div>
+                </div>
+                <div class="flow-media">
+                  <img class="flow-screenshot" src="../assets/images/guide-step3-chat.png" alt="AI Studio에서 한글로 바이브코딩하는 실습 화면" />
+                </div>
+              </div>
             </div>
           </div>
 
@@ -527,63 +721,110 @@
             <h2>4단계: 나만의 주소로 배포 및 결제 설정하기</h2>
             <p>완성된 학급일지를 인터넷에 배포하여 나만의 고유한 사이트 주소를 만들고 배포를 완료합니다.</p>
 
-            <div class="guide-box">
-              <ol>
-                <li>AI Studio 편집 화면 우측 상단의 <b>[Publish]</b> 버튼을 누릅니다. (아래 1번 이미지)</li>
-                <li>배포 안내 팝업이 나타나면 <b>[Get started]</b> 버튼을 클릭합니다. (아래 2번 이미지)</li>
-                <li>구글 클라우드 프로젝트 확인 창에서 기본값으로 자동 설정되어 있는 <b>[Default Gemini Project]</b>를 그대로 선택한 상태로 하단의 <b>[Set up billing]</b>을 클릭합니다. (아래 3번 이미지)</li>
-                <li>결제 계정 세부정보 등록 팝업창에서 고객 정보(계좌 유형: 개인, 세금 정보: 개인, 주소 등)와 카드 결제 수단을 연동합니다. (아래 4번 이미지)</li>
-                <li>결제 등록 완료 후 최종적으로 <b>[나만의 학급일지 is published!]</b> 화면이 나타나 배포가 완료됩니다. 상단의 <b>[Visit]</b> 버튼을 눌러 나만의 라이브 학급일지 웹사이트로 직접 들어가 볼 수 있습니다. 생성된 고유한 웹 주소(App URL)는 꼭 즐겨찾기(Ctrl+D)해두고 사용하세요. (아래 5번 이미지)</li>
-                <li><b>바탕화면에 앱으로 설치(다운로드)</b>: 나만의 학급일지 사이트에 접속한 뒤, 크롬 브라우저 주소창 우측 상단에 있는 <b>[모니터와 아래 화살표 모양 아이콘] (앱 설치 버튼)</b>을 클릭하면 PC 바탕화면에 스마트 학급일지가 단독 앱(다운로드 형태)으로 설치됩니다. 매일 주소를 입력할 필요 없이 편리하게 사용해 보세요! (아래 6번 이미지)</li>
-              </ol>
+            <details class="accordion-tip">
+              <summary>💳 배포를 위한 결제 등록 정보 및 요금 안심 가이드 (필독)</summary>
+              <div class="accordion-content">
+                <ul>
+                  <li><strong>최초 1회만 연동:</strong> 결제 계정 카드 등록은 최초 1회만 해두면 향후 다른 AI 앱 배포 시 번거로운 과정 없이 편리하게 사용할 수 있습니다.</li>
+                  <li><strong>무료 요금 한도 적용:</strong> 개인 학급 운영 등 소규모 프로토타입 범위 내에서는 구글 클라우드가 매월 제공하는 기본 무료량(Gemini 1.5 Flash 기준 <b>15 RPM / 1,500 RPD</b>) 내에 충분히 머물기 때문에 요금이 실질적으로 청구되지 않아 전혀 걱정하지 않으셔도 좋습니다.</li>
+                  <li><strong>카드 등록을 하지 않고 사용하는 법 (우회책):</strong> 신용카드 정보 등록이 어렵거나 꺼려지신다면, 배포(Publish) 절차를 생략하고 AI Studio 우측의 <b>[Preview]</b> 테스트 화면을 전체화면으로 넓혀서 즉석에서 학급 관리에 그대로 활용하셔도 무방합니다.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="accordion-tip">
+              <summary>💡 주소창 우측에 다운로드(설치) 아이콘이 안 보일 때 우회 설치법</summary>
+              <div class="accordion-content">
+                웹 통신 규격에 따라 크롬 주소창에 다운로드(PWA) 아이콘이 나타나지 않을 수 있습니다. 이때는 크롬 브라우저 우측 상단 **[점 3개 메뉴(⋮)] -> [저장 및 공유] -> [바로가기 만들기]**를 클릭하신 뒤, **[창으로 열기] 옵션을 꼭 체크**하고 만들기를 누르면 바탕화면에 동일하게 설치 형태로 사용하실 수 있습니다.
+              </div>
+            </details>
+
+            <div class="flow-container">
+              <div class="flow-item">
+                <div class="flow-text">
+                  <div class="flow-header">
+                    <span class="flow-num">4-1</span>
+                    <span class="flow-title">배포 시작하기</span>
+                  </div>
+                  <p class="flow-desc">AI Studio 우측 상단의 <span class="badge-action blue">Publish</span>를 클릭합니다.</p>
+                </div>
+                <div class="flow-media">
+                  <img class="flow-screenshot" src="../assets/images/guide-step4-publish.png" alt="AI Studio 우측 상단 Publish 버튼 위치" />
+                </div>
+              </div>
+
+              <div class="flow-item">
+                <div class="flow-text">
+                  <div class="flow-header">
+                    <span class="flow-num">4-2</span>
+                    <span class="flow-title">배포 마법사 시작</span>
+                  </div>
+                  <p class="flow-desc">배포 안내 팝업창에서 <span class="badge-action">Get started</span>를 누릅니다.</p>
+                </div>
+                <div class="flow-media">
+                  <img class="flow-screenshot" src="../assets/images/guide-step4-getstarted.png" alt="배포 안내창 Get started 버튼 누르기" />
+                </div>
+              </div>
+
+              <div class="flow-item">
+                <div class="flow-text">
+                  <div class="flow-header">
+                    <span class="flow-num">4-3</span>
+                    <span class="flow-title">구글 클라우드 프로젝트 세팅</span>
+                  </div>
+                  <p class="flow-desc">프로젝트 확인 창에서 기본값인 <strong>Default Gemini Project</strong>를 둔 상태에서 하단의 <span class="badge-action">Set up billing</span>을 클릭합니다.</p>
+                </div>
+                <div class="flow-media">
+                  <img class="flow-screenshot" src="../assets/images/guide-step4-project.png" alt="기본 Default Gemini Project 선택 및 Set up billing 버튼 누르기" />
+                </div>
+              </div>
+
+              <div class="flow-item">
+                <div class="flow-text">
+                  <div class="flow-header">
+                    <span class="flow-num">4-4</span>
+                    <span class="flow-title">고객 정보 및 신용카드 연동</span>
+                  </div>
+                  <p class="flow-desc">화면 안내에 맞춰 본인 정보와 결제용 카드 등록을 1회 진행합니다.</p>
+                </div>
+                <div class="flow-media">
+                  <img class="flow-screenshot" src="../assets/images/guide-step4-billing.png" alt="고객정보 및 결제 계정 세부정보 추가 화면" />
+                </div>
+              </div>
+
+              <div class="flow-item">
+                <div class="flow-text">
+                  <div class="flow-header">
+                    <span class="flow-num">4-5</span>
+                    <span class="flow-title">최종 배포 완료 및 고유 웹링크 획득</span>
+                  </div>
+                  <p class="flow-desc">최종적으로 [나만의 학급일지 is published!] 화면이 나타나면 배포가 성공한 것입니다. 상단의 <span class="badge-action">Visit</span>을 클릭하여 나만의 고유 웹 일지 주소로 입장하고 웹 주소는 즐겨찾기(Ctrl+D)해둡니다.</p>
+                </div>
+                <div class="flow-media">
+                  <img class="flow-screenshot" src="../assets/images/guide-step4-complete.png" alt="배포 완료 화면 및 Visit 버튼 확인" />
+                </div>
+              </div>
+
+              <div class="flow-item">
+                <div class="flow-text">
+                  <div class="flow-header">
+                    <span class="flow-num">4-6</span>
+                    <span class="flow-title">바탕화면에 바로가기 다운로드 설치</span>
+                  </div>
+                  <p class="flow-desc">접속한 나만의 사이트 주소창 우측 상단의 <b>[앱 설치(다운로드)]</b> 아이콘을 클릭하여 바탕화면에 나만의 앱으로 설치해 두고 손쉽게 더블클릭으로 재접속해 사용합니다.</p>
+                </div>
+                <div class="flow-media">
+                  <img class="flow-screenshot" src="../assets/images/guide-step4-install.png" alt="주소창 우측 앱 설치 아이콘 클릭하여 바탕화면에 추가하기" />
+                </div>
+              </div>
             </div>
 
-            <div class="tip-box" style="background: #e0f2fe; border: 1px solid #bae6fd; color: #0369a1; margin-bottom: 15px;">
-              💳 <b>빌링(결제) 설정 및 요금 안심 가이드</b>:<br>
-              - <b>최초 1회만 연동</b>: 결제 계정 카드 등록은 최초 1회만 해두면 향후 다른 AI 앱 배포 시 번거로운 과정 없이 편리하게 사용할 수 있습니다.<br>
-              - <b>무료 요금 한도 적용</b>: 개인 학급 운영 등 소규모 프로토타입 범위 내에서는 구글 클라우드가 매월 제공하는 기본 무료량(Gemini 1.5 Flash 기준 <b>15 RPM / 1,500 RPD</b>) 내에 충분히 머물기 때문에 요금이 실질적으로 청구되지 않아 전혀 걱정하지 않으셔도 좋습니다.<br>
-              - <b>결제 등록을 원치 않으시는 경우 (우회법)</b>: 신용카드 정보 등록이 어렵거나 꺼려지신다면, 배포(Publish) 절차를 생략하고 AI Studio 우측의 <b>[Preview]</b> 테스트 화면을 전체화면으로 넓혀서 즉석에서 학급 관리에 그대로 활용하셔도 무방합니다.
-            </div>
-
-            <div class="tip-box" style="background: #fefcbf; border: 1px solid #fef08a; color: #713f12; margin-top: 0;">
-              💡 <b>주소창 우측에 다운로드(설치) 아이콘이 안 보일 때 우회 설치법</b>:<br>
-              웹 통신 규격에 따라 크롬 주소창에 다운로드(PWA) 아이콘이 나타나지 않을 수 있습니다. 이때는 크롬 브라우저 우측 상단 **[점 3개 메뉴(⋮)] -> [저장 및 공유] -> [바로가기 만들기]**를 클릭하신 뒤, **[창으로 열기] 옵션을 꼭 체크**하고 만들기를 누르면 바탕화면에 동일하게 설치 형태로 사용하실 수 있습니다.
-            </div>
-
-            <div class="guide-img-container">
-              <div class="guide-screenshot-box">
-                <span>① 우측 상단 ➡️ [Publish] 버튼 클릭</span>
-                <img class="guide-screenshot-img" src="../assets/images/guide-step4-publish.png" alt="AI Studio 우측 상단 Publish 버튼 위치" />
-              </div>
-              <div class="guide-screenshot-box">
-                <span>② 시작 팝업 ➡️ [Get started] 클릭</span>
-                <img class="guide-screenshot-img" src="../assets/images/guide-step4-getstarted.png" alt="배포 안내창 Get started 버튼 누르기" />
-              </div>
-              <div class="guide-screenshot-box">
-                <span>③ 프로젝트 ➡️ [기본 프로젝트] 선택 후 [Set up billing] 클릭</span>
-                <img class="guide-screenshot-img" src="../assets/images/guide-step4-project.png" alt="기본 Default Gemini Project 선택 및 Set up billing 버튼 누르기" />
-              </div>
-              <div class="guide-screenshot-box">
-                <span>④ 결제 등록 ➡️ 고객 정보 및 신용카드 연동하기</span>
-                <img class="guide-screenshot-img" src="../assets/images/guide-step4-billing.png" alt="고객정보 및 결제 계정 세부정보 추가 화면" />
-              </div>
-              <div class="guide-screenshot-box">
-                <span>⑤ 완료 ➡️ [Visit]을 눌러 홈페이지 접속 & 주소 기억하기</span>
-                <img class="guide-screenshot-img" src="../assets/images/guide-step4-complete.png" alt="배포 완료 화면 및 Visit 버튼 확인" />
-              </div>
-              <div class="guide-screenshot-box">
-                <span>⑥ 다운로드 ➡️ 주소창 우측의 [앱 설치] 아이콘 클릭하여 바탕화면에 추가</span>
-                <img class="guide-screenshot-img" src="../assets/images/guide-step4-install.png" alt="주소창 우측 앱 설치 아이콘 클릭하여 바탕화면에 추가하기" />
-              </div>
-            </div>
-
-            <div class="action-btn-area">
+            <div class="action-btn-area" style="margin-top: 24px;">
               <a href="../index.html" class="btn-action">
                 완료하고 홈으로 가기 🎉
               </a>
             </div>
           </div>
-
         </div>
 
         <!-- 하단 내비게이션 버튼 바 -->
