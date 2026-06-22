@@ -1,28 +1,220 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>학급 방송앱 | 초록덕후의 교실 도구함</title>
 <style>
   @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
   @font-face { font-family:'NanumSquareRound'; font-weight:800; font-style:normal; font-display:swap; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareRoundEB.woff2') format('woff2'); }
-  :root { --green:#15803d; --deep:#14532d; --mist:#f0fdf4; --line:#e3e8e1; --ink:#17201a; --muted:#66736a; --body:#27352b; --font-body:'Pretendard','Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',system-ui,sans-serif; --font-display:'NanumSquareRound','Pretendard',sans-serif; }
-  *{box-sizing:border-box} body{margin:0;font-family:var(--font-body);color:var(--body);line-height:1.75;word-break:keep-all;background:linear-gradient(180deg,#fff,var(--mist),#fff)}
-  .wrap{width:min(920px,calc(100% - 40px));margin:0 auto} header{border-bottom:1px solid var(--line);background:rgba(255,255,255,.82);backdrop-filter:blur(16px);position:sticky;top:0} .nav{height:64px;display:flex;align-items:center;justify-content:space-between} a{color:inherit;text-decoration:none}.brand{font-family:var(--font-display);font-weight:800;color:var(--deep)} .back{font-weight:700;color:var(--green);font-size:14px}
-  main{padding:72px 0} .badge{display:inline-flex;padding:7px 12px;border-radius:999px;background:var(--mist);border:1px solid #bbf7d0;color:var(--deep);font-size:13px;font-weight:800} h1{font-family:var(--font-display);font-size:clamp(38px,6vw,60px);line-height:1.12;letter-spacing:-.05em;color:var(--ink);margin:22px 0 16px} .lead{font-size:20px;color:#3a463d;margin:0 0 34px;max-width:720px}.panel{background:#fff;border:1px solid var(--line);border-radius:28px;padding:30px;margin:18px 0;box-shadow:0 18px 45px rgba(16,36,24,.07)} h2{font-family:var(--font-display);color:var(--ink);margin:0 0 14px;font-size:26px}.list{padding:0;list-style:none;display:grid;gap:10px}.list li{display:flex;gap:10px}.list li:before{content:'✓';color:var(--green);font-weight:900}.placeholder{height:260px;border-radius:22px;background:linear-gradient(135deg,var(--mist),#fff);border:1px dashed #86efac;display:grid;place-items:center;color:var(--muted);font-weight:700} footer{padding:40px 0;color:var(--muted)}
+  
+  :root { 
+    --green:#15803d; 
+    --deep:#14532d; 
+    --bright:#16a34a; 
+    --mist:#f0fdf4; 
+    --line:#e3e8e1; 
+    --line-green:#bbf7d0; 
+    --ink:#17201a; 
+    --muted:#66736a; 
+    --body:#27352b; 
+    --font-body:'Pretendard','Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',system-ui,sans-serif; 
+    --font-display:'NanumSquareRound','Pretendard',sans-serif; 
+  }
+  
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--font-body);color:var(--body);line-height:1.75;background:linear-gradient(180deg,#fff,var(--mist),#fff)}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:min(920px,calc(100% - 40px));margin:0 auto}
+  header{border-bottom:1px solid var(--line);background:rgba(255,255,255,.82);backdrop-filter:blur(16px);position:sticky;top:0;z-index:10}
+  .nav{height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .brand{font-family:var(--font-display);font-weight:800;color:var(--deep)}
+  .back{font-weight:700;color:var(--green);font-size:14px}
+  main{padding:72px 0}
+  .badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+  .badge{display:inline-flex;padding:7px 12px;border-radius:999px;background:var(--mist);border:1px solid var(--line-green);color:var(--deep);font-size:13px;font-weight:800}
+  .hero-title{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:20px}
+  h1{font-family:var(--font-display);font-size:clamp(38px,6vw,60px);line-height:1.12;letter-spacing:-.05em;color:var(--ink);margin:0}
+  .use-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:999px;background:var(--green);color:#fff;font-size:15px;font-weight:800;letter-spacing:.03em;transition:transform .18s,box-shadow .18s}
+  .use-btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(21, 128, 61, 0.3)}
+  .lead{font-size:20px;color:#3a463d;margin:0 0 34px;max-width:760px}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:28px;padding:30px;margin:18px 0;box-shadow:0 18px 45px rgba(16,36,24,.07)}
+  h2{font-family:var(--font-display);color:var(--ink);margin:0 0 14px;font-size:26px}
+  .list{padding:0;list-style:none;display:grid;gap:10px;margin:0}
+  .list li{position:relative;padding-left:28px}
+  .list li:before{content:'✓';position:absolute;left:0;top:0;color:var(--green);font-weight:900}
+  .note{background:#f0f9ff;border:1px solid #bae6fd;border-radius:20px;padding:20px;margin-top:14px;color:#0c4a6e}
+  .note p{margin:8px 0 0;font-size:15px}
+  .hint{color:var(--muted);font-size:15px;margin:0 0 14px}
+  
+  /* 스크린샷 4개용 그리드 */
+  .ss-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:14px}
+  .ss-card{border-radius:20px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:0 12px 30px rgba(16,36,24,.06);cursor:pointer;transition:transform .2s,box-shadow .2s}
+  .ss-card:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(16,36,24,.14)}
+  .ss-card a{display:block}
+  .ss-card img{width:100%;display:block;aspect-ratio:16/10;object-fit:cover;background:var(--mist)}
+  .ss-card .placeholder-box {
+    aspect-ratio: 16/10;
+    width: 100%;
+    background: linear-gradient(135deg, var(--mist), #ffffff);
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+    color: var(--muted);
+  }
+  .ss-card .placeholder-file {
+    font-family: monospace;
+    font-size: 13px;
+    background: var(--line-green);
+    color: var(--deep);
+    padding: 4px 8px;
+    border-radius: 6px;
+    margin-top: 8px;
+  }
+  .ss-card .cap{padding:12px 16px;font-size:14px;color:var(--muted);font-weight:600;line-height:1.5}
+  
+  .lb{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.82);justify-content:center;align-items:center;padding:30px}
+  .lb.show{display:flex}
+  .lb img{max-width:96%;max-height:92vh;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+  .lb-close{position:fixed;top:18px;right:26px;color:#fff;font-size:42px;font-weight:300;line-height:1;width:50px;height:50px;display:grid;place-items:center;border-radius:50%;background:rgba(0,0,0,.35);transition:background .18s}
+  .lb-close:hover{background:rgba(255,255,255,.25)}
+  
+  footer{padding:40px 0;color:var(--muted)}
+  @media(max-width:768px){.ss-grid{grid-template-columns:minmax(0,1fr)}}
+  @media(max-width:640px){main{padding:52px 0}.panel{padding:24px}.use-btn{width:100%;justify-content:center}}
 </style>
 </head>
 <body>
 <header><div class="wrap nav"><a class="brand" href="../index.html">🌿 초록덕후의 교실 도구함</a><a class="back" href="../index.html#apps">← 도구함으로</a></div></header>
 <main><div class="wrap">
-<span class="badge">📺 도구 상세</span>
-<h1>학급 방송앱</h1>
-<p class="lead">학급 안내와 화면 방송을 쉽게 준비합니다.</p>
-<div class="panel"><h2>무엇을 하나요?</h2><ul class="list"><li>학급 운영</li><li>방송</li><li>사용 방법 정리 예정</li></ul></div>
-<div class="panel"><h2>화면 미리보기</h2><div class="placeholder">스크린샷 추가 예정</div></div>
-<div class="panel"><h2>사용 안내</h2><p>앱 링크, 사용 방법, 서버 연결 여부를 이곳에 정리할 예정입니다.</p></div>
+  <div class="badges">
+    <span class="badge">📺 학급 안내 방송</span>
+    <span class="badge">💻 바탕화면 설치</span>
+    <span class="badge">💾 내 컴퓨터 저장</span>
+    <span class="badge">⏰ 타이머/예약</span>
+  </div>
+
+  <div class="hero-title">
+    <h1>학급 방송앱</h1>
+    <a class="use-btn" href="https://service-1095632072504.us-west1.run.app" target="_blank" rel="noopener">🚀 사용하기</a>
+  </div>
+  <p class="lead">대사를 입력하면 실시간 음성(TTS)으로 변환해 말해주는 스마트 방송 도구입니다. 매일 반복되는 안내 방송 예약과 즐겨찾기 카드를 통해 학급 안내 업무를 간편하게 자동화합니다.</p>
+
+  <div class="panel">
+    <h2>무엇을 하나요?</h2>
+    <ul class="list">
+      <li><strong>즉석 음성 방송(TTS)</strong> — 안내할 대사를 입력창에 적기만 하면, 즉시 기계 음성(TTS)으로 변환되어 교실 스피커로 실시간 송출됩니다.</li>
+      <li><strong>방송 예약 (날짜/시간별)</strong> — 지정한 날짜와 시간에 맞추어 필요한 안내 방송이 자동으로 흘러나오도록 타임라인 스케줄을 예약합니다.</li>
+      <li><strong>타이머 기반 방송</strong> — 방송 대사를 적어두고 5분 뒤, 10분 뒤처럼 설정한 타이머가 완료되면 알림음과 함께 자동으로 방송이 시작되게 예약합니다.</li>
+      <li><strong>자주 쓰는 문구 즐겨찾기</strong> — "정리정돈을 시작하세요" 같이 매일 반복적으로 쓰이는 멘트들은 즐겨찾기 카드로 만들어 원클릭으로 송출합니다.</li>
+    </ul>
+  </div>
+
+  <div class="panel">
+    <h2>이렇게 사용해요</h2>
+    <ul class="list">
+      <li><strong>1. 대사 입력 및 즉석 방송</strong> — 방송하고 싶은 내용을 텍스트 입력창에 자유롭게 작성한 뒤, 방송 버튼을 클릭하면 즉시 로컬 음성으로 송출됩니다.</li>
+      <li><strong>2. 반복 안내 즐겨찾기 카드로 등록</strong> — 자주 내보내는 방송 멘트는 즐겨찾기 카드(메인 화면 버튼)로 등록해 두어, 매번 입력할 필요 없이 버튼 한 번만 눌러 송출합니다.</li>
+      <li><strong>3. 타이머 기반 예약 방송 실행</strong> — 모둠 활동이나 쉬는 시간 등을 조율할 때, 설정한 타이머(예: 3분 후 종료 안내)가 완료되는 시점에 맞추어 자동으로 대사가 방송되게 합니다.</li>
+      <li><strong>4. 정기 안내 방송 스케줄링</strong> — 아침 조회 시간, 요일별 종례 전 등 지정된 일정과 요일별 타이밍에 정기 예약 방송 목록을 관리하여 학급 운영을 자동화합니다.</li>
+    </ul>
+  </div>
+
+  <div class="panel">
+    <h2>AI 음성 연결로 더 세련된 방송 만들기</h2>
+    <div class="note">
+      <strong>💡 구글 Cloud TTS 연계 (바이브코딩 강좌 안내)</strong>
+      <p>이 앱은 기본적으로 컴퓨터에 내장된 음성을 사용하여 바로 방송을 내보냅니다. 만약 더 자연스럽고 세련된 AI 성우 목소리(구글 Cloud TTS)로 업그레이드하고 싶다면, <strong>'따라하는 바이브코딩' 강좌</strong>를 보며 직접 코드를 수정하고 연동해볼 수 있습니다.</p>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>화면 미리보기</h2>
+    <p class="hint">💡 아래 플레이스홀더 영역은 직접 화면을 캡처한 이미지 파일(4종)로 덮어씌워 사용할 수 있습니다.</p>
+    <div class="ss-grid">
+      <!-- 1. 메인 화면 -->
+      <div class="ss-card">
+        <a href="javascript:void(0)" onclick="openLightbox('images/ss-broadcast-main.png')">
+          <div class="placeholder-box">
+            <span>📷 메인 화면 캡처 영역</span>
+            <span class="placeholder-file">images/ss-broadcast-main.png</span>
+          </div>
+          <div class="cap">▲ 메인 화면: 대사 입력창, 음성 방송 송출 및 즉각적인 로컬 TTS 방송 작동 상태를 제어하는 기본 화면입니다.</div>
+        </a>
+      </div>
+      <!-- 2. 방송 화면 -->
+      <div class="ss-card">
+        <a href="javascript:void(0)" onclick="openLightbox('images/ss-broadcast-play.png')">
+          <div class="placeholder-box">
+            <span>📷 즐겨찾기 방송 화면 캡처 영역</span>
+            <span class="placeholder-file">images/ss-broadcast-play.png</span>
+          </div>
+          <div class="cap">▲ 방송 화면: 즐겨찾기로 간편히 등록해 둔 주요 반복 안내 멘트들을 버튼 카드로 한눈에 모아두고 즉각 방송하는 화면입니다.</div>
+        </a>
+      </div>
+      <!-- 3. 방송 예약 화면 -->
+      <div class="ss-card">
+        <a href="javascript:void(0)" onclick="openLightbox('images/ss-broadcast-schedule.png')">
+          <div class="placeholder-box">
+            <span>📷 방송 예약 목록 캡처 영역</span>
+            <span class="placeholder-file">images/ss-broadcast-schedule.png</span>
+          </div>
+          <div class="cap">▲ 방송 예약 목록: 날짜, 시간, 요일별 타임라인 스케줄이 연동된 정기 안내 방송 예약 리스트 관리 화면입니다.</div>
+        </a>
+      </div>
+      <!-- 4. 구글 TTS 설정 화면 -->
+      <div class="ss-card">
+        <a href="javascript:void(0)" onclick="openLightbox('images/ss-broadcast-settings.png')">
+          <div class="placeholder-box">
+            <span>📷 구글 TTS 설정 캡처 영역</span>
+            <span class="placeholder-file">images/ss-broadcast-settings.png</span>
+          </div>
+          <div class="cap">▲ 설정 화면: 고품질 구글 Cloud TTS API 연동, 기기 음성 설정 및 방송 환경 세부 설정 패널입니다.</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lb">
+    <a href="javascript:void(0)" class="lb-close" onclick="closeLightbox()">✕</a>
+    <img id="lightbox-img" src="" alt="크게 보기 이미지">
+  </div>
+
+  <div class="panel">
+    <h2>설치와 데이터 보관 안내</h2>
+    <div class="note">
+      <strong>📌 바탕화면 아이콘 설치하기</strong>
+      <p>인터넷 창(크롬 또는 엣지) 주소창 오른쪽에 있는 <b>[앱 설치]</b> 버튼을 누르면, 컴퓨터 바탕화면에 바로가기 아이콘을 만들어 두고 편리하게 실행할 수 있습니다.</p>
+    </div>
+    <div class="note">
+      <strong>💾 내 컴퓨터에 안전하게 저장</strong>
+      <p>내가 등록한 안내 방송 예약 내용이나 자주 쓰는 즐겨찾기 문구는 인터넷 서버로 전송되지 않고, 오직 **내가 쓰는 컴퓨터의 인터넷 창(브라우저) 내부**에만 저장됩니다. 개인정보나 학급 정보 유출 걱정 없이 안심하고 쓰셔도 됩니다.</p>
+    </div>
+  </div>
 </div></main>
-<footer><div class="wrap">선생님들의 편안한 학교생활을 응원합니다</div></footer>
+<footer><div class="wrap">선생님들의 편안한 학교생활을 응원합니다 🌱</div></footer>
+
+<script>
+function openLightbox(src) {
+  const lb = document.getElementById('lightbox');
+  const img = document.getElementById('lightbox-img');
+  img.src = src;
+  lb.classList.add('show');
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('show');
+}
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) closeLightbox();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
+</script>
 </body>
 </html>
