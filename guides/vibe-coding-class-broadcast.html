@@ -1,0 +1,902 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>학급 방송앱 만들기 | 초록덕후의 교실 도구함</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+    @font-face {
+      font-family: 'NanumSquareRound';
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareRoundR.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'NanumSquareRound';
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareRoundB.woff2') format('woff2');
+    }
+
+    /* 기존 테마 CSS 변수 연결 */
+    :root {
+      --green: #15803d;
+      --green-deep: #14532d;
+      --green-bright: #16a34a;
+      --green-soft: #dcfce7;
+      --green-mist: #f0fdf4;
+      --ink: #17201a;
+      --body: #27352b;
+      --muted: #66736a;
+      --line: #e3e8e1;
+      --line-green: #bbf7d0;
+      --canvas: #ffffff;
+      --warm: #fafaf7;
+      --surface: #f6f8f5;
+      --dark: #102418;
+      --shadow: 0 22px 50px rgba(16, 36, 24, 0.08);
+      --radius-lg: 22px;
+      --radius-xl: 30px;
+      --font-body: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', system-ui, sans-serif;
+      --font-display: 'NanumSquareRound', 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', system-ui, sans-serif;
+      --max: 800px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      color: var(--body);
+      background:
+        radial-gradient(circle at 15% 0%, rgba(187, 247, 208, 0.4), transparent 30%),
+        linear-gradient(180deg, #ffffff 0%, var(--warm) 100%);
+      line-height: 1.7;
+      word-break: keep-all;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(227, 232, 225, 0.75);
+    }
+    .nav {
+      height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-weight: 800;
+      color: var(--green-deep);
+      letter-spacing: -0.03em;
+    }
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: linear-gradient(135deg, var(--green), var(--green-bright));
+      box-shadow: 0 12px 28px rgba(21, 128, 61, 0.22);
+    }
+    .nav-links { display: flex; align-items: center; gap: 18px; font-size: 14px; color: var(--muted); }
+    .nav-links a:hover { color: var(--green); }
+
+    .content-area {
+      flex: 1;
+      padding: 40px 0 80px;
+    }
+
+    .slider-title-area {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .slider-title-area p {
+      margin: 0 0 8px;
+      color: var(--green);
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .slider-title-area h1 {
+      font-family: var(--font-display);
+      margin: 0;
+      color: var(--ink);
+      font-size: clamp(26px, 4vw, 36px);
+      letter-spacing: -0.04em;
+    }
+
+    .slider-container {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-bar-container {
+      background: var(--surface);
+      height: 6px;
+      width: 100%;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--green), var(--green-bright));
+      width: 25%;
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .step-header {
+      padding: 24px 40px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .step-number {
+      font-family: var(--font-display);
+      font-weight: 800;
+      color: var(--green);
+      font-size: 14px;
+      background: var(--green-mist);
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line-green);
+    }
+    .step-total {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .slides-wrapper {
+      position: relative;
+      min-height: 280px;
+    }
+    .slide-card {
+      padding: 20px 40px 40px;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .slide-card.active {
+      display: block;
+      opacity: 1;
+      animation: slideIn 0.4s ease;
+    }
+    @keyframes slideIn {
+      from { transform: translateY(8px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .slide-card h2 {
+      font-family: var(--font-display);
+      margin: 10px 0 14px;
+      color: var(--ink);
+      font-size: 22px;
+      letter-spacing: -0.02em;
+    }
+    .slide-card > p {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .flow-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .flow-item {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .flow-text {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--line);
+    }
+    .flow-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .flow-num {
+      background: var(--green-soft);
+      color: var(--green-deep);
+      font-weight: 800;
+      font-size: 11.5px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-family: var(--font-display);
+    }
+    .flow-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 15px;
+      color: var(--ink);
+    }
+    .flow-desc {
+      margin: 0;
+      font-size: 14px;
+      color: var(--body);
+      line-height: 1.55;
+    }
+    .flow-media {
+      background: white;
+      padding: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-top: 1px solid var(--line);
+    }
+    .flow-screenshot {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid #f1f5f9;
+    }
+
+    /* 이미지 플레이스홀더 */
+    .flow-media-placeholder {
+      aspect-ratio: 16/10;
+      width: 100%;
+      background: linear-gradient(135deg, var(--green-mist), #ffffff);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+      color: var(--muted);
+      border-radius: 8px;
+      border: 1px dashed var(--line-green);
+    }
+    .flow-media-placeholder .filename {
+      font-family: monospace;
+      font-size: 13px;
+      background: var(--green-soft);
+      color: var(--green-deep);
+      padding: 4px 8px;
+      border-radius: 6px;
+      margin-top: 8px;
+    }
+
+    .badge-ui {
+      display: inline-flex;
+      align-items: center;
+      background: #f1f5f9;
+      color: #334155;
+      border: 1px solid #cbd5e1;
+      padding: 2px 6px;
+      font-size: 12.5px;
+      font-weight: 700;
+      border-radius: 6px;
+      margin: 0 2px;
+    }
+    .badge-action {
+      display: inline-flex;
+      align-items: center;
+      background: var(--green);
+      color: white;
+      padding: 2px 8px;
+      font-size: 12.5px;
+      font-weight: 700;
+      border-radius: 6px;
+      margin: 0 2px;
+    }
+    .badge-action.blue {
+      background: #0284c7;
+    }
+
+    .action-btn-area {
+      margin-top: 32px;
+      text-align: center;
+    }
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 12px 32px;
+      background: var(--green);
+      color: white;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 16px;
+      box-shadow: 0 14px 30px rgba(21, 128, 61, 0.24);
+      transition: transform 0.18s, box-shadow 0.18s;
+    }
+    .btn-action:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 36px rgba(21, 128, 61, 0.32);
+    }
+
+    .slider-nav {
+      display: flex;
+      border-top: 1px solid var(--line);
+      background: var(--surface);
+    }
+    .btn-nav {
+      flex: 1;
+      border: none;
+      background: none;
+      height: 58px;
+      font-weight: 800;
+      font-size: 15px;
+      color: var(--green-deep);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      outline: none;
+    }
+    .btn-nav:hover {
+      background: rgba(21, 128, 61, 0.05);
+    }
+    .btn-nav-prev {
+      border-right: 1px solid var(--line);
+    }
+    .btn-nav.disabled {
+      color: var(--muted);
+      opacity: 0.5;
+      cursor: default;
+    }
+    .btn-nav.disabled:hover {
+      background: none;
+    }
+
+    .accordion-tip {
+      background: var(--warm);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      margin-bottom: 16px;
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+    .accordion-tip[open] {
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+      border-color: var(--line-green);
+    }
+    .accordion-tip summary {
+      padding: 16px 20px;
+      font-weight: 800;
+      font-size: 14.5px;
+      color: var(--green-deep);
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      outline: none;
+      font-family: var(--font-display);
+    }
+    .accordion-tip summary::-webkit-details-marker {
+      display: none;
+    }
+    .accordion-tip summary::after {
+      content: "▼";
+      font-size: 10px;
+      color: var(--green);
+      transition: transform 0.2s ease;
+    }
+    .accordion-tip[open] summary::after {
+      transform: rotate(180deg);
+    }
+    .accordion-content {
+      padding: 0 20px 20px;
+      font-size: 13.5px;
+      color: var(--body);
+      line-height: 1.65;
+      border-top: 1px dashed var(--line);
+      padding-top: 16px;
+    }
+    .accordion-content ul, .accordion-content ol {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .accordion-content li {
+      margin-bottom: 6px;
+    }
+    .accordion-content li:last-child {
+      margin-bottom: 0;
+    }
+
+    .tip-box {
+      border-radius: 16px;
+      padding: 18px 22px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    footer {
+      padding: 54px 0;
+      background: var(--dark);
+      color: rgba(255,255,255,.78);
+    }
+    footer .wrap { display: flex; justify-content: space-between; gap: 24px; align-items: center; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a href="../index.html" class="brand" aria-label="초록덕후의 교실 도구함 홈">
+        <span class="brand-mark">&#127807;</span>
+        <span>초록덕후의 교실 도구함</span>
+      </a>
+      <nav class="nav-links" aria-label="주요 메뉴">
+        <a href="../index.html">홈으로</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="content-area">
+    <div class="wrap">
+      
+      <div class="slider-title-area">
+        <p>Vibe Coding</p>
+        <h1>학급 방송앱 만들기</h1>
+        <p style="font-size: 16px; color: var(--muted); margin: 10px 0 0;">나만의 문구 즐겨찾기, 시간표/타이머 예약 방송이 가능한 교실 방송국을 만들고 AI 목소리를 연동해봅니다.</p>
+      </div>
+
+      <div class="slider-container">
+        <!-- 상단 프로그레스 바 -->
+        <div class="progress-bar-container">
+          <div class="progress-bar-fill" id="progressBar"></div>
+        </div>
+
+        <!-- 상단 라벨 -->
+        <div class="step-header">
+          <div class="step-number" id="stepNumber">1단계</div>
+          <div class="step-total" id="stepTotal">1 / 4 단계</div>
+        </div>
+
+        <!-- 슬라이드 카드 모음 -->
+        <div class="slides-wrapper">
+          
+          <!-- [1단계] -->
+          <div class="slide-card active" data-step="1">
+            <h2>1단계: 학급 방송앱 둘러보고 복제하기 (Remix)</h2>
+            <p>스마트 방송앱의 주요 기능들을 살펴보고 내 보관함에 복제합니다.</p>
+
+            <div class="flow-container">
+              <div class="flow-item">
+                <div class="flow-text">
+                  <div class="flow-header">
+                    <span class="flow-num">기능 1</span>
+                    <span class="flow-title">즉석 안내 방송 (무료 TTS)</span>
+                  </div>
+                  <p class="flow-desc">글자를 적으면 브라우저 내장 음성이 즉석에서 흘러나옵니다. 급하게 안내해야 할 때 편리합니다.</p>
+                </div>
+                <div class="flow-media">
+                  <div class="flow-media-placeholder">
+                    <span>📷 메인 즉석 방송 화면 캡처 영역</span>
+                    <span class="filename">guide-broadcast-step1-preview-tts.png</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flow-item">
+                <div class="flow-text">
+                  <div class="flow-header">
+                    <span class="flow-num">기능 2</span>
+                    <span class="flow-title">시간표 연동 정기 예약 방송</span>
+                  </div>
+                  <p class="flow-desc">요일과 시간을 설정하면 아침 자습, 청소 시간, 종례 전 등 필요한 때에 자동으로 안내 음성이 방송됩니다.</p>
+                </div>
+                <div class="flow-media">
+                  <div class="flow-media-placeholder">
+                    <span>📷 시간표 예약 방송 화면 캡처 영역</span>
+                    <span class="filename">guide-broadcast-step1-preview-schedule.png</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flow-item">
+                <div class="flow-text">
+                  <div class="flow-header">
+                    <span class="flow-num">기능 3</span>
+                    <span class="flow-title">타이머 방송 (전체화면 카운트다운)</span>
+                  </div>
+                  <p class="flow-desc">모둠 활동 등의 시간을 맞춘 뒤 [전체화면] 버튼을 누르면 대형 타이머가 보여지며, 시간이 다 되면 자동으로 종료 방송이 시작됩니다.</p>
+                </div>
+                <div class="flow-media">
+                  <div class="flow-media-placeholder">
+                    <span>📷 타이머 전체화면 캡처 영역</span>
+                    <span class="filename">guide-broadcast-step1-preview-timer.png</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flow-item">
+                <div class="flow-text">
+                  <div class="flow-header">
+                    <span class="flow-num">기능 4</span>
+                    <span class="flow-title">자주 쓰는 방송 멘트 즐겨찾기</span>
+                  </div>
+                  <p class="flow-desc">"쉬는시간 정돈하세요", "점심시간 조용히 이동하세요" 같이 반복되는 멘트는 단 한 번의 클릭 카드로 신속하게 송출합니다.</p>
+                </div>
+                <div class="flow-media">
+                  <div class="flow-media-placeholder">
+                    <span>📷 자주 쓰는 문구 즐겨찾기 화면 캡처 영역</span>
+                    <span class="filename">guide-broadcast-step1-preview-fav.png</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <details class="accordion-tip" style="margin-top: 20px;">
+              <summary>⚠️ 중요: 학교/교육청 계정 접속 차단 대처 방법</summary>
+              <div class="accordion-content">
+                학교/교육청 구글 계정(예: <code>@o365.go.kr</code>, <code>@office.edu</code> 등)은 교육망 보안 및 연령 제한 정책에 의해 AI Studio 서비스 접근이 차단됩니다. <b>반드시 개인 구글 계정(@gmail.com)</b>으로 크롬 브라우저에 로그인하신 후 실습해 주세요.
+              </div>
+            </details>
+
+            <div class="flow-item" style="margin-top: 24px;">
+              <div class="flow-text" style="border-bottom: none;">
+                <div class="flow-header">
+                  <span class="flow-num">복제 준비</span>
+                  <span class="flow-title">학급 방송앱 템플릿 복제 준비 완료하기</span>
+                </div>
+                <p class="flow-desc">개인 구글 계정 로그인을 확인하셨다면 아래 <b>[학급 방송앱 템플릿 복제하기 🌿]</b> 버튼을 클릭하여 공유된 AI Studio 템플릿 페이지를 엽니다.</p>
+              </div>
+            </div>
+
+            <div class="action-btn-area">
+              <a href="https://ai.studio/apps/bcb3266d-ea7a-409e-83e7-24fb6ade0629" target="_blank" rel="noopener" class="btn-action">
+                학급 방송앱 템플릿 복제하기 🌿
+              </a>
+            </div>
+          </div>
+
+          <!-- [2단계] -->
+          <div class="slide-card" data-step="2">
+            <h2>2단계: 내 보관함에 가져오고 바이브코딩 실습하기</h2>
+            <p>제공된 학급 방송앱 기본 소스를 복사한 뒤, AI와 대화하며 예약 방송 목록을 수정하는 기능과 예쁜 디자인으로 커스터마이징해 봅니다.</p>
+
+            <div class="flow-container">
+              <div class="flow-item">
+                <div class="flow-text">
+                  <div class="flow-header">
+                    <span class="flow-num">2-1</span>
+                    <span class="flow-title">템플릿 사본 내 보관함에 가져오기</span>
+                  </div>
+                  <p class="flow-desc">1단계 링크로 열린 화면 우측 상단의 <span class="badge-ui">Remix</span> 버튼을 누른 후, 팝업 우측 하단의 <span class="badge-action">Apply</span>를 선택합니다.</p>
+                </div>
+                <div class="flow-media">
+                  <div class="flow-media-placeholder">
+                    <span>📷 AI Studio Remix 버튼 클릭 캡처 영역</span>
+                    <span class="filename">guide-broadcast-step2-remix.png</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flow-item">
+                <div class="flow-text">
+                  <div class="flow-header">
+                    <span class="flow-num">2-2</span>
+                    <span class="flow-title">구글 클라우드 권한 연동하기</span>
+                  </div>
+                  <p class="flow-desc">화면에 <code>Remix: Set up OAuth</code> 팝업창이 나타나면, 우측 하단의 <span class="badge-action">Let's do it</span> 버튼을 클릭하여 구글 클라우드 권한을 연동합니다.</p>
+                </div>
+                <div class="flow-media">
+                  <div class="flow-media-placeholder">
+                    <span>📷 Remix OAuth 연동 팝업 캡처 영역</span>
+                    <span class="filename">guide-broadcast-step2-oauth.png</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flow-item">
+                <div class="flow-text">
+                  <div class="flow-header">
+                    <span class="flow-num">2-3</span>
+                    <span class="flow-title">바이브코딩 실습: 예약 편집(수정) 기능 추가하기</span>
+                  </div>
+                  <p class="flow-desc">
+                    AI Studio 편집 화면 하단에 있는 <b>채팅창(Prompt Chat)</b>에 원하는 기능 추가 명령을 입력해봅니다. 현재 제공된 기본 템플릿에는 예약 항목을 새로 추가하거나 지울 수는 있지만 '수정'하는 기능이 없습니다. 이 부분을 AI에게 말해서 추가해 달라고 지시합니다.
+                  </p>
+                  <div class="visual-diff-box" style="font-family: monospace; background: var(--dark); color: #86efac; padding: 12px; border-radius: 8px; margin-top: 10px; font-size: 13px;">
+                    💬 "예약된 방송 목록에서 개별 예약을 클릭하면 시간과 요일, 대사 내용을 수정할 수 있는 편집 팝업을 띄우거나 바로 수정할 수 있게 해줘." (추천 실습 지시어)<br>
+                    💬 "전체적인 카드 테마와 색상을 내 교실에 어울리는 산뜻한 핑크/노란색 계열로 변경해줘."
+                  </div>
+                </div>
+                <div class="flow-media">
+                  <div class="flow-media-placeholder">
+                    <span>📷 바이브코딩 채팅 입력 캡처 영역</span>
+                    <span class="filename">guide-broadcast-step2-customize.png</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flow-item">
+                <div class="flow-text">
+                  <div class="flow-header">
+                    <span class="flow-num">2-4</span>
+                    <span class="flow-title">실시간 변경 확인 및 테스트</span>
+                  </div>
+                  <p class="flow-desc">AI가 코드를 수정하여 로딩이 끝나면 화면 우측 [Preview] 패널에서 추가된 '수정' 버튼이 잘 작동하는지 직접 눌러서 확인해 봅니다.</p>
+                </div>
+              </div>
+            </div>
+
+            <details class="accordion-tip" style="margin-top: 20px;">
+              <summary>🛠️ 바이브코딩 중 화면이 망가지거나 하얗게 나오는 경우 (자가 복구)</summary>
+              <div class="accordion-content">
+                여러 질문을 연속으로 지시하다 보면 AI가 이전 코드를 덮어쓰면서 오작동을 하거나 화면이 멈출 수 있습니다. 이럴 때는 당황하지 마시고 우측 채팅창 대화 기록 중 <b>가장 최근 질문/답변 블록의 오른쪽 위에 나타나는 휴지통 아이콘(혹은 실행 취소/Undo)</b>을 눌러 직전의 정상 작동 상태로 되돌리시면 됩니다.
+              </div>
+            </details>
+          </div>
+
+          <!-- [3단계] -->
+          <div class="slide-card" data-step="3">
+            <h2>3단계: 나만의 주소로 업로드하고 인터넷 배포하기</h2>
+            <p>바이브코딩으로 완성한 나만의 방송앱을 온라인에 배포하여 고유 주소(URL)를 할당받고, 컴퓨터 바탕화면에 앱처럼 설치해 봅니다.</p>
+
+            <div class="tip-box" style="background: var(--green-soft); border: 1px solid var(--line-green); color: var(--green-deep); margin-bottom: 20px;">
+              💡 <b>안내:</b> 구글 클라우드 결제 연동 및 배포(Publish)를 수행하는 과정은 앞서 배운 <b>학급일지 배포 및 동학년 게시판 배포하기 실습과 100% 동일</b>합니다!
+            </div>
+
+            <details class="accordion-tip">
+              <summary>💳 구글 클라우드 배포 결제 계정 카드 등록 안심 가이드</summary>
+              <div class="accordion-content">
+                <ul>
+                  <li><strong>최초 1회 등록:</strong> 본인 인증을 위한 카드 등록은 최초 1회만 해두면 향후 모든 AI 앱 배포 시 번거로운 과정 없이 원클릭 배포가 가능해집니다.</li>
+                  <li><strong>청구 요금 걱정 제로:</strong> 방송앱은 외부 DB 서버 없이 오직 선생님 컴퓨터 브라우저 내부에서만 동작하는 <b>단독 로컬 앱 구조</b>이므로 배포 후에도 데이터 전송 비용이 아예 없어 <b>실제 청구되는 요금이 절대 없으므로 안심하고 진행</b>하셔도 됩니다.</li>
+                </ul>
+              </div>
+            </details>
+
+            <div class="flow-container">
+              <div class="flow-item">
+                <div class="flow-text">
+                  <div class="flow-header">
+                    <span class="flow-num">3-1</span>
+                    <span class="flow-title">배포 메뉴 진입하기</span>
+                  </div>
+                  <p class="flow-desc">AI Studio 우측 상단의 <span class="badge-action blue">Publish</span>를 클릭한 뒤, 이어서 나타나는 팝업에서 <span class="badge-action">Get started</span>를 누릅니다.</p>
+                </div>
+                <div class="flow-media">
+                  <div class="flow-media-placeholder">
+                    <span>📷 AI Studio Publish 버튼 클릭 캡처 영역</span>
+                    <span class="filename">guide-broadcast-step3-publish.png</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flow-item">
+                <div class="flow-text">
+                  <div class="flow-header">
+                    <span class="flow-num">3-2</span>
+                    <span class="flow-title">결제 연동 완료 후 고유 링크 Visit</span>
+                  </div>
+                  <p class="flow-desc">화면 안내에 따라 Default Gemini Project 지정 및 결제(Billing) 정보 인증을 완료하고, 배포가 성공하면 창 상단의 <span class="badge-action">Visit</span> 버튼을 눌러 나만의 방송앱 주소로 접속합니다.</p>
+                </div>
+                <div class="flow-media">
+                  <div class="flow-media-placeholder">
+                    <span>📷 배포 완료 화면 및 Visit 버튼 캡처 영역</span>
+                    <span class="filename">guide-broadcast-step3-complete.png</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flow-item">
+                <div class="flow-text">
+                  <div class="flow-header">
+                    <span class="flow-num">3-3</span>
+                    <span class="flow-title">PC 바탕화면에 단독 앱으로 설치하기</span>
+                  </div>
+                  <p class="flow-desc">
+                    주소창 우측의 <b>[앱 설치(다운로드)]</b> 아이콘을 클릭해 단독 프로그램 형태로 설치합니다. 
+                    (설치 아이콘이 보이지 않는 경우: <b>크롬 우측 점 3개 ➡️ 저장 및 공유 ➡️ 바로가기 만들기 (창으로 열기 체크)</b>를 활용해 주세요.)
+                  </p>
+                </div>
+                <div class="flow-media">
+                  <div class="flow-media-placeholder">
+                    <span>📷 주소창 우측 앱 설치 아이콘 클릭 캡처 영역</span>
+                    <span class="filename">guide-broadcast-step3-install.png</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- [4단계] -->
+          <div class="slide-card" data-step="4">
+            <h2>4단계: 구글 클라우드 무료 고품질 AI 목소리(API) 연결하기</h2>
+            <p>기본 내장된 다소 딱딱한 기계 기기 음성을 탈피하여, 자연스럽고 신뢰감 있는 구글의 무료 고품질 AI 성우 목소리(Cloud TTS)로 방송을 업그레이드합니다.</p>
+
+            <details class="accordion-tip">
+              <summary>💳 중요: 구글 Cloud Text-to-Speech API 무료 혜택 한도</summary>
+              <div class="accordion-content">
+                구글 클라우드에서 제공하는 TTS 서비스는 매우 넉넉한 **매월 무료 한도(Free Tier)**를 기본 제공합니다.
+                <ul>
+                  <li><strong>일반 음성(Standard):</strong> 매달 **4,000,000자(글자 수)**까지 100% 무료</li>
+                  <li><strong>프리미엄 AI 음성(WaveNet 등):</strong> 매달 **1,000,000자(글자 수)**까지 100% 무료</li>
+                  <li><strong>계산 팁:</strong> 하루에 50자 분량의 방송을 30번 내보내도 월 약 45,000자에 불과하므로, 무료 범위 내에서 평생 요금 청구 없이 안전하게 사용하실 수 있습니다!</li>
+                </ul>
+              </div>
+            </details>
+
+            <div class="flow-container">
+              <div class="flow-item">
+                <div class="flow-text">
+                  <div class="flow-header">
+                    <span class="flow-num">4-1</span>
+                    <span class="flow-title">구글 클라우드 콘솔 접속 및 API 활성화</span>
+                  </div>
+                  <p class="flow-desc">
+                    <b>구글 클라우드 콘솔(<a href="https://console.cloud.google.com" target="_blank" style="color:var(--green); text-decoration: underline;">console.cloud.google.com</a>)</b>에 내 개인 구글 계정으로 접속합니다. 
+                    상단 검색창에 <b>'Text-to-Speech API'</b>를 검색하여 해당 메뉴를 클릭하고 <b>[사용(활성화)]</b> 버튼을 클릭합니다.
+                  </p>
+                </div>
+                <div class="flow-media">
+                  <div class="flow-media-placeholder">
+                    <span>📷 구글 클라우드 콘솔 API 활성화 캡처 영역</span>
+                    <span class="filename">guide-broadcast-step4-gcp.png</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flow-item">
+                <div class="flow-text">
+                  <div class="flow-header">
+                    <span class="flow-num">4-2</span>
+                    <span class="flow-title">사용자 인증정보 (API 키) 생성하기</span>
+                  </div>
+                  <p class="flow-desc">
+                    좌측 메뉴의 <b>[API 및 서비스] ➡️ [사용자 인증 정보]</b>로 진입합니다. 
+                    화면 상단의 <b>[+ 사용자 인증 정보 만들기] ➡️ [API 키]</b>를 클릭하여 나만의 API Key를 발급받은 뒤 복사합니다.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flow-item">
+                <div class="flow-text">
+                  <div class="flow-header">
+                    <span class="flow-num">4-3</span>
+                    <span class="flow-title">내 방송앱 설정에 API 키 연동하기</span>
+                  </div>
+                  <p class="flow-desc">
+                    바탕화면에서 설치한 내 방송앱을 실행하고, 우측 상단의 <b>[설정(톱니바퀴)]</b> 버튼을 클릭합니다. 
+                    <b>[Google Cloud TTS API 키 연결]</b> 필드에 복사해 둔 API 키를 붙여넣은 뒤 <b>[연결]</b> 버튼을 누르면 연동이 완료됩니다!
+                  </p>
+                </div>
+                <div class="flow-media">
+                  <div class="flow-media-placeholder">
+                    <span>📷 방송앱 내 API 키 등록 연동 캡처 영역</span>
+                    <span class="filename">guide-broadcast-step4-api.png</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flow-item">
+                <div class="flow-text" style="border-bottom: none;">
+                  <div class="flow-header">
+                    <span class="flow-num">4-4</span>
+                    <span class="flow-title">AI 음성 방송 송출 검증</span>
+                  </div>
+                  <p class="flow-desc">설정창을 닫은 뒤, 메인 화면 대본창에 한글을 입력하고 즉석 방송 버튼을 클릭합니다. 기계적인 소리가 아닌 실제 구글 클라우드의 고해상도 AI 목소리로 대사가 방송되는지 확인합니다! 🎉</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="action-btn-area">
+              <a href="../index.html" class="btn-action">
+                완료하고 홈으로 가기 &#127881;
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 하단 내비게이션 버튼 바 -->
+        <div class="slider-nav">
+          <button class="btn-nav btn-nav-prev disabled" id="btnPrev">이전 단계</button>
+          <button class="btn-nav btn-nav-next" id="btnNext">다음 단계</button>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>선생님들의 편안한 학교생활을 응원합니다</div>
+      <div>© 초록덕후의 교실 도구함</div>
+    </div>
+  </footer>
+
+  <script>
+    let currentStep = 1;
+    const totalSteps = 4;
+
+    const progressBar = document.getElementById('progressBar');
+    const stepNumber = document.getElementById('stepNumber');
+    const stepTotal = document.getElementById('stepTotal');
+    const btnPrev = document.getElementById('btnPrev');
+    const btnNext = document.getElementById('btnNext');
+
+    function changeSlide(direction) {
+      const nextStep = currentStep + direction;
+      
+      if (nextStep < 1 || nextStep > totalSteps) return;
+
+      const activeCard = document.querySelector(`.slide-card[data-step="${currentStep}"]`);
+      activeCard.classList.remove('active');
+
+      currentStep = nextStep;
+      const nextCard = document.querySelector(`.slide-card[data-step="${currentStep}"]`);
+      nextCard.classList.add('active');
+
+      updateUI();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function updateUI() {
+      const percentage = (currentStep / totalSteps) * 100;
+      progressBar.style.width = percentage + '%';
+
+      stepNumber.textContent = currentStep + '단계';
+      stepTotal.textContent = currentStep + ' / ' + totalSteps + ' 단계';
+
+      if (currentStep === 1) {
+        btnPrev.classList.add('disabled');
+      } else {
+        btnPrev.classList.remove('disabled');
+      }
+
+      if (currentStep === totalSteps) {
+        btnNext.textContent = '처음으로 돌아가기';
+      } else {
+        btnNext.textContent = '다음 단계';
+      }
+    }
+
+    btnNext.addEventListener('click', function() {
+      if (currentStep === totalSteps) {
+        const activeCard = document.querySelector(`.slide-card[data-step="${currentStep}"]`);
+        activeCard.classList.remove('active');
+        
+        currentStep = 1;
+        const firstCard = document.querySelector(`.slide-card[data-step="1"]`);
+        firstCard.classList.add('active');
+        updateUI();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        changeSlide(1);
+      }
+    });
+
+    btnPrev.addEventListener('click', function() {
+      changeSlide(-1);
+    });
+  </script>
+</body>
+</html>
