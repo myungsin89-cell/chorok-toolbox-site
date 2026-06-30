@@ -728,7 +728,7 @@
 
             <div class="flow-container">
               <div class="flow-item">
-                <div class="flow-text" style="border-bottom: none;">
+                <div class="flow-text">
                   <div class="flow-header">
                     <span class="flow-num">4-1</span>
                     <span class="flow-title">준비물 및 결제 계정 생성 (결제 정보 등록)</span>
@@ -739,21 +739,39 @@
                     💡 **요금 걱정 없는 안심 가이드:** 구글 클라우드는 가입 즉시 **90일간 자유롭게 쓸 수 있는 $300(약 40만 원)의 무료 체험 크레딧**을 기본 제공합니다. 또한 TTS 서비스 자체의 **매월 100만~400만 자 무료 혜택**이 중복 적용되므로, 일반 교실 방송 규모에서는 <b>실제 요금이 절대 청구되지 않으니 거부감 없이 안심하고 카드를 등록</b>하셔도 됩니다!
                   </p>
                 </div>
+                <div class="flow-media">
+                  <img class="flow-screenshot" src="../assets/images/guide-broadcast-step4-billing.png" alt="구글 클라우드 결제 등록 및 안내 화면" />
+                </div>
               </div>
 
               <div class="flow-item">
                 <div class="flow-text">
                   <div class="flow-header">
                     <span class="flow-num">4-2</span>
-                    <span class="flow-title">새 프로젝트 만들기</span>
+                    <span class="flow-title">새 프로젝트 만들기 진입</span>
                   </div>
                   <p class="flow-desc">
                     결제 등록을 완료하고 <b>구글 클라우드 콘솔(<a href="https://console.cloud.google.com" target="_blank" style="color:var(--green); text-decoration: underline;">console.cloud.google.com</a>)</b> 메인 화면에 진입합니다. 
-                    화면 상단의 프로젝트 선택 목록을 클릭하고 <b>[새 프로젝트(New Project)]</b>를 생성하여 나만의 고유한 AI 작업 공간을 만듭니다.
+                    좌측 상단의 프로젝트 선택 목록을 클릭한 뒤, 우측 상단의 <b>[새 프로젝트(New Project)]</b> 버튼을 클릭합니다.
                   </p>
                 </div>
                 <div class="flow-media">
-                  <img class="flow-screenshot" src="../assets/images/guide-broadcast-step4-project.png" alt="구글 클라우드 새 프로젝트 생성 화면" />
+                  <img class="flow-screenshot" src="../assets/images/guide-broadcast-step4-project-select.png" alt="왼쪽 상단 프로젝트 버튼 클릭 후 새 프로젝트 누르기" />
+                </div>
+              </div>
+
+              <div class="flow-item">
+                <div class="flow-text">
+                  <div class="flow-header">
+                    <span class="flow-num">4-2-1</span>
+                    <span class="flow-title">새 프로젝트 설정 및 생성</span>
+                  </div>
+                  <p class="flow-desc">
+                    프로젝트 이름(예: Class Broadcast App)을 입력한 뒤 하단의 <b>[만들기(Create)]</b> 버튼을 클릭하여 나만의 AI 작업 공간을 생성합니다.
+                  </p>
+                </div>
+                <div class="flow-media">
+                  <img class="flow-screenshot" src="../assets/images/guide-broadcast-step4-project-create.png" alt="새 프로젝트 이름 설정 및 만들기 버튼 클릭" />
                 </div>
               </div>
 
@@ -761,15 +779,29 @@
                 <div class="flow-text">
                   <div class="flow-header">
                     <span class="flow-num">4-3</span>
-                    <span class="flow-title">Text-to-Speech API 활성화 (API 사용 설정)</span>
+                    <span class="flow-title">Text-to-Speech API 검색</span>
                   </div>
                   <p class="flow-desc">
-                    생성한 프로젝트가 선택된 상태에서 상단 검색창에 <b>'Text-to-Speech API'</b>를 검색하여 해당 서비스 상세 페이지로 이동합니다. 
-                    그 후 화면에 나타나는 파란색 <b>[사용(Enable)]</b> 버튼을 클릭하여 API 사용 설정을 활성화합니다.
+                    생성한 프로젝트가 활성화된 상태에서, 상단 검색창에 영어로 <b>'Cloud Text-to-Speech API'</b>를 검색해 해당 서비스를 찾아 클릭합니다.
                   </p>
                 </div>
                 <div class="flow-media">
-                  <img class="flow-screenshot" src="../assets/images/guide-broadcast-step4-enable.png" alt="Text-to-Speech API 사용 버튼 클릭 및 활성화" />
+                  <img class="flow-screenshot" src="../assets/images/guide-broadcast-step4-search.png" alt="상단 검색창에 Cloud Text-to-Speech API 영어로 검색하기" />
+                </div>
+              </div>
+
+              <div class="flow-item">
+                <div class="flow-text">
+                  <div class="flow-header">
+                    <span class="flow-num">4-3-1</span>
+                    <span class="flow-title">API 사용 설정 활성화</span>
+                  </div>
+                  <p class="flow-desc">
+                    이후 화면의 파란색 <b>[사용(Enable)]</b> 버튼을 클릭하여 AI 음성 서비스를 내 프로젝트에 활성화합니다.
+                  </p>
+                </div>
+                <div class="flow-media">
+                  <img class="flow-screenshot" src="../assets/images/guide-broadcast-step4-enable.png" alt="Text-to-Speech API 사용 버튼 클릭하여 활성화하기" />
                 </div>
               </div>
 
@@ -786,7 +818,7 @@
                   </p>
                 </div>
                 <div class="flow-media">
-                  <img class="flow-screenshot" src="../assets/images/guide-broadcast-step4-key.png" alt="API 및 서비스 사용자 인증 정보에서 API 키 만들기" />
+                  <img class="flow-screenshot" src="../assets/images/guide-broadcast-step4-key.png" alt="API 및 서비스 사용자 인증 정보에서 API 키 만들기 및 복사하기" />
                 </div>
               </div>
 
@@ -799,8 +831,11 @@
                   <p class="flow-desc">
                     내가 배포하여 설치한 학급 방송앱을 실행하고, 우측 상단의 <b>[설정(톱니바퀴)]</b> 버튼을 클릭합니다. 
                     <b>[Google Cloud TTS API 키 연결]</b> 입력란에 복사한 키를 붙여넣은 뒤 <b>[연결]</b> 버튼을 클릭합니다. 
-                    설정 창을 닫고 한글 대본을 입력하여 즉석 방송을 송출하면 훨씬 생생하고 또렷한 구글 AI 성우 목소리로 방송되는 것을 들으실 수 있습니다! 🎉
+                    입력창 아래에 초록색 글씨로 <b>'연결되었습니다'</b> 메시지가 뜨는 것을 확인하고, 사용할 <b>성우(AI 목소리)를 선택</b>한 후 하단의 <b>[저장 및 적용]</b> 버튼을 누르면 실시간으로 고품질 음성이 반영됩니다! 🎉
                   </p>
+                </div>
+                <div class="flow-media">
+                  <img class="flow-screenshot" src="../assets/images/guide-broadcast-step4-connect.png" alt="방송앱 설정에 키 등록, 연결 확인, 성우 선택 후 저장" />
                 </div>
               </div>
             </div>
