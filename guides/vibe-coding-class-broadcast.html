@@ -728,14 +728,28 @@
 
             <div class="flow-container">
               <div class="flow-item">
-                <div class="flow-text">
+                <div class="flow-text" style="border-bottom: none;">
                   <div class="flow-header">
                     <span class="flow-num">4-1</span>
-                    <span class="flow-title">구글 클라우드 시작 및 새 프로젝트 만들기</span>
+                    <span class="flow-title">준비물 및 결제 계정 생성 (결제 정보 등록)</span>
                   </div>
                   <p class="flow-desc">
-                    <b>구글 클라우드 콘솔(<a href="https://console.cloud.google.com" target="_blank" style="color:var(--green); text-decoration: underline;">console.cloud.google.com</a>)</b>에 로그인하여 접속합니다. 
-                    화면 좌측 상단 또는 중앙의 프로젝트 선택창을 클릭한 뒤 **[새 프로젝트(New Project)]**를 생성하여 나만의 안전한 AI 작업 공간을 만듭니다.
+                    구글 클라우드를 처음 시작하면 프로젝트 생성 전에 결제 정보 등록 화면이 나타납니다. 
+                    이를 위해 <b>해외 결제가 가능한 신용카드 또는 체크카드</b>를 미리 준비해 주세요.<br>
+                    💡 **요금 걱정 없는 안심 가이드:** 구글 클라우드는 가입 즉시 **90일간 자유롭게 쓸 수 있는 $300(약 40만 원)의 무료 체험 크레딧**을 기본 제공합니다. 또한 TTS 서비스 자체의 **매월 100만~400만 자 무료 혜택**이 중복 적용되므로, 일반 교실 방송 규모에서는 <b>실제 요금이 절대 청구되지 않으니 거부감 없이 안심하고 카드를 등록</b>하셔도 됩니다!
+                  </p>
+                </div>
+              </div>
+
+              <div class="flow-item">
+                <div class="flow-text">
+                  <div class="flow-header">
+                    <span class="flow-num">4-2</span>
+                    <span class="flow-title">새 프로젝트 만들기</span>
+                  </div>
+                  <p class="flow-desc">
+                    결제 등록을 완료하고 <b>구글 클라우드 콘솔(<a href="https://console.cloud.google.com" target="_blank" style="color:var(--green); text-decoration: underline;">console.cloud.google.com</a>)</b> 메인 화면에 진입합니다. 
+                    화면 상단의 프로젝트 선택 목록을 클릭하고 <b>[새 프로젝트(New Project)]</b>를 생성하여 나만의 고유한 AI 작업 공간을 만듭니다.
                   </p>
                 </div>
                 <div class="flow-media">
@@ -744,28 +758,14 @@
               </div>
 
               <div class="flow-item">
-                <div class="flow-text" style="border-bottom: none;">
-                  <div class="flow-header">
-                    <span class="flow-num">4-2</span>
-                    <span class="flow-title">결제 카드 등록 (필수 관문)</span>
-                  </div>
-                  <p class="flow-desc">
-                    구글의 보안 및 악용 방지 정책에 따라, API 기능을 완전히 사용하려면 결제 계정(신용카드)을 연동해야 합니다. 
-                    <br>
-                    💡 **안심 안내:** 카드 정보를 입력하더라도 앞서 설명해 드린 **매월 무료 제공 한도 내에서는 요금이 절대 청구되지 않으니** 걱정 없이 안심하고 카드를 등록하셔도 됩니다!
-                  </p>
-                </div>
-              </div>
-
-              <div class="flow-item">
                 <div class="flow-text">
                   <div class="flow-header">
                     <span class="flow-num">4-3</span>
-                    <span class="flow-title">Text-to-Speech API 검색 및 활성화</span>
+                    <span class="flow-title">Text-to-Speech API 활성화 (API 사용 설정)</span>
                   </div>
                   <p class="flow-desc">
-                    콘솔 상단 검색창에 **'Text-to-Speech API'**를 검색하여 해당 서비스 상세 페이지로 진입합니다. 
-                    이후 화면의 파란색 **[사용(Enable)]** 버튼을 클릭하여 AI 음성 서비스를 내 프로젝트에 활성화합니다.
+                    생성한 프로젝트가 선택된 상태에서 상단 검색창에 <b>'Text-to-Speech API'</b>를 검색하여 해당 서비스 상세 페이지로 이동합니다. 
+                    그 후 화면에 나타나는 파란색 <b>[사용(Enable)]</b> 버튼을 클릭하여 API 사용 설정을 활성화합니다.
                   </p>
                 </div>
                 <div class="flow-media">
@@ -777,11 +777,12 @@
                 <div class="flow-text">
                   <div class="flow-header">
                     <span class="flow-num">4-4</span>
-                    <span class="flow-title">API 키 발급 및 복사</span>
+                    <span class="flow-title">API 키 생성 및 복사</span>
                   </div>
                   <p class="flow-desc">
-                    좌측 탐색 메뉴에서 **[API 및 서비스] ➡️ [사용자 인증 정보]**로 이동합니다. 
-                    화면 상단 **[+ 사용자 인증 정보 만들기] ➡️ [API 키]**를 클릭하여 발급받은 전용 API Key 값을 복사합니다.
+                    콘솔 메인페이지 좌측 메뉴(줄 3개)에서 <b>[API 및 서비스] ➡️ [사용자 인증 정보]</b>로 이동합니다. 
+                    상단의 <b>[+ 사용자 인증 정보 만들기] ➡️ [API 키]</b>를 클릭하여 나만의 인증키를 생성합니다. 
+                    생성 후 화면에 나타나는 <b>[키 표시]</b>를 클릭한 뒤 <b>[복사]</b> 버튼을 눌러 API 키 값을 안전하게 복사해 둡니다.
                   </p>
                 </div>
                 <div class="flow-media">
@@ -793,11 +794,12 @@
                 <div class="flow-text" style="border-bottom: none;">
                   <div class="flow-header">
                     <span class="flow-num">4-5</span>
-                    <span class="flow-title">내 방송앱 설정에 API 키 연동 및 검증</span>
+                    <span class="flow-title">학급 방송앱 설정에 API 키 붙여넣기 및 검증</span>
                   </div>
                   <p class="flow-desc">
-                    바탕화면에서 설치한 내 방송앱을 실행하고, 우측 상단의 **[설정(톱니바퀴)]** 버튼을 클릭합니다. 
-                    **[Google Cloud TTS API 키 연결]** 칸에 복사한 키를 붙여넣은 뒤 **[연결]**을 클릭합니다. 설정창을 닫고 메인 화면에 대본을 입력하여 자연스러운 AI 성우 목소리로 방송이 송출되는지 최종 테스트합니다! 🎉
+                    내가 배포하여 설치한 학급 방송앱을 실행하고, 우측 상단의 <b>[설정(톱니바퀴)]</b> 버튼을 클릭합니다. 
+                    <b>[Google Cloud TTS API 키 연결]</b> 입력란에 복사한 키를 붙여넣은 뒤 <b>[연결]</b> 버튼을 클릭합니다. 
+                    설정 창을 닫고 한글 대본을 입력하여 즉석 방송을 송출하면 훨씬 생생하고 또렷한 구글 AI 성우 목소리로 방송되는 것을 들으실 수 있습니다! 🎉
                   </p>
                 </div>
               </div>
