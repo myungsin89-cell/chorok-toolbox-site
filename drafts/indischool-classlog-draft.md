@@ -1,4 +1,4 @@
-# [소프트웨어 나눔] 📋 학급일지 VER 2.0 (다이어리·출결·누가기록·성적·예산 올인원 교무수첩) 🌿
+# [소프트웨어 나눔] 📋 학급일지 VER 2 (다이어리·출결·누가기록·성적·예산 올인원 교무수첩) 🌿
 
 선생님들, 저는 매일 쏟아지는 학급 기록들을  
 수첩, 메모장, 엑셀, 한글, 종이 이면지… 여기저기 흩어놨다가  
@@ -72,15 +72,20 @@
 
 ---
 
-## 💻 사용 방법 (설치 없이 바로 쓰기 & 바탕화면 앱 설치)
+## 📥 다운로드 및 사용 방법 (무설치 단일 파일)
 
-별도의 프로그램 설치 없이 웹 브라우저에서 바로 접속해서 쓰실 수 있습니다.
+복잡한 설치 과정 없이, 파일 하나만 내려받아 더블클릭하면 즉시 실행되는 윈도우 전용 프로그램입니다.
 
-👉 **[학급일지 바로 사용하기]**  
-[https://rocal-daily-record-0f-class-iga2gppvl-songmyungsins-projects.vercel.app](https://rocal-daily-record-0f-class-iga2gppvl-songmyungsins-projects.vercel.app)
+👉 **[학급일지 VER 2 구글 드라이브에서 다운로드]**  
+[https://drive.google.com/drive/folders/1GsavDGLXS2lGp1eQRg1skXZxbwbgUHdL?usp=drive_link](https://drive.google.com/drive/folders/1GsavDGLXS2lGp1eQRg1skXZxbwbgUHdL?usp=drive_link)
 
-> 💡 **바탕화면 앱으로 만드는 꿀팁:**  
-> 크롬(Chrome)이나 엣지(Edge)로 위 링크에 접속하신 후, **주소창 오른쪽 끝에 있는 [다운로드/설치 아이콘 ⬇]**을 누르시면 컴퓨터 바탕화면에 바로가기 앱으로 쏙 들어옵니다! 주소창 없이 일반 프로그램처럼 쓰실 수 있어요.
+---
+
+## 🔒 윈도우 최초 실행 시 참고사항 (필독!)
+
+* **'Windows의 PC 보호(SmartScreen)' 푸른 창이 뜰 때:**  
+  초등교사가 비영리로 직접 제작한 프로그램이라, 기업용 유료 인증서가 등록되어 있지 않아 윈도우에서 안전 확인용으로 띄우는 정상적인 안내입니다.  
+  👉 **[추가 정보] → [실행]** 버튼을 차례로 눌러주시면 문제없이 켜집니다. (악성코드 전혀 없는 안전한 파일입니다 🌱)
 
 ---
 
