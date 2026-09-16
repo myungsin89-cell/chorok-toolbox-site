@@ -176,62 +176,62 @@
       </div>
     </div>
 
-    <!-- 화면 미리보기 갤러리 (움짤 및 스크린샷) -->
+    <!-- 화면 미리보기 갤러리 -->
     <div class="panel">
       <h2>📸 실제 화면 및 작동 시연</h2>
       <p class="hint">💡 이미지를 클릭하면 실제 크기로 시원하게 확대해서 보실 수 있습니다.</p>
 
       <div class="ss-grid">
-        <!-- 움짤 1: 처음 사용 -->
+        <!-- 1: 처음 사용 -->
         <div class="ss-card gif-card" onclick="openLightbox('lb-v2-start')">
-          <img src="images/ss-classlog-v2-start.gif" alt="학급일지 처음 사용 시연 움짤" loading="lazy">
+          <img src="images/ss-classlog-v2-start.gif" alt="학급일지 처음 사용 시연" loading="lazy">
           <div class="cap">
-            ▶️ 첫 접속 & 학급 생성 (움짤)
+            ▶️ 첫 접속 & 학급 생성
             <div class="cap-sub">회원가입 없이 이름만 넣으면 내 학급이 즉시 만들어집니다.</div>
           </div>
         </div>
 
-        <!-- 움짤 2: 다이어리 메모장 -->
+        <!-- 2: 다이어리 메모장 -->
         <div class="ss-card gif-card" onclick="openLightbox('lb-v2-diary')">
-          <img src="images/ss-classlog-v2-diary.gif" alt="다이어리 및 메모장 사용 시연 움짤" loading="lazy">
+          <img src="images/ss-classlog-v2-diary.gif" alt="다이어리 및 메모장 사용 시연" loading="lazy">
           <div class="cap">
-            ▶️ 다이어리 & 할 일 체크 (움짤)
+            ▶️ 다이어리 & 할 일 체크
             <div class="cap-sub">오늘 할 일을 등록하고 완료 체크하며 학급 일정을 관리합니다.</div>
           </div>
         </div>
 
-        <!-- 움짤 3: 출결 관리 -->
+        <!-- 3: 출결 관리 -->
         <div class="ss-card gif-card" onclick="openLightbox('lb-v2-attendance')">
-          <img src="images/ss-classlog-v2-attendance.gif" alt="출결 관리 시연 움짤" loading="lazy">
+          <img src="images/ss-classlog-v2-attendance.gif" alt="출결 관리 시연" loading="lazy">
           <div class="cap">
-            ▶️ 출석 체크 & 결석 통계 (움짤)
+            ▶️ 출석 체크 & 결석 통계
             <div class="cap-sub">클릭으로 출석 체크, 월별 통계 및 나이스 결석 사유까지 완벽 지원.</div>
           </div>
         </div>
 
-        <!-- 움짤 4: 학생 누가 기록 -->
+        <!-- 4: 학생 누가 기록 -->
         <div class="ss-card gif-card" onclick="openLightbox('lb-v2-student')">
-          <img src="images/ss-classlog-v2-student.gif" alt="학생 누가 기록 시연 움짤" loading="lazy">
+          <img src="images/ss-classlog-v2-student.gif" alt="학생 누가 기록 시연" loading="lazy">
           <div class="cap">
-            ▶️ 학생 누가 기록 (움짤)
+            ▶️ 학생 누가 기록
             <div class="cap-sub">상담 내용, 관찰 일지, 특이사항을 학생별로 누적 기록합니다.</div>
           </div>
         </div>
 
-        <!-- 움짤 5: 학생 성적 기록 -->
+        <!-- 5: 학생 성적 기록 -->
         <div class="ss-card gif-card" onclick="openLightbox('lb-v2-grade')">
-          <img src="images/ss-classlog-v2-grade.gif" alt="학생 성적 기록 시연 움짤" loading="lazy">
+          <img src="images/ss-classlog-v2-grade.gif" alt="학생 성적 기록 시연" loading="lazy">
           <div class="cap">
-            ▶️ 성적 및 평가 기록 (움짤)
+            ▶️ 성적 및 평가 기록
             <div class="cap-sub">단원평가 점수와 수행평가 결과를 편리하게 관리합니다.</div>
           </div>
         </div>
 
-        <!-- 움짤 6: 설정 및 커스텀 -->
+        <!-- 6: 설정 및 커스텀 -->
         <div class="ss-card gif-card" onclick="openLightbox('lb-v2-settings')">
-          <img src="images/ss-classlog-v2-settings.gif" alt="설정 및 메뉴 커스텀 시연 움짤" loading="lazy">
+          <img src="images/ss-classlog-v2-settings.gif" alt="설정 및 메뉴 커스텀 시연" loading="lazy">
           <div class="cap">
-            ▶️ 메뉴 켜고 끄기 & 순서 변경 (움짤)
+            ▶️ 메뉴 켜고 끄기 & 순서 변경
             <div class="cap-sub">내가 쓰는 메뉴만 켜고 마우스로 끌어서 순서를 자유롭게 바꿉니다.</div>
           </div>
         </div>
@@ -271,12 +271,12 @@
 </main>
 
 <!-- 라이트박스 모달 -->
-<div id="lb-v2-start" class="lb" onclick="closeLightbox(this)"><span class="lb-close">✕</span><img src="images/ss-classlog-v2-start.gif" alt="첫 접속 움짤 확대"></div>
-<div id="lb-v2-diary" class="lb" onclick="closeLightbox(this)"><span class="lb-close">✕</span><img src="images/ss-classlog-v2-diary.gif" alt="다이어리 움짤 확대"></div>
-<div id="lb-v2-attendance" class="lb" onclick="closeLightbox(this)"><span class="lb-close">✕</span><img src="images/ss-classlog-v2-attendance.gif" alt="출결 관리 움짤 확대"></div>
-<div id="lb-v2-student" class="lb" onclick="closeLightbox(this)"><span class="lb-close">✕</span><img src="images/ss-classlog-v2-student.gif" alt="학생 누가 기록 움짤 확대"></div>
-<div id="lb-v2-grade" class="lb" onclick="closeLightbox(this)"><span class="lb-close">✕</span><img src="images/ss-classlog-v2-grade.gif" alt="성적 기록 움짤 확대"></div>
-<div id="lb-v2-settings" class="lb" onclick="closeLightbox(this)"><span class="lb-close">✕</span><img src="images/ss-classlog-v2-settings.gif" alt="설정 움짤 확대"></div>
+<div id="lb-v2-start" class="lb" onclick="closeLightbox(this)"><span class="lb-close">✕</span><img src="images/ss-classlog-v2-start.gif" alt="첫 접속 화면 확대"></div>
+<div id="lb-v2-diary" class="lb" onclick="closeLightbox(this)"><span class="lb-close">✕</span><img src="images/ss-classlog-v2-diary.gif" alt="다이어리 화면 확대"></div>
+<div id="lb-v2-attendance" class="lb" onclick="closeLightbox(this)"><span class="lb-close">✕</span><img src="images/ss-classlog-v2-attendance.gif" alt="출결 관리 화면 확대"></div>
+<div id="lb-v2-student" class="lb" onclick="closeLightbox(this)"><span class="lb-close">✕</span><img src="images/ss-classlog-v2-student.gif" alt="학생 누가 기록 화면 확대"></div>
+<div id="lb-v2-grade" class="lb" onclick="closeLightbox(this)"><span class="lb-close">✕</span><img src="images/ss-classlog-v2-grade.gif" alt="성적 기록 화면 확대"></div>
+<div id="lb-v2-settings" class="lb" onclick="closeLightbox(this)"><span class="lb-close">✕</span><img src="images/ss-classlog-v2-settings.gif" alt="설정 화면 확대"></div>
 
 <footer>
   <div class="wrap">
