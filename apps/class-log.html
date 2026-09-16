@@ -209,48 +209,30 @@
           </div>
         </div>
 
-        <!-- 움짤 4: 설정 및 커스텀 -->
+        <!-- 움짤 4: 학생 누가 기록 -->
+        <div class="ss-card gif-card" onclick="openLightbox('lb-v2-student')">
+          <img src="images/ss-classlog-v2-student.gif" alt="학생 누가 기록 시연 움짤" loading="lazy">
+          <div class="cap">
+            ▶️ 학생 누가 기록 (움짤)
+            <div class="cap-sub">상담 내용, 관찰 일지, 특이사항을 학생별로 누적 기록합니다.</div>
+          </div>
+        </div>
+
+        <!-- 움짤 5: 학생 성적 기록 -->
+        <div class="ss-card gif-card" onclick="openLightbox('lb-v2-grade')">
+          <img src="images/ss-classlog-v2-grade.gif" alt="학생 성적 기록 시연 움짤" loading="lazy">
+          <div class="cap">
+            ▶️ 성적 및 평가 기록 (움짤)
+            <div class="cap-sub">단원평가 점수와 수행평가 결과를 편리하게 관리합니다.</div>
+          </div>
+        </div>
+
+        <!-- 움짤 6: 설정 및 커스텀 -->
         <div class="ss-card gif-card" onclick="openLightbox('lb-v2-settings')">
           <img src="images/ss-classlog-v2-settings.gif" alt="설정 및 메뉴 커스텀 시연 움짤" loading="lazy">
           <div class="cap">
             ▶️ 메뉴 켜고 끄기 & 순서 변경 (움짤)
             <div class="cap-sub">내가 쓰는 메뉴만 켜고 마우스로 끌어서 순서를 자유롭게 바꿉니다.</div>
-          </div>
-        </div>
-
-        <!-- 스크린샷: 학생 누가기록 -->
-        <div class="ss-card" onclick="openLightbox('lb-student')">
-          <img src="images/ss-classlog-student.png" alt="학생 누가 기록 화면" loading="lazy">
-          <div class="cap">
-            🧑‍🎓 학생별 누가 기록 화면
-            <div class="cap-sub">학생별 관찰 내용, 상담 일지, 특이사항을 체계적으로 누적 기록합니다.</div>
-          </div>
-        </div>
-
-        <!-- 스크린샷: 예산 관리 -->
-        <div class="ss-card" onclick="openLightbox('lb-budget')">
-          <img src="images/ss-classlog-budget.png" alt="학급 예산 관리 화면" loading="lazy">
-          <div class="cap">
-            💰 학급 예산 사용 현황
-            <div class="cap-sub">항목별 예산 지출 내역과 잔액을 시각적 퍼센트 차트로 확인합니다.</div>
-          </div>
-        </div>
-
-        <!-- 스크린샷: 제출물 체크 -->
-        <div class="ss-card" onclick="openLightbox('lb-submit')">
-          <img src="images/ss-classlog-submit.png" alt="제출물 체크 화면" loading="lazy">
-          <div class="cap">
-            📋 과제 및 안내장 제출물 체크
-            <div class="cap-sub">가정통신문, 수행평가 과제물 수합 여부를 한눈에 체크합니다.</div>
-          </div>
-        </div>
-
-        <!-- 스크린샷: 로그인 첫 화면 -->
-        <div class="ss-card" onclick="openLightbox('lb-login')">
-          <img src="images/ss-classlog-login.png" alt="학급일지 첫 화면" loading="lazy">
-          <div class="cap">
-            📚 감성적인 책 모양의 메인 첫 화면
-            <div class="cap-sub">따뜻한 교실 분위기를 담은 직관적인 교무수첩 디자인입니다.</div>
           </div>
         </div>
       </div>
@@ -292,11 +274,9 @@
 <div id="lb-v2-start" class="lb" onclick="closeLightbox(this)"><span class="lb-close">✕</span><img src="images/ss-classlog-v2-start.gif" alt="첫 접속 움짤 확대"></div>
 <div id="lb-v2-diary" class="lb" onclick="closeLightbox(this)"><span class="lb-close">✕</span><img src="images/ss-classlog-v2-diary.gif" alt="다이어리 움짤 확대"></div>
 <div id="lb-v2-attendance" class="lb" onclick="closeLightbox(this)"><span class="lb-close">✕</span><img src="images/ss-classlog-v2-attendance.gif" alt="출결 관리 움짤 확대"></div>
+<div id="lb-v2-student" class="lb" onclick="closeLightbox(this)"><span class="lb-close">✕</span><img src="images/ss-classlog-v2-student.gif" alt="학생 누가 기록 움짤 확대"></div>
+<div id="lb-v2-grade" class="lb" onclick="closeLightbox(this)"><span class="lb-close">✕</span><img src="images/ss-classlog-v2-grade.gif" alt="성적 기록 움짤 확대"></div>
 <div id="lb-v2-settings" class="lb" onclick="closeLightbox(this)"><span class="lb-close">✕</span><img src="images/ss-classlog-v2-settings.gif" alt="설정 움짤 확대"></div>
-<div id="lb-student" class="lb" onclick="closeLightbox(this)"><span class="lb-close">✕</span><img src="images/ss-classlog-student.png" alt="학생 기록 확대"></div>
-<div id="lb-budget" class="lb" onclick="closeLightbox(this)"><span class="lb-close">✕</span><img src="images/ss-classlog-budget.png" alt="예산 관리 확대"></div>
-<div id="lb-submit" class="lb" onclick="closeLightbox(this)"><span class="lb-close">✕</span><img src="images/ss-classlog-submit.png" alt="제출 체크 확대"></div>
-<div id="lb-login" class="lb" onclick="closeLightbox(this)"><span class="lb-close">✕</span><img src="images/ss-classlog-login.png" alt="로그인 화면 확대"></div>
 
 <footer>
   <div class="wrap">
